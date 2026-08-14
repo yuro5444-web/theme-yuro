@@ -254,7 +254,117 @@ hr,
 }
 
 /* --------------------------------------------------------------------------
-   10. Mouvement reduit
+   10. En-tete et navigation
+   -------------------------------------------------------------------------- */
+
+.header {
+  border-bottom: 1px solid var(--da-filet);
+}
+
+/* Entrees de menu : capitales espacees, sans gras */
+.header__menu-item,
+.header__menu-item span,
+.header__active-menu-item,
+.list-menu__item--link {
+  font-family: var(--font-body-family);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  transition: color var(--da-transition);
+}
+
+.header__menu-item:hover,
+.list-menu__item--link:hover {
+  color: var(--da-trempe);
+}
+
+/* Le trait de survol du menu suit l'accent, pas l'ancien violet */
+.header__menu-item::after,
+.header__active-menu-item::after {
+  background-color: var(--da-trempe) !important;
+}
+
+/* Libelles des icones : plus petits que le menu, meme famille */
+.header__icon-text,
+.header__icons .text-icon {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* Bandeau d'annonce : une ligne discrete, jamais un argument */
+.announcement-bar__message {
+  font-size: 1.2rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Menu deroulant et tiroir mobile : angles vifs, filet unique */
+.header__submenu,
+.menu-drawer {
+  border: 1px solid var(--da-filet);
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   11. Sections de la page d'accueil
+   -------------------------------------------------------------------------- */
+
+/* Questions frequentes : le filet suffit a separer */
+.collapsible-content .accordion,
+.collapsible-content details {
+  border-color: var(--da-filet) !important;
+}
+
+.collapsible-content summary,
+.accordion__title {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* Tableau comparatif : la donnee prime sur l'ornement */
+.comparison-table {
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison-table__label,
+.comparison-table th {
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.comparison-table__row {
+  border-bottom: 1px solid var(--da-filet);
+}
+
+/* Cartes produit de la collection mise en avant */
+.card__heading,
+.card__heading a {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.price,
+.price-item {
+  font-family: var(--font-body-family);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Inscription a la lettre : champ nu, filet bas seulement */
+.newsletter-form__field-wrapper .field__input {
+  border: none;
+  border-bottom: 1px solid var(--da-filet-net);
+  background: transparent;
+  padding-inline: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. Mouvement reduit
    -------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

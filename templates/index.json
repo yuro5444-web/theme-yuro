@@ -100,11 +100,291 @@
         "title_highlight_1_color": "#A9BEC6",
         "title_highlight_1_underline-color": "#A9BEC6"
       }
+    },
+    "lames": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Les lames",
+        "heading_size": "h2",
+        "collection": "couteaux-damas",
+        "products_to_show": 6,
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "badges": "disabled",
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "show_secondary_image": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "slider_desktop": false,
+        "color_scheme": "background-1",
+        "cards_color_scheme": "background-1",
+        "title_highlight_1_color": "#A9BEC6",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "comparatif": {
+      "type": "comparison-table",
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "benefit": "Le motif traverse toute l'épaisseur de la lame",
+            "us": true,
+            "others": false
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "benefit": "Le dessin subsiste après des années d'affûtage",
+            "us": true,
+            "others": false
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "benefit": "Deux aciers réellement pliés l'un dans l'autre",
+            "us": true,
+            "others": false
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "benefit": "Nombre de couches annoncé et vérifiable",
+            "us": true,
+            "others": false
+          }
+        },
+        "r5": {
+          "type": "row",
+          "settings": {
+            "benefit": "Dureté mesurée et indiquée en HRC",
+            "us": true,
+            "others": false
+          }
+        },
+        "r6": {
+          "type": "row",
+          "settings": {
+            "benefit": "Affûtage repris à vie par l'atelier",
+            "us": true,
+            "others": false
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {
+        "title": "Forgé, ou seulement marqué ?",
+        "heading_size": "h2",
+        "text": "<p>La majorité des couteaux vendus comme « damas » sont des aciers ordinaires sur lesquels le motif a été gravé au laser ou déposé à l'acide. La différence ne se voit pas en photo de catalogue. Elle se voit sur la tranche, et elle se voit à l'usage.</p>",
+        "desktop_alignment": "left",
+        "mobile_content_alignment": "left",
+        "style": "minimal",
+        "corner_radius": 0,
+        "number_of_competitors": 1,
+        "us_label": "Damas forgé",
+        "us_label_size": 16,
+        "others_label": "Damas gravé au laser",
+        "others_label_size": 16,
+        "checkmark_style": "regular",
+        "checkmark_color": "#A9BEC6",
+        "x_style": "regular",
+        "x_color": "#8B8781",
+        "minimalistic_border_opacity": 14,
+        "highlighted_separator_opacity": 10,
+        "regular_separator_opacity": 10,
+        "highlighted_overlay_opacity": 0,
+        "regular_overlay_opacity": 0,
+        "color_scheme": "background-1",
+        "highlighted_color_scheme": "background-1",
+        "other_cells_color_scheme": "background-1",
+        "title_highlight_1_color": "#A9BEC6",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "forge": {
+      "type": "multicolumn",
+      "blocks": {
+        "e1": {
+          "type": "column",
+          "settings": {
+            "title": "Le pliage",
+            "text": "<p>Deux aciers sont soudés à la forge puis repliés l'un dans l'autre. Ici, trente-trois strates de chaque côté d'une âme en VG-10 : soixante-sept couches au total. C'est le pliage qui dessine le motif, pas un outil de gravure.</p>"
+          }
+        },
+        "e2": {
+          "type": "column",
+          "settings": {
+            "title": "La trempe",
+            "text": "<p>La lame est portée au rouge puis refroidie d'un seul coup. Ce choc thermique fixe la structure de l'acier et donne les 61 HRC : assez dur pour tenir le fil longtemps, assez souple pour ne pas casser.</p>"
+          }
+        },
+        "e3": {
+          "type": "column",
+          "settings": {
+            "title": "L'affûtage",
+            "text": "<p>À la pierre, à la main, quinze degrés par face. Une lame qui sort d'atelier tranche une feuille de papier tenue en l'air. C'est le seul test qui ne se truque pas.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "settings": {
+        "title": "De la barre d'acier à la lame",
+        "heading_size": "h2",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "column_alignment": "left",
+        "image_ratio": "adapt",
+        "desktop_heading_size": 20,
+        "desktop_text_size": 15,
+        "slider_desktop": false,
+        "stretch_cards": false,
+        "cards_corner_radius": 0,
+        "color_scheme": "background-2",
+        "cards_color_scheme": "background-2",
+        "title_highlight_1_color": "#A9BEC6",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible-row-content",
+          "settings": {
+            "heading": "Comment reconnaître un vrai damas ?",
+            "row_content": "<p>Regardez la tranche. Sur une lame forgée, le motif traverse l'épaisseur et reste visible jusqu'au fil. Sur un acier gravé au laser ou attaqué à l'acide, il s'arrête à la surface et s'efface au premier affûtage sérieux.</p>",
+            "open": true
+          }
+        },
+        "q2": {
+          "type": "collapsible-row-content",
+          "settings": {
+            "heading": "Le damas passe-t-il au lave-vaisselle ?",
+            "row_content": "<p>Non. Ni le damas, ni aucun couteau de cuisine sérieux. Lavage à la main à l'eau tiède, séchage immédiat. L'eau qui stagne marque l'acier.</p>",
+            "open": false
+          }
+        },
+        "q3": {
+          "type": "collapsible-row-content",
+          "settings": {
+            "heading": "Que veut dire 61 HRC ?",
+            "row_content": "<p>C'est la dureté sur l'échelle Rockwell. En dessous de 56, la lame perd son fil rapidement. Au-delà de 63, elle devient cassante. 61 est le point d'équilibre pour un couteau de cuisine.</p>",
+            "open": false
+          }
+        },
+        "q4": {
+          "type": "collapsible-row-content",
+          "settings": {
+            "heading": "Faut-il une pierre particulière ?",
+            "row_content": "<p>Une pierre à eau 1000 puis 6000 suffit. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage est repris à vie.</p>",
+            "open": false
+          }
+        },
+        "q5": {
+          "type": "collapsible-row-content",
+          "settings": {
+            "heading": "Gyuto ou santoku ?",
+            "row_content": "<p>Le gyuto a une lame plus longue et une pointe fine : il coupe en poussant, à l'aise sur la viande et le poisson. Le santoku est plus court et plus haut : il coupe à la verticale, plus direct sur les légumes.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Questions fréquentes",
+        "heading_size": "h2",
+        "row_heading_size": "medium",
+        "collapse_icon": "plus",
+        "collapse_icon_style": "standard",
+        "collapse_icon_radius": 0,
+        "animation_speed": 0.3,
+        "border_type": "bottom",
+        "border_thickness": 1,
+        "border_style": "solid",
+        "corner_radius": 0,
+        "rows_spacing": 0,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "color_scheme": "background-1",
+        "title_highlight_1_color": "#A9BEC6",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "lettre": {
+      "type": "newsletter",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "title": "Le carnet d'atelier",
+            "heading_size": "h2"
+          }
+        },
+        "p": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Une lettre courte, envoyée seulement quand il y a quelque chose à dire : une nouvelle série, un point de technique, une date d'atelier.</p>"
+          }
+        },
+        "f": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "h",
+        "p",
+        "f"
+      ],
+      "settings": {
+        "button_type": "solid",
+        "button_label": "S'inscrire",
+        "color_scheme": "background-2",
+        "full_width": false,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
     "hero",
     "recit",
-    "piliers"
+    "piliers",
+    "lames",
+    "comparatif",
+    "forge",
+    "faq",
+    "lettre"
   ]
 }
