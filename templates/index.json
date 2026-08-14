@@ -36,7 +36,9 @@
         "h": {
           "type": "heading",
           "settings": {
-            "heading": "Soixante-sept couches"
+            "title": "Soixante-sept couches",
+            "title_highlight_1_color": "#A9BEC6",
+            "title_highlight_1_underline-color": "#A9BEC6"
           }
         },
         "t": {
@@ -94,7 +96,9 @@
         "title": "Ce qui distingue ces lames",
         "columns_desktop": 3,
         "icon_layout": "vertical",
-        "color_scheme": "background-1"
+        "color_scheme": "background-1",
+        "title_highlight_1_color": "#A9BEC6",
+        "title_highlight_1_underline-color": "#A9BEC6"
       }
     }
   },
