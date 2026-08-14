@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Direction Damas — couche de direction artistique
+   Chargee apres base.css. Base rem du theme : 1rem = 10px.
+   Principe : angle vif, aucune ombre, alignement a gauche, le vide separe.
+   ========================================================================== */
+
+:root {
+  --da-encre:  #0F0E0D;
+  --da-suie:   #171614;
+  --da-cendre: #8B8781;
+  --da-os:     #DCD7CF;
+  --da-trempe: #A9BEC6;
+
+  --da-filet:     rgba(169, 190, 198, 0.15);
+  --da-filet-net: rgba(169, 190, 198, 0.28);
+
+  --da-serif: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', 'Iowan Old Style', Georgia, serif;
+  --da-mono:  ui-monospace, 'SF Mono', SFMono-Regular, 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  --da-transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --da-section: clamp(6rem, 9vw, 11.2rem);
+  --da-mesure: 65ch;
+}
+
+/* --------------------------------------------------------------------------
+   1. Angle vif — rayon 0 sans exception
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Les indicateurs de chargement restent circulaires : carres, ils lisent comme un bug. */
+.spinner,
+.loading__spinner,
+.loading-overlay__spinner,
+.spinner circle {
+  border-radius: 50% !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Aucune ombre portee — la separation se fait par le vide ou un filet
+   -------------------------------------------------------------------------- */
+
+.card,
+.card-wrapper,
+.card__inner,
+.media,
+.button,
+.field__input,
+.select__select,
+.cart-drawer,
+.quick-add-modal__content,
+.popup-modal__content,
+.global-media-settings {
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Typographie
+   -------------------------------------------------------------------------- */
+
+body {
+  font-size: 1.7rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1, .h0, .h1 { font-size: clamp(3.2rem, 6vw, 5.4rem); }
+h2, .h2     { font-size: clamp(2.6rem, 4vw, 3.6rem); }
+h3, .h3     { font-size: 2.2rem; line-height: 1.2; }
+h4, .h4     { font-size: 1.9rem; line-height: 1.25; }
+h5, .h5     { font-size: 1.7rem; line-height: 1.3; }
+
+/* Surtitres et micro-libelles : capitales tres espacees */
+.da-eyebrow,
+.caption-with-letter-spacing,
+.announcement-bar__message {
+  font-family: var(--font-body-family);
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.22em !important;
+  line-height: 1.5;
+}
+
+/* Le texte courant ne depasse jamais la mesure lisible */
+.rte,
+.product__description,
+.rich-text__text,
+.article-template__content {
+  max-width: var(--da-mesure);
+}
+
+.rte p + p { margin-top: 1.6rem; }
+
+/* --------------------------------------------------------------------------
+   4. Alignement — le centre est reserve au logo et au pied de page
+   -------------------------------------------------------------------------- */
+
+.card__content,
+.card__information,
+.card-information {
+  text-align: left !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Boutons — capitales espacees, filet de 1 px, aucune ombre
+   -------------------------------------------------------------------------- */
+
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  min-height: 5.4rem;
+  padding: 0 3.2rem;
+  border-width: 1px !important;
+  box-shadow: none !important;
+  transition: background-color var(--da-transition),
+              color var(--da-transition),
+              border-color var(--da-transition);
+}
+
+.button:hover,
+button.shopify-payment-button__button--unbranded:hover {
+  background-color: var(--da-trempe) !important;
+  border-color: var(--da-trempe) !important;
+  color: var(--da-encre) !important;
+}
+
+.button--secondary:hover {
+  background-color: transparent !important;
+  border-color: var(--da-trempe) !important;
+  color: var(--da-trempe) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Rythme — l'espacement des sections est constant
+   -------------------------------------------------------------------------- */
+
+.shopify-section + .shopify-section > .section-template,
+.section-template {
+  padding-block: var(--da-section);
+}
+
+/* Un seul poids de filet sur tout le site */
+hr,
+.section-divider,
+.footer__content-top {
+  border: none;
+  border-top: 1px solid var(--da-filet);
+  height: 0;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. Images — zoom imperceptible, lent, sans rebond
+   -------------------------------------------------------------------------- */
+
+.media > img,
+.card__media img,
+.media--hover-effect > img:only-child {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-wrapper:hover .media > img,
+.card__media:hover img {
+  transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   8. Tableau de specifications — la preuve technique
+   -------------------------------------------------------------------------- */
+
+.da-specs {
+  display: grid;
+  gap: 0;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--da-mono);
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+  max-width: 52rem;
+}
+
+.da-specs__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--da-filet);
+}
+
+.da-specs__row:first-child { border-top: 1px solid var(--da-filet); }
+
+.da-specs__key {
+  color: var(--da-cendre);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  align-self: center;
+}
+
+.da-specs__value {
+  color: var(--da-os);
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   9. Details d'interface
+   -------------------------------------------------------------------------- */
+
+::selection {
+  background: var(--da-trempe);
+  color: var(--da-encre);
+}
+
+:focus-visible {
+  outline: 2px solid var(--da-trempe);
+  outline-offset: 3px;
+}
+
+.badge {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--da-filet-net);
+  background: transparent !important;
+}
+
+/* Les fleches de carrousel et puces de pagination suivent l'angle vif */
+:root {
+  --slider-arrow-border-radius: 0 !important;
+  --pagination-dot-radius: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. Mouvement reduit
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
