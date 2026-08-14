@@ -1,25 +1,48 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "da_recit": {
+    "hero": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "heading": "Le motif ne se décore pas. Il se révèle.",
+            "heading_size": "h1",
+            "subheading": "Damas forgé, 67 couches. Chaque lame porte un dessin qui n'existe qu'une fois.",
+            "button_label": "Voir les lames",
+            "link": "shopify://collections/couteaux-damas",
+            "image_overlay_opacity": 30,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "background-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide-1"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "auto_rotate": false,
+        "show_text_below": false
+      }
+    },
+    "recit": {
       "type": "rich-text",
       "blocks": {
         "h": {
           "type": "heading",
-          "settings": {}
+          "settings": {
+            "heading": "Soixante-sept couches"
+          }
         },
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Test.</p>"
+            "text": "<p>L'acier est plié puis replié jusqu'à obtenir soixante-sept strates autour d'une âme en VG-10. L'attaque à l'acide révèle le contraste entre les deux nuances : le dessin qui apparaît n'appartient qu'à cette lame et ne se reproduira pas.</p>"
           }
         }
       },
@@ -27,10 +50,57 @@
         "h",
         "t"
       ],
-      "settings": {}
+      "settings": {
+        "desktop_content_position": "left",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "color_scheme": "background-1"
+      }
+    },
+    "piliers": {
+      "type": "icon-bar",
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "check_circle",
+            "title": "Forgé, non gravé",
+            "text": "<p>Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "check_circle",
+            "title": "61 HRC",
+            "text": "<p>Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "check_circle",
+            "title": "Affûtage à vie",
+            "text": "<p>Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "title": "Ce qui distingue ces lames",
+        "columns_desktop": 3,
+        "icon_layout": "vertical",
+        "color_scheme": "background-1"
+      }
     }
   },
   "order": [
-    "da_recit"
+    "hero",
+    "recit",
+    "piliers"
   ]
 }

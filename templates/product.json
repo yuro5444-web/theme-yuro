@@ -7,7 +7,7 @@
           "type": "product_title",
           "settings": {
             "uppercase_title": false,
-            "desktop_size": 40,
+            "desktop_size": 39,
             "alignment": "left",
             "mobile_size": 28,
             "mobile_alignment": "mobile-left",
