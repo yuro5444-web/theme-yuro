@@ -126,96 +126,6 @@
         "padding_bottom": 72
       }
     },
-    "comparatif": {
-      "type": "comparison-table",
-      "blocks": {
-        "r1": {
-          "type": "row",
-          "settings": {
-            "benefit": "Le motif traverse toute l'épaisseur de la lame",
-            "us": true,
-            "others": false
-          }
-        },
-        "r2": {
-          "type": "row",
-          "settings": {
-            "benefit": "Le dessin subsiste après des années d'affûtage",
-            "us": true,
-            "others": false
-          }
-        },
-        "r3": {
-          "type": "row",
-          "settings": {
-            "benefit": "Deux aciers réellement pliés l'un dans l'autre",
-            "us": true,
-            "others": false
-          }
-        },
-        "r4": {
-          "type": "row",
-          "settings": {
-            "benefit": "Nombre de couches annoncé et vérifiable",
-            "us": true,
-            "others": false
-          }
-        },
-        "r5": {
-          "type": "row",
-          "settings": {
-            "benefit": "Dureté mesurée et indiquée en HRC",
-            "us": true,
-            "others": false
-          }
-        },
-        "r6": {
-          "type": "row",
-          "settings": {
-            "benefit": "Affûtage repris à vie par l'atelier",
-            "us": true,
-            "others": false
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5",
-        "r6"
-      ],
-      "settings": {
-        "title": "Forgé, ou seulement marqué ?",
-        "heading_size": "h2",
-        "text": "<p>La majorité des couteaux vendus comme « damas » sont des aciers ordinaires sur lesquels le motif a été gravé au laser ou déposé à l'acide. La différence ne se voit pas en photo de catalogue. Elle se voit sur la tranche, et elle se voit à l'usage.</p>",
-        "desktop_alignment": "left",
-        "mobile_content_alignment": "left",
-        "style": "minimal",
-        "corner_radius": 0,
-        "number_of_competitors": 1,
-        "us_label": "Damas forgé",
-        "us_label_size": 16,
-        "others_label": "Damas gravé au laser",
-        "others_label_size": 16,
-        "checkmark_style": "regular",
-        "checkmark_color": "#A9BEC6",
-        "x_style": "regular",
-        "x_color": "#8B8781",
-        "minimalistic_border_opacity": 14,
-        "highlighted_separator_opacity": 10,
-        "regular_separator_opacity": 10,
-        "highlighted_overlay_opacity": 0,
-        "regular_overlay_opacity": 0,
-        "color_scheme": "background-1",
-        "highlighted_color_scheme": "background-1",
-        "other_cells_color_scheme": "background-1",
-        "title_highlight_1_color": "#A9BEC6",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
     "forge": {
       "type": "multicolumn",
       "blocks": {
@@ -375,6 +285,57 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "pourquoi": {
+      "type": "custom-columns",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "column": "col_1",
+            "heading": "Pourquoi une lame damas",
+            "heading_size": "h2",
+            "alignment": "left",
+            "title_highlight_color": "#A9BEC6"
+          }
+        },
+        "t": {
+          "type": "richtext",
+          "settings": {
+            "column": "col_1",
+            "alignment": "left",
+            "text_style": "body",
+            "text": "<p>Le damas n'est pas une finition. C'est une façon de construire une lame : un acier dur au centre pour le tranchant, des aciers plus souples autour pour encaisser les chocs. Le motif n'est que la trace visible de cette construction.</p>"
+          }
+        },
+        "a": {
+          "type": "custom_liquid",
+          "settings": {
+            "column": "col_2",
+            "custom_liquid": "<ul class=\"da-args\"><li class=\"da-args__item\"><p class=\"da-args__label\">Le tranchant</p><p class=\"da-args__text\">L'âme en VG-10 se laisse affûter à quinze degrés par face, contre vingt à vingt-deux sur un couteau européen. La lame entre dans l'aliment au lieu de l'écraser : une tomate mûre se tranche sans être pressée.</p><p class=\"da-args__proof\">15° par face</p></li><li class=\"da-args__item\"><p class=\"da-args__label\">La tenue du fil</p><p class=\"da-args__text\">À 61 HRC, l'acier garde son mordant plusieurs mois d'usage quotidien. Un couteau de série, autour de 54 HRC, demande un passage au fusil chaque semaine pour rester correct.</p><p class=\"da-args__proof\">61 HRC</p></li><li class=\"da-args__item\"><p class=\"da-args__label\">La résistance</p><p class=\"da-args__text\">Les strates souples qui entourent l'âme dure absorbent les chocs. C'est ce qui permet d'être dur sans être cassant — un compromis qu'un acier monobloc ne peut pas tenir.</p><p class=\"da-args__proof\">67 couches</p></li><li class=\"da-args__item\"><p class=\"da-args__label\">L'unicité</p><p class=\"da-args__text\">Le motif naît du pliage, pas d'un gabarit. Deux lames tirées de la même barre n'ont pas le même dessin. C'est le seul ustensile de votre cuisine dont il n'existe pas de second exemplaire.</p><p class=\"da-args__proof\">pièce unique</p></li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "a"
+      ],
+      "settings": {
+        "columns_count": 2,
+        "col_1_desktop_width": 5,
+        "col_1_mobile_width": 4,
+        "col_2_desktop_width": 7,
+        "col_2_mobile_width": 4,
+        "desktop_vertical_alignment": "flex-start",
+        "column_gap_desktop": 80,
+        "row_gap_desktop": 40,
+        "display_grid_lines": false,
+        "desktop_page_width": "normal",
+        "color_scheme": "background-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
@@ -382,7 +343,7 @@
     "recit",
     "piliers",
     "lames",
-    "comparatif",
+    "pourquoi",
     "forge",
     "faq",
     "lettre"

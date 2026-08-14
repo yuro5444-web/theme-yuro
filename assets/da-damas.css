@@ -323,21 +323,59 @@ hr,
   letter-spacing: -0.005em;
 }
 
-/* Tableau comparatif : la donnee prime sur l'ornement */
-.comparison-table {
-  font-variant-numeric: tabular-nums;
+/* Pourquoi une lame damas — quatre arguments, chacun avec sa preuve chiffree.
+   Pas de coche, pas de colonne concurrente : l'argument se suffit. */
+.da-args {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
 }
 
-.comparison-table__label,
-.comparison-table th {
-  font-family: var(--font-body-family);
-  font-size: 1.1rem;
+.da-args__item {
+  display: grid;
+  gap: 0.8rem;
+  padding-block: 2.4rem;
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-args__item:last-child { border-bottom: 1px solid var(--da-filet); }
+
+.da-args__label {
+  margin: 0;
+  font-family: var(--da-serif);
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.da-args__text {
+  margin: 0;
+  max-width: 52ch;
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.da-args__proof {
+  margin: 0;
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  color: var(--da-trempe);
 }
 
-.comparison-table__row {
-  border-bottom: 1px solid var(--da-filet);
+@media screen and (min-width: 990px) {
+  .da-args__item {
+    grid-template-columns: minmax(0, 1fr) 12rem;
+    grid-template-areas: "label proof" "text proof";
+    column-gap: 3.2rem;
+    align-items: baseline;
+  }
+  .da-args__label { grid-area: label; }
+  .da-args__text  { grid-area: text; }
+  .da-args__proof { grid-area: proof; text-align: right; }
 }
 
 /* Cartes produit de la collection mise en avant */
