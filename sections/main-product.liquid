@@ -229,6 +229,35 @@
         "@type": "Brand",
         "name": {{ product.vendor | json }}
       },
+      {%- comment -%}
+        DA Damas — les specifications techniques passent dans le balisage.
+        Peu de concurrents le font : c'est ce qui permet a Google de comprendre
+        qu'une lame « 67 couches, 61 HRC » repond a une recherche precise.
+      {%- endcomment -%}
+      {%- liquid
+        assign s = product.metafields.specs
+        assign spec_labels = 'Acier,Couches,Dureté,Angle d''affûtage,Longueur de lame,Poids,Manche' | split: ','
+        assign spec_values = s.acier | append: '|~|' | append: s.couches | append: '|~|' | append: s.durete_hrc | append: '|~|' | append: s.angle | append: '|~|' | append: s.longueur_lame | append: '|~|' | append: s.poids | append: '|~|' | append: s.manche
+        assign spec_values = spec_values | split: '|~|'
+      -%}
+      {%- assign has_specs = false -%}
+      {%- for v in spec_values -%}{%- if v != blank -%}{%- assign has_specs = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_specs -%}
+        "additionalProperty": [
+          {%- assign first_prop = true -%}
+          {%- for v in spec_values -%}
+            {%- if v != blank -%}
+              {%- unless first_prop %},{% endunless -%}
+              {
+                "@type": "PropertyValue",
+                "name": {{ spec_labels[forloop.index0] | json }},
+                "value": {{ v | json }}
+              }
+              {%- assign first_prop = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ],
+      {%- endif -%}
       "offers": [
         {%- for variant in product.variants -%}
           {

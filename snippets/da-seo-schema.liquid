@@ -1,0 +1,149 @@
+{%- comment -%}
+  Direction Damas — balisage structure complementaire.
+
+  Le theme emet deja Product, Organization, Article et WebSite.
+  Ce fichier ajoute ce qui manquait :
+  - BreadcrumbList : affiche le fil d'Ariane dans les resultats Google.
+  - ItemList : indique qu'une collection est une liste de produits.
+  - FAQPage : fait apparaitre les reponses en accordeon dans les resultats.
+{%- endcomment -%}
+
+{%- liquid
+  assign origin = request.origin
+  assign home_label = 'Accueil'
+-%}
+
+{%- comment -%} ---------- Fil d'Ariane ---------- {%- endcomment -%}
+{%- unless template.name == 'index' or template.name == 'password' -%}
+  {%- capture crumbs -%}
+    {%- case template.name -%}
+
+      {%- when 'product' -%}
+        {%- assign parent = product.collections.first -%}
+        {%- if parent -%}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ parent.title | json }},
+            "item": {{ origin | append: parent.url | json }}
+          }
+          ,{
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ product.title | json }}
+          }
+        {%- else -%}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ product.title | json }}
+          }
+        {%- endif -%}
+
+      {%- when 'collection' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }}
+        }
+
+      {%- when 'article' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ blog.title | json }},
+          "item": {{ origin | append: blog.url | json }}
+        }
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ article.title | json }}
+        }
+
+      {%- when 'blog' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ blog.title | json }}
+        }
+
+      {%- when 'page' -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | json }}
+        }
+
+    {%- endcase -%}
+  {%- endcapture -%}
+
+  {%- if crumbs != blank -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": {{ home_label | json }},
+            "item": {{ origin | append: routes.root_url | json }}
+          }
+          {{ crumbs }}
+        ]
+      }
+    </script>
+  {%- endif -%}
+{%- endunless -%}
+
+{%- comment -%} ---------- Liste de produits d'une collection ---------- {%- endcomment -%}
+{%- if template.name == 'collection' and collection.products.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": {{ collection.title | json }},
+      "numberOfItems": {{ collection.products_count }},
+      "itemListElement": [
+        {%- for item in collection.products -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": {{ origin | append: item.url | json }},
+            "name": {{ item.title | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{%- comment -%}
+  ---------- Questions frequentes ----------
+  Alimente par les lignes depliables de la page. Chaque section de type
+  collapsible-content dont les blocs portent un titre et un contenu devient
+  une paire question / reponse.
+{%- endcomment -%}
+{%- if template.name == 'page' and page.metafields.seo.faq != blank -%}
+  {%- assign faq_pairs = page.metafields.seo.faq.value -%}
+  {%- if faq_pairs.size > 0 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for pair in faq_pairs -%}
+            {
+              "@type": "Question",
+              "name": {{ pair.question | json }},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ pair.answer | strip_html | json }}
+              }
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
+{%- endif -%}
