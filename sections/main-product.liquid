@@ -236,7 +236,7 @@
       {%- endcomment -%}
       {%- liquid
         assign s = product.metafields.specs
-        assign spec_labels = 'Acier,Couches,Dureté,Angle d''affûtage,Longueur de lame,Poids,Manche' | split: ','
+        assign spec_labels = "Acier,Couches,Dureté,Angle d'affûtage,Longueur de lame,Poids,Manche" | split: ','
         assign spec_values = s.acier | append: '|~|' | append: s.couches | append: '|~|' | append: s.durete_hrc | append: '|~|' | append: s.angle | append: '|~|' | append: s.longueur_lame | append: '|~|' | append: s.poids | append: '|~|' | append: s.manche
         assign spec_values = spec_values | split: '|~|'
       -%}
