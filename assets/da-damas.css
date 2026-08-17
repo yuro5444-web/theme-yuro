@@ -534,8 +534,12 @@ hr,
   margin-bottom: 2.4rem;
 }
 
+/* Le titre restait centre par le theme pendant que le texte passait a gauche.
+   Un seul alignement, sinon l'en-tete a l'air rate plutot que compose. */
 .collection-hero__text-wrapper,
-.collection-hero__description {
+.collection-hero__title,
+.collection-hero__description,
+.collection-hero .center {
   text-align: left !important;
 }
 
