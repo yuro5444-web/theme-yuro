@@ -554,7 +554,8 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "favicon": "shopify://shop_images/yuro-favicon.png"
   },
   "presets": {
     "Default": {
