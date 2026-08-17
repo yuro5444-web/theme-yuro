@@ -32,6 +32,14 @@
     Contenu > Fichiers, il se remplace sans toucher au code.
   {%- endcomment -%}
   {%- assign og_fallback = 'yuro-collection-damas.png' | file_url -%}
+  {%- comment -%}
+    file_url renvoie une URL relative au protocole (//...). Facebook et LinkedIn
+    refusent cette forme : on force le schema.
+  {%- endcomment -%}
+  {%- assign og_proto = og_fallback | slice: 0, 2 -%}
+  {%- if og_proto == '//' -%}
+    {%- assign og_fallback = og_fallback | prepend: 'https:' -%}
+  {%- endif -%}
   {%- if og_fallback != blank -%}
     <meta property="og:image" content="{{ og_fallback }}">
     <meta property="og:image:secure_url" content="{{ og_fallback }}">
