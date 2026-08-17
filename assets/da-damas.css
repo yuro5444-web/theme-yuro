@@ -417,9 +417,18 @@ hr,
 
 /* Lien vers la collection : capitales espacees, filet bas, fleche qui avance.
    Aligne a gauche comme le reste, le centre est reserve au logo et au pied de page. */
+/* Le conteneur porte desormais page-width dans le Liquid : il suffit d'annuler
+   le centrage herite pour que le lien tombe sur le bord gauche de la grille. */
 .collection__view-all {
   text-align: left !important;
   margin-top: 4.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  /* Sur mobile la grille passe en pleine largeur : le lien se recentre
+     sous le slider plutot que de flotter seul a gauche. */
+  .collection__view-all { text-align: center !important; }
+  .collection__view-all .link { justify-content: center; }
 }
 
 .collection__view-all .link {

@@ -202,7 +202,12 @@
     </div>
 
     {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all animate-item animate-item--child index-2">
+      {%- comment -%}
+        DA Damas : page-width ajoute pour que le lien s'aligne sur le bord gauche
+        de la grille. Sans cette classe le conteneur occupe toute la largeur de
+        l'ecran et le lien se colle au bord de la fenetre.
+      {%- endcomment -%}
+      <div class="center collection__view-all page-width animate-item animate-item--child index-2">
         <a
           href="{{ section.settings.collection.url }}"
           class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
