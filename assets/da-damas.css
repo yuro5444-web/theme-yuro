@@ -415,6 +415,67 @@ hr,
   .da-args__proof { grid-area: proof; text-align: right; }
 }
 
+/* --------------------------------------------------------------------------
+   11 bis. En-tete de collection
+   Le texte centre sur toute la largeur transformait l'entree de collection en
+   mur de lecture, surtout sur telephone. Traitement editorial : titre large,
+   texte court aligne a gauche sur une mesure lisible, image en vis-a-vis.
+   -------------------------------------------------------------------------- */
+
+.collection-hero__title {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 2.4rem;
+}
+
+.collection-hero__text-wrapper,
+.collection-hero__description {
+  text-align: left !important;
+}
+
+.collection-hero__description {
+  max-width: 52ch;
+  margin-inline: 0;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.collection-hero__description p + p { margin-top: 1.6rem; }
+
+/* Sur telephone le texte passe avant l'image et reste court */
+@media screen and (max-width: 749px) {
+  .collection-hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  .collection-hero__title { font-size: clamp(2.8rem, 9vw, 3.6rem); }
+  .collection-hero__description {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: none;
+  }
+  .collection-hero__image,
+  .collection-hero--with-image .collection-hero__image { order: 2; }
+}
+
+/* Barre de filtres : discrete, elle ne doit pas concurrencer les produits */
+.facets__form,
+.facets-container {
+  border-top: 1px solid var(--da-filet);
+  border-bottom: 1px solid var(--da-filet);
+  padding-block: 1.2rem;
+}
+
+.facets__label,
+.facet-filters__label,
+.facets__summary {
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--da-cendre);
+}
+
 /* Lien vers la collection : capitales espacees, filet bas, fleche qui avance.
    Aligne a gauche comme le reste, le centre est reserve au logo et au pied de page. */
 /* Le conteneur porte desormais page-width dans le Liquid : il suffit d'annuler
