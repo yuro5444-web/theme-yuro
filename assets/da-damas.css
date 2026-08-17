@@ -416,6 +416,111 @@ hr,
 }
 
 /* --------------------------------------------------------------------------
+   11 ter. Coffrets
+   Le contenu du coffret est la question que se pose l'acheteur en premier.
+   Il est traite comme une planche de reference : une lame, son nom, son prix
+   a l'unite, pour que l'economie du coffret se lise sans calcul.
+   -------------------------------------------------------------------------- */
+
+.da-pack__title,
+.da-faq__title {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 3.2vw, 3.4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 4rem;
+}
+
+.da-pack__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 3.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .da-pack__list--2 { grid-template-columns: repeat(2, 1fr); max-width: 76rem; }
+  .da-pack__list--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.da-pack__link {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.da-pack__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--da-suie);
+  transition: opacity var(--da-transition);
+}
+
+.da-pack__link:hover .da-pack__img { opacity: 0.82; }
+
+.da-pack__name {
+  font-family: var(--da-serif);
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+.da-pack__link:hover .da-pack__name { text-decoration: underline; text-underline-offset: 0.4rem; }
+
+.da-pack__price {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+  font-variant-numeric: tabular-nums;
+}
+
+/* FAQ des coffrets : meme filet unique que partout ailleurs */
+.da-faq__row {
+  border-bottom: 1px solid var(--da-filet);
+}
+
+.da-faq__q {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 2rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--da-serif);
+  font-size: 1.8rem;
+  line-height: 1.35;
+}
+
+.da-faq__q::-webkit-details-marker { display: none; }
+
+.da-faq__q::after {
+  content: "+";
+  font-family: var(--da-mono);
+  font-size: 1.8rem;
+  color: var(--da-cendre);
+  flex: none;
+  transition: transform var(--da-transition);
+}
+
+.da-faq__row[open] .da-faq__q::after { content: "\2013"; }
+
+.da-faq__a {
+  padding-bottom: 2.4rem;
+  max-width: 68ch;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.da-faq__a p { margin: 0; }
+
+/* --------------------------------------------------------------------------
    11 bis. En-tete de collection
    Le texte centre sur toute la largeur transformait l'entree de collection en
    mur de lecture, surtout sur telephone. Traitement editorial : titre large,
