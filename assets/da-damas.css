@@ -171,6 +171,43 @@ hr,
 }
 
 /* --------------------------------------------------------------------------
+   6 bis. Separation des sections
+   Sur un fond uniformement sombre, le vide seul ne suffit plus a decouper une
+   page longue : les sections se fondent les unes dans les autres. Un filet de
+   1 px les separe sans introduire ni cadre ni ombre.
+   Le filet est pose sur la limite entre deux sections, jamais sur la premiere.
+   -------------------------------------------------------------------------- */
+
+#MainContent > .shopify-section + .shopify-section {
+  border-top: 1px solid var(--da-filet);
+}
+
+/* Le filet ne court pas bord a bord : il s'arrete a la marge de la page,
+   ce qui le rattache a la grille au lieu de couper l'ecran en deux. */
+#MainContent > .shopify-section + .shopify-section {
+  position: relative;
+  border-top-color: transparent;
+}
+
+#MainContent > .shopify-section + .shopify-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--page-width, 120rem), calc(100% - 6rem));
+  height: 1px;
+  background: var(--da-filet);
+  pointer-events: none;
+}
+
+/* Une section a fond distinct se separe deja par sa couleur : pas de filet. */
+#MainContent > .shopify-section + .shopify-section:has(.color-background-2)::before,
+#MainContent > .shopify-section:has(.color-background-2) + .shopify-section::before {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
    7. Images — zoom imperceptible, lent, sans rebond
    -------------------------------------------------------------------------- */
 

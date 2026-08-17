@@ -57,7 +57,9 @@
         "desktop_content_position": "left",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "color_scheme": "background-1"
+        "color_scheme": "background-1",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "piliers": {
@@ -99,7 +101,9 @@
         "icon_layout": "vertical",
         "color_scheme": "background-1",
         "title_highlight_1_color": "#A9BEC6",
-        "title_highlight_1_underline-color": "#A9BEC6"
+        "title_highlight_1_underline-color": "#A9BEC6",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "lames": {

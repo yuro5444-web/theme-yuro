@@ -484,9 +484,12 @@
       {{ content_for_layout }}
     </main>
 
-    {% section 'promo-popup' %}
+    {% comment %}
+      DA Damas — promo-popup et global-music-player retires : une fenetre
+      surgissante interrompt la premiere impression, et aucun site premium
+      ne fait de bruit. Le retour en haut de page reste, il rend service.
+    {% endcomment %}
     {% section 'scroll-to-top-btn' %}
-    {% section 'global-music-player' %}
     {% sections 'footer-group' %}
 
     <ul hidden>
