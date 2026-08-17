@@ -52,9 +52,11 @@
 
     <title>
       {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- comment %} Separateur en barre verticale : le tiret demi-cadratin du theme
+      d'origine sortait tel quel dans les resultats de recherche. {% endcomment -%}
+      {%- if current_tags %}, {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %}, page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
