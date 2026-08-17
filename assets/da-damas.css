@@ -562,8 +562,7 @@ hr,
     gap: 0;
     padding-bottom: 2.4rem;
   }
-  .collection-hero__image,
-  .collection-hero--with-image .collection-hero__image { display: none; }
+  .collection-hero__image-container { display: none; }
   .collection-hero__title {
     font-size: clamp(2.8rem, 9vw, 3.6rem);
     margin-bottom: 1.6rem;
