@@ -124,8 +124,15 @@
   collapsible-content dont les blocs portent un titre et un contenu devient
   une paire question / reponse.
 {%- endcomment -%}
-{%- if template.name == 'page' and page.metafields.seo.faq != blank -%}
-  {%- assign faq_pairs = page.metafields.seo.faq.value -%}
+{%- liquid
+  assign faq_pairs = null
+  if template.name == 'page' and page.metafields.seo.faq != blank
+    assign faq_pairs = page.metafields.seo.faq.value
+  elsif template.name == 'product' and product.metafields.seo.faq != blank
+    assign faq_pairs = product.metafields.seo.faq.value
+  endif
+-%}
+{%- if faq_pairs != null -%}
   {%- if faq_pairs.size > 0 -%}
     <script type="application/ld+json">
       {
