@@ -16,7 +16,8 @@
             "show_text_box": false,
             "text_alignment": "left",
             "text_alignment_mobile": "left",
-            "color_scheme": "background-1"
+            "color_scheme": "background-1",
+            "image": "shopify://shop_images/yuro-hero-damas.png"
           }
         }
       },
@@ -133,21 +134,24 @@
           "type": "column",
           "settings": {
             "title": "Le pliage",
-            "text": "<p>Deux aciers sont soudés à la forge puis repliés l'un dans l'autre. Ici, trente-trois strates de chaque côté d'une âme en VG-10 : soixante-sept couches au total. C'est le pliage qui dessine le motif, pas un outil de gravure.</p>"
+            "text": "<p>Deux aciers sont soudés à la forge puis repliés l'un dans l'autre. Ici, trente-trois strates de chaque côté d'une âme en VG-10 : soixante-sept couches au total. C'est le pliage qui dessine le motif, pas un outil de gravure.</p>",
+            "image": "shopify://shop_images/yuro-forge-pliage.png"
           }
         },
         "e2": {
           "type": "column",
           "settings": {
             "title": "La trempe",
-            "text": "<p>La lame est portée au rouge puis refroidie d'un seul coup. Ce choc thermique fixe la structure de l'acier et donne les 61 HRC : assez dur pour tenir le fil longtemps, assez souple pour ne pas casser.</p>"
+            "text": "<p>La lame est portée au rouge puis refroidie d'un seul coup. Ce choc thermique fixe la structure de l'acier et donne les 61 HRC : assez dur pour tenir le fil longtemps, assez souple pour ne pas casser.</p>",
+            "image": "shopify://shop_images/yuro-forge-trempe.png"
           }
         },
         "e3": {
           "type": "column",
           "settings": {
             "title": "L'affûtage",
-            "text": "<p>À la pierre, à la main, quinze degrés par face. Une lame qui sort d'atelier tranche une feuille de papier tenue en l'air. C'est le seul test qui ne se truque pas.</p>"
+            "text": "<p>À la pierre, à la main, quinze degrés par face. Une lame qui sort d'atelier tranche une feuille de papier tenue en l'air. C'est le seul test qui ne se truque pas.</p>",
+            "image": "shopify://shop_images/yuro-forge-affutage.png"
           }
         }
       },
@@ -174,7 +178,9 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "media_position": "top",
+        "image_width": "full"
       }
     },
     "faq": {
@@ -248,7 +254,8 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "image": "shopify://shop_images/yuro-entretien.png"
       }
     },
     "lettre": {
