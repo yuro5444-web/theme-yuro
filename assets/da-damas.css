@@ -415,6 +415,55 @@ hr,
   .da-args__proof { grid-area: proof; text-align: right; }
 }
 
+/* Lien vers la collection : capitales espacees, filet bas, fleche qui avance.
+   Aligne a gauche comme le reste, le centre est reserve au logo et au pied de page. */
+.collection__view-all {
+  text-align: left !important;
+  margin-top: 4.8rem;
+}
+
+.collection__view-all .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--da-filet-net);
+  padding-bottom: 0.8rem;
+  transition: color var(--da-transition), border-color var(--da-transition);
+}
+
+.collection__view-all .link::after {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--da-transition);
+}
+
+.collection__view-all .link:hover {
+  color: var(--da-trempe);
+  border-bottom-color: var(--da-trempe);
+}
+
+.collection__view-all .link:hover::after { width: 3.6rem; }
+
+/* Pastilles du slider mobile : carrees, discretes, actives en Trempe */
+.slider-counter__link .dot,
+.splide__pagination__page {
+  background: var(--da-filet-net) !important;
+  opacity: 1;
+}
+
+.slider-counter__link--active .dot,
+.splide__pagination__page.is-active {
+  background: var(--da-trempe) !important;
+  transform: none !important;
+}
+
 /* Cartes produit de la collection mise en avant */
 .card__heading,
 .card__heading a {

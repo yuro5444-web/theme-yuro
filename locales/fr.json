@@ -307,7 +307,7 @@
       "onboarding_content": "Donnez à vos clients un résumé de votre article de blog"
     },
     "featured_collection": {
-      "view_all": "Tout afficher",
+      "view_all": "Voir toute la collection",
       "view_all_label": "Afficher tous les produits de la collection {{ collection_name }}"
     },
     "collection_list": {

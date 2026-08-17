@@ -112,9 +112,9 @@
         "title": "Les lames",
         "heading_size": "h2",
         "collection": "couteaux-damas",
-        "products_to_show": 6,
+        "products_to_show": 3,
         "columns_desktop": 3,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "image_ratio": "portrait",
         "badges": "disabled",
         "show_vendor": false,
@@ -128,7 +128,14 @@
         "cards_color_scheme": "background-1",
         "title_highlight_1_color": "#A9BEC6",
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "desktop_dots_position": "hidden",
+        "desktop_arrows_position": "hidden",
+        "slider_mobile": true,
+        "enable_mobile_preview": false,
+        "mobile_dots_position": "under",
+        "mobile_arrows_position": "hidden",
+        "mobile_adaptive_height": false
       }
     },
     "forge": {
