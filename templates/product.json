@@ -560,7 +560,7 @@
           "type": "column",
           "settings": {
             "title": "La viande",
-            "text": "<p>La pointe fine pare et dénerve au plus près. Les 200 mm permettent de trancher une pièce d'un seul geste continu, sans scier — c'est ce qui garde le jus à l'intérieur.</p>"
+            "text": "<p>La pointe fine pare et dénerve au plus près. Les 200 mm permettent de trancher une pièce d'un seul geste continu, sans scier, et c'est ce qui garde le jus à l'intérieur.</p>"
           }
         },
         "u3": {
@@ -620,7 +620,7 @@
           "type": "collapsible-row-content",
           "settings": {
             "heading": "Le damas est-il plus fragile ?",
-            "row_content": "<p>Non, c'est même l'inverse. Les strates souples qui entourent l'âme dure absorbent les chocs. C'est ce qui permet de monter à 61 HRC sans que la lame casse — un acier monobloc à cette dureté serait cassant.</p>",
+            "row_content": "<p>Non, c'est même l'inverse. Les strates souples qui entourent l'âme dure absorbent les chocs. C'est ce qui permet de monter à 61 HRC sans que la lame casse. Un acier monobloc à cette dureté serait cassant.</p>",
             "open": false
           }
         },
