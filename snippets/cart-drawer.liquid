@@ -73,7 +73,13 @@
               endif
             endfor
           %}
-          {{ section.settings.heading_text | replace: '[count]', non_upsell_count }}
+          {%- liquid
+            assign titre_panier = section.settings.heading_text
+            if titre_panier == blank or titre_panier contains 'Cart •'
+              assign titre_panier = 'Panier • [count] article(s)'
+            endif
+          -%}
+          {{ titre_panier | replace: '[count]', non_upsell_count }}
         </h2>
         <button
           class="drawer__close"
@@ -574,14 +580,14 @@
                     {% if total_savings > 0 %}
                       {% capture savings_money %}<span class='cart-drawer__totals__row__money'>{{ total_savings | money }}</span>{% endcapture %}
                       <p class='cart-drawer__totals__row cart-drawer__totals__row--{{ block.settings.savings_alignment }} text-color-{{ block.settings.savings_text_color }}' style='--text-size:{{ block.settings.savings_text_size | divided_by: 10.0 }}rem;'>
-                        <span>{{ block.settings.savings_left_text | replace: '[savings]', savings_money }}</span><span>{{ block.settings.savings_right_text | replace: '[savings]', savings_money }}</span>
+                        <span>{% assign l = block.settings.savings_left_text %}{% if l contains 'Savings' %}{% assign l = '<strong>Économie</strong>' %}{% endif %}{{ l | replace: '[savings]', savings_money }}</span><span>{{ block.settings.savings_right_text | replace: '[savings]', savings_money }}</span>
                       </p>
                     {% endif %}
                   {% endif %}
                   {% if block.settings.display_subtotal %}
                     {% capture subtotal_money %}<span class='cart-drawer__totals__row__money'>{{ cart.total_price | money }}</span>{% endcapture %}
                     <p class='cart-drawer__totals__row cart-drawer__totals__row--{{ block.settings.subtotal_alignment }} text-color-{{ block.settings.subtotal_text_color }}' style='--text-size:{{ block.settings.subtotal_text_size | divided_by: 10.0 }}rem;'>
-                      <span>{{ block.settings.subtotal_left_text | replace: '[subtotal]', subtotal_money }}</span><span>{{ block.settings.subtotal_right_text | replace: '[subtotal]', subtotal_money }}</span>
+                      <span>{% assign l = block.settings.subtotal_left_text %}{% if l contains 'Subtotal' %}{% assign l = '<strong>Sous-total</strong>' %}{% endif %}{{ l | replace: '[subtotal]', subtotal_money }}</span><span>{{ block.settings.subtotal_right_text | replace: '[subtotal]', subtotal_money }}</span>
                     </p>
                   {% endif %}
                 </div>
@@ -593,7 +599,7 @@
                   %}
                   {% if product_discounts_number > 0 or cart.cart_level_discount_applications.size > 0 %}
                     <div class="cart-drawer__discounts cart-drawer__footer__discounts list-unstyled" style='--alignment:{{ block.settings.discounts_alignment }};' role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                      <span class='cart-drawer__discounts__label'>{{ block.settings.discounts_label }}</span>
+                      <span class='cart-drawer__discounts__label'>{% assign l = block.settings.discounts_label %}{% if l contains 'Discounts' %}{% assign l = '<strong>Remises :</strong>' %}{% endif %}{{ l }}</span>
                       {%- for discount in cart.cart_level_discount_applications -%}
                         <div class="badge">
                           {%- render 'icon-discount' -%}
