@@ -161,13 +161,18 @@ button.shopify-payment-button__button--unbranded:hover {
 }
 
 /* Un seul poids de filet sur tout le site */
-hr,
-.section-divider,
-.footer__content-top {
+hr {
   border: none;
   border-top: 1px solid var(--da-filet);
   height: 0;
   margin: 0;
+}
+
+/* Le haut du pied de page porte les colonnes de contenu. Il recoit le filet,
+   mais surtout pas de hauteur imposee : a zero, ses 767 px de contenu
+   debordaient et la ligne de copyright venait se poser par-dessus. */
+.footer__content-top {
+  border-top: 1px solid var(--da-filet);
 }
 
 /* --------------------------------------------------------------------------
