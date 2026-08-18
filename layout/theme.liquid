@@ -50,13 +50,17 @@
       machines : aucune police n'est telechargee, donc pas de preconnect.
     {% endcomment %}
 
+    {%- comment %} Garde-fou : un tiret cadratin saisi dans un champ SEO de
+    l'administration sortirait tel quel dans les resultats de recherche, et
+    l'API n'expose pas ces champs pour les corriger a la source. {% endcomment -%}
+    {%- assign titre_propre = page_title | replace: ' — ', ' | ' | replace: ' – ', ' | ' | replace: '—', ',' | replace: '–', ',' -%}
     <title>
-      {{ page_title }}
+      {{ titre_propre }}
       {%- comment %} Separateur en barre verticale : le tiret demi-cadratin du theme
       d'origine sortait tel quel dans les resultats de recherche. {% endcomment -%}
       {%- if current_tags %}, {{ current_tags | join: ', ' }}{% endif -%}
       {%- if current_page != 1 %}, page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+      {%- unless titre_propre contains shop.name %} | {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
