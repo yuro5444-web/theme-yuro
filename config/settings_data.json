@@ -180,8 +180,8 @@
     "enable_cart_timer": true,
     "cart_timer_text": "",
     "enable_cart_progress_bar": true,
-    "cart_progress_message": "Spend [amount] more to get FREE shipping!",
-    "cart_progress_success_message": "Congrats! You get FREE shipping! 🎉",
+    "cart_progress_message": "Livraison offerte sur cette commande",
+    "cart_progress_success_message": "Livraison offerte",
     "cart_progress_icon": "local_shipping",
     "enable_cart_upsell_1": false,
     "cart_upsell_1_product": "thedogface-designer-dog-jacket",
@@ -494,30 +494,20 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "fc645871-d789-4cfa-8584-4f8a29b6ce92": {
-            "type": "image",
-            "settings": {
-              "image_width": 100,
-              "alignment": "center",
-              "url": "",
-              "width_desktop": 4,
-              "width_mobile": "2"
-            }
-          },
           "text_KU3Twd": {
             "type": "text",
             "settings": {
-              "heading": "Heading",
+              "heading": "Atelier Yuro",
               "block_headings_font_size": 1,
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>",
-              "width_desktop": 3,
+              "subtext": "<p>Couteaux de cuisine en damas forgé, soixante-sept couches d'acier repliées autour d'une âme en VG-10. Livraison offerte en France et dans trente pays européens, affûtage repris à vie.</p>",
+              "width_desktop": 6,
               "width_mobile": "2"
             }
           },
           "1c647602-cc00-4009-a058-976435c8ee9e": {
             "type": "link_list",
             "settings": {
-              "heading": "Quick links",
+              "heading": "Le site",
               "block_headings_font_size": 1,
               "menu": "footer",
               "font_size": 14,
@@ -528,12 +518,11 @@
           }
         },
         "block_order": [
-          "fc645871-d789-4cfa-8584-4f8a29b6ce92",
           "text_KU3Twd",
           "1c647602-cc00-4009-a058-976435c8ee9e"
         ],
         "settings": {
-          "color_scheme": "accent-1",
+          "color_scheme": "background-1",
           "custom_colors_background": "#121212",
           "custom_gradient_background": "",
           "custom_colors_text": "#ffffff",
@@ -543,11 +532,11 @@
           "enable_follow_on_shop": false,
           "show_social": false,
           "enable_country_selector": false,
-          "enable_language_selector": true,
-          "payment_enable": true,
+          "enable_language_selector": false,
+          "payment_enable": false,
           "enabled_payment_types": "",
           "show_policy": false,
-          "branding_text": "Powered by <a href=\"https://shrinesolutions.com/\" target=\"_blank\" title=\"https://shrinesolutions.com/\">Shrine</a>",
+          "branding_text": "",
           "margin_top": 0,
           "padding_top": 32,
           "padding_bottom": 20
