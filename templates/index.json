@@ -191,11 +191,29 @@
         "mobile_content_alignment": "left",
         "color_scheme": "background-1"
       }
+    },
+    "da_journal": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "Le Journal",
+        "heading_size": "h2",
+        "blog": "actualites",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "show_image": false,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "cfca4268-6358-426c-98ab-d292aeef11e5",
     "da_recit",
+    "da_journal",
     "6aa09428-a417-429d-9159-a4e8afd49590"
   ]
 }
