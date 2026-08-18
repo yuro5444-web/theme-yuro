@@ -63,45 +63,12 @@
       }
     },
     "piliers": {
-      "type": "icon-bar",
-      "blocks": {
-        "c1": {
-          "type": "column",
-          "settings": {
-            "icon": "check_circle",
-            "title": "Forgé, non gravé",
-            "text": "<p>Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p>"
-          }
-        },
-        "c2": {
-          "type": "column",
-          "settings": {
-            "icon": "check_circle",
-            "title": "61 HRC",
-            "text": "<p>Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p>"
-          }
-        },
-        "c3": {
-          "type": "column",
-          "settings": {
-            "icon": "check_circle",
-            "title": "Affûtage à vie",
-            "text": "<p>Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3"
-      ],
+      "type": "custom-liquid",
       "settings": {
-        "title": "Ce qui distingue ces lames",
-        "columns_desktop": 3,
-        "icon_layout": "vertical",
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Forgé, non gravé</h3><p class=\"da-pilier__texte\">Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li></ul></div>",
         "color_scheme": "background-1",
-        "title_highlight_1_color": "#A9BEC6",
-        "title_highlight_1_underline-color": "#A9BEC6",
         "padding_top": 72,
         "padding_bottom": 72
       }

@@ -775,3 +775,69 @@ hr,
   }
   .collapsible-content .summary__title { gap: 0.9rem; }
 }
+
+/* --------------------------------------------------------------------------
+   13. Piliers : ce qui distingue ces lames
+   Le theme posait trois fois la meme coche Material. Trois icones identiques
+   n'apportent aucune information : chaque colonne a maintenant son propre
+   dessin, l'enclume pour la forge, le microscope pour la durete, la pierre
+   pour l'affutage.
+   -------------------------------------------------------------------------- */
+
+.da-piliers__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  letter-spacing: -0.015em;
+  text-align: center;
+  margin: 0 0 6.4rem;
+}
+
+.da-piliers__liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5.6rem 4.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.da-pilier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Les trois dessins sont cadres a la meme echelle, donc une seule hauteur
+   de boite suffit a les aligner optiquement. */
+.da-pilier__icone {
+  width: 5.6rem;
+  height: 5.6rem;
+  object-fit: contain;
+  opacity: 0.9;
+  margin-bottom: 2.4rem;
+}
+
+.da-pilier__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.25;
+  margin: 0 0 1.2rem;
+}
+
+.da-pilier__texte {
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: var(--da-cendre);
+  max-width: 34ch;
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .da-piliers__titre { margin-bottom: 4.8rem; }
+  .da-piliers__liste { grid-template-columns: 1fr; gap: 4.8rem; }
+  .da-pilier__icone { width: 4.8rem; height: 4.8rem; margin-bottom: 1.8rem; }
+  .da-pilier__texte { font-size: 1.4rem; }
+}
