@@ -185,12 +185,12 @@
     "cart_progress_icon": "local_shipping",
     "enable_cart_upsell_1": false,
     "cart_upsell_1_product": "thedogface-designer-dog-jacket",
-    "cart_upsell_1_btn_label": "+ Add",
+    "cart_upsell_1_btn_label": "+ Ajouter",
     "enable_cart_upsell_2": false,
     "cart_upsell_2_product": "",
     "cart_upsell_2_title": "",
     "cart_upsell_2_desc": "",
-    "cart_upsell_2_btn_label": "+ Add",
+    "cart_upsell_2_btn_label": "+ Ajouter",
     "section_animation_type": "none",
     "sections": {
       "main-password-header": {
@@ -231,7 +231,7 @@
           "discount_code_label": "Discount code:",
           "copy_button_label": "Copy",
           "copy_message": "Code copied successfully!",
-          "success_dismiss_btn_label": "Close",
+          "success_dismiss_btn_label": "Fermer",
           "success_display_image": true
         }
       },
@@ -265,7 +265,7 @@
           "6269cf6e-8e24-4068-8e2a-35bb4addad4e": {
             "type": "countdown_timer",
             "settings": {
-              "timer_text": "<strong>Cart reserved for [timer]</strong>",
+              "timer_text": "<strong>Panier réservé encore [timer]</strong>",
               "timer_duration": 300,
               "font_size": "1.4",
               "color_scheme": "inverse",
@@ -379,7 +379,7 @@
               "savings_position": "above",
               "savings_spacing": 10,
               "display_subtotal": true,
-              "subtotal_left_text": "<strong>Subtotal</strong>",
+              "subtotal_left_text": "<strong>Sous-total</strong>",
               "subtotal_right_text": "<strong>[subtotal]</strong>",
               "subtotal_alignment": "spaced",
               "subtotal_text_color": "text",
@@ -426,7 +426,7 @@
         ],
         "settings": {
           "test_mode": false,
-          "heading_text": "Cart • [count] items",
+          "heading_text": "Panier • [count] article(s)",
           "heading_alignment": "flex-start",
           "desktop_width": "normal",
           "mobile_width": "full",
