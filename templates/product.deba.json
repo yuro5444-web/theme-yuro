@@ -185,7 +185,7 @@
             "open_state_collapse_bg": "#6d388b",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
-            "content": "<p>Lavez la lame à la main, à l'eau tiède, et séchez-la immédiatement. Le damas n'est pas inoxydable : l'eau qui stagne le marque.</p><p>Jamais au lave-vaisselle, jamais laissée dans l'évier.</p><p>Un passage sur pierre 1000 puis 6000 tous les deux à trois mois suffit à garder le fil. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage est à vie.</p>",
+            "content": "<p>Lavez la lame à la main, à l'eau tiède, et séchez-la immédiatement. Le damas n'est pas inoxydable : l'eau qui stagne le marque.</p><p>Jamais au lave-vaisselle, jamais laissée dans l'évier.</p><p>Un passage sur pierre 1000 puis 6000 tous les deux à trois mois suffit à garder le fil. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage est gratuit à vie.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
@@ -284,7 +284,7 @@
             "open_state_collapse_bg": "#6d388b",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
-            "content": "<p>Expédition sous trois jours ouvrés depuis l'atelier. Livraison incluse en France et dans 30 pays européens, sans montant minimum.</p><p>Trente jours pour changer d'avis. La lame doit revenir non affûtée et non utilisée sur planche. Retour à notre charge.</p>",
+            "content": "<p>Expédition sous trois jours ouvrés depuis l'atelier. Livraison incluse en France et dans trente pays européens, sans montant minimum.</p><p>Trente jours pour changer d'avis. La lame doit revenir non affûtée et non utilisée sur planche. Retour à notre charge.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
@@ -294,7 +294,7 @@
           "type": "collapsible-row",
           "settings": {
             "open": false,
-            "heading": "Affûtage à vie",
+            "heading": "Affûtage gratuit à vie",
             "heading_size": "medium",
             "icon": "check_box",
             "filled_icon": false,

@@ -8,7 +8,7 @@
           "settings": {
             "heading": "Le motif ne se décore pas. Il se révèle.",
             "heading_size": "h1",
-            "subheading": "Couteaux de cuisine japonais forgés à la main. Livraison offerte en Europe, affûtage repris à vie.",
+            "subheading": "Couteaux de cuisine japonais forgés à la main. Livraison offerte en Europe, affûtage gratuit à vie.",
             "button_label": "Voir les lames",
             "link": "shopify://collections/couteaux-damas",
             "image_overlay_opacity": 30,
@@ -67,7 +67,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Forgé, non gravé</h3><p class=\"da-pilier__texte\">Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li></ul></div>",
+        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Forgé, non gravé</h3><p class=\"da-pilier__texte\">Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li></ul></div>",
         "color_scheme": "background-1",
         "padding_top": 72,
         "padding_bottom": 72
@@ -192,7 +192,7 @@
           "type": "collapsible-row-content",
           "settings": {
             "heading": "Faut-il une pierre particulière ?",
-            "row_content": "<p>Une pierre à eau 1000 puis 6000 suffit. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage est repris à vie.</p>",
+            "row_content": "<p>Une pierre à eau 1000 puis 6000 suffit. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage gratuit à vie.</p>",
             "open": false
           }
         },
