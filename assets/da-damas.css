@@ -999,3 +999,94 @@ hr {
   .da-suivi__label { font-size: 1rem; letter-spacing: 0.12em; }
   .da-suivi__note { font-size: 1.2rem; }
 }
+
+/* --------------------------------------------------------------------------
+   16. Comparatif de la gamme
+   Un acheteur arrive sur une fiche par une publicite et n'a aucun moyen de
+   savoir si une autre lame lui conviendrait mieux. Le tableau repond a la
+   question avant qu'il aille la poser ailleurs, et les chiffres sortent des
+   metachamps : ils ne peuvent pas diverger des fiches.
+   -------------------------------------------------------------------------- */
+
+.da-compare__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  letter-spacing: -0.015em;
+  margin: 0 0 1.6rem;
+}
+
+.da-compare__intro {
+  max-width: 62ch;
+  margin: 0 0 4rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* Un tableau ne se retaille pas : sur telephone il defile dans son cadre
+   plutot que de pousser la page de cote. */
+.da-compare__cadre { overflow-x: auto; }
+
+.da-compare__table {
+  width: 100%;
+  min-width: 62rem;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.da-compare__table th,
+.da-compare__table td {
+  text-align: left;
+  padding: 1.6rem 2rem 1.6rem 0;
+  border-bottom: 1px solid var(--da-filet);
+  vertical-align: baseline;
+}
+
+.da-compare__table thead th {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--da-cendre);
+  border-bottom-color: var(--da-filet-net);
+}
+
+.da-compare__table tbody th {
+  font-family: var(--da-serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.da-compare__table tbody th a { text-decoration: none; }
+.da-compare__table tbody th a:hover { color: var(--da-trempe); text-decoration: underline; text-underline-offset: 0.4rem; }
+
+/* La lame consultee reste identifiable dans la comparaison */
+.da-compare__ligne--actuelle { background: rgba(169, 190, 198, 0.05); }
+
+.da-compare__ici {
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin-left: 0.8rem;
+}
+
+.da-compare__prix { color: var(--da-os); }
+
+.da-compare__pied {
+  margin: 3.2rem 0 0;
+  max-width: 62ch;
+  font-size: 1.5rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.da-compare__pied a { color: var(--da-trempe); text-underline-offset: 0.4rem; }
+
+@media screen and (max-width: 749px) {
+  .da-compare__intro { margin-bottom: 2.8rem; }
+  .da-compare__table { font-size: 1.3rem; }
+  .da-compare__table tbody th { font-size: 1.5rem; }
+}
