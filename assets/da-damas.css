@@ -906,3 +906,96 @@ hr {
   }
   .da-promesses__item--phare { grid-template-columns: 1fr; }
 }
+
+/* --------------------------------------------------------------------------
+   15. Chronologie de commande
+   Le bloc du theme posait trois icones Material dans des pastilles claires,
+   reliees par des barres epaisses : la seule zone du site qui ressemblait a
+   un tableau de bord. Remplacee par un filet unique et trois reperes, meme
+   poids de trait que le reste, chiffres en tabulaire.
+   -------------------------------------------------------------------------- */
+
+.da-suivi {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 3.2rem 0 0;
+  padding: 0;
+}
+
+.da-suivi__etape {
+  display: grid;
+  grid-template-rows: auto 2rem auto;
+  justify-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.da-suivi__date {
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--da-os);
+  padding-bottom: 1rem;
+}
+
+/* Le filet traverse les trois reperes, mais s'arrete net aux extremites :
+   une chronologie a un debut et une fin. */
+.da-suivi__marque {
+  grid-row: 2;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.da-suivi__marque::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--da-filet);
+}
+
+.da-suivi__etape:first-child .da-suivi__marque::before { left: 50%; }
+.da-suivi__etape:last-child  .da-suivi__marque::before { right: 50%; }
+
+.da-suivi__point {
+  position: relative;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--da-trempe);
+}
+
+/* La derniere etape est celle qui compte pour l'acheteur : elle seule est
+   pleine, les deux premieres restent des jalons. */
+.da-suivi__etape:not(:last-child) .da-suivi__point {
+  background: var(--da-encre);
+  box-shadow: inset 0 0 0 1px var(--da-trempe);
+}
+
+.da-suivi__label {
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--da-cendre);
+  padding-top: 1rem;
+}
+
+.da-suivi__note {
+  margin: 1.6rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.6);
+  text-align: center;
+}
+
+@media screen and (max-width: 749px) {
+  .da-suivi__date { font-size: 1.1rem; }
+  .da-suivi__label { font-size: 1rem; letter-spacing: 0.12em; }
+  .da-suivi__note { font-size: 1.2rem; }
+}

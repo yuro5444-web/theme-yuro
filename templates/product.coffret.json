@@ -104,40 +104,6 @@
           },
           "blocks": {}
         },
-        "e0a0b690-50df-4ca4-acfd-ce2980696cce": {
-          "type": "product_shipping-checkpoints",
-          "settings": {
-            "top_text_1": "<strong>[start_date]</strong>",
-            "bottom_text_1": "Commandé",
-            "icon_1": "add_shopping_cart",
-            "filled_icon_1": false,
-            "min_days_1": 0,
-            "max_days_1": 0,
-            "top_text_2": "<strong>[start_date] - [end_date]</strong>",
-            "bottom_text_2": "Préparé",
-            "icon_2": "local_shipping",
-            "filled_icon_2": false,
-            "min_days_2": 1,
-            "max_days_2": 2,
-            "top_text_3": "<strong>[start_date] - [end_date]</strong>",
-            "bottom_text_3": "Expédié",
-            "icon_3": "redeem",
-            "filled_icon_3": false,
-            "min_days_3": 10,
-            "max_days_3": 12,
-            "top_text_4": "",
-            "bottom_text_4": "",
-            "icon_4": "",
-            "filled_icon_4": false,
-            "date_format": "dd_mm",
-            "days_labels": "lun, mar, mer, jeu, ven, sam, dim",
-            "months_labels": "janv, févr, mars, avr, mai, juin, juil, août, sept, oct, nov, déc",
-            "color_scheme": "inverse",
-            "margin_top": 24,
-            "margin_bottom": 24
-          },
-          "blocks": {}
-        },
         "e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5": {
           "type": "product_sticky-atc",
           "settings": {
@@ -375,6 +341,12 @@
           "settings": {
             "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
           }
+        },
+        "da_suivi": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid\n  assign jour = 86400\n  assign t = 'now' | date: '%s' | times: 1\n  assign d_commande = t\n  assign d_exp_a    = t | plus: 86400\n  assign d_exp_b    = t | plus: 259200\n  assign d_liv_a    = t | plus: 345600\n  assign d_liv_b    = t | plus: 604800\n-%}\n<ol class=\"da-suivi\">\n  <li class=\"da-suivi__etape\">\n    <span class=\"da-suivi__date\">{{ d_commande | date: '%-d %b' }}</span>\n    <span class=\"da-suivi__marque\"><i class=\"da-suivi__point\"></i></span>\n    <span class=\"da-suivi__label\">Commande</span>\n  </li>\n  <li class=\"da-suivi__etape\">\n    <span class=\"da-suivi__date\">{{ d_exp_a | date: '%-d' }} au {{ d_exp_b | date: '%-d %b' }}</span>\n    <span class=\"da-suivi__marque\"><i class=\"da-suivi__point\"></i></span>\n    <span class=\"da-suivi__label\">Expédition</span>\n  </li>\n  <li class=\"da-suivi__etape\">\n    <span class=\"da-suivi__date\">{{ d_liv_a | date: '%-d' }} au {{ d_liv_b | date: '%-d %b' }}</span>\n    <span class=\"da-suivi__marque\"><i class=\"da-suivi__point\"></i></span>\n    <span class=\"da-suivi__label\">Livraison</span>\n  </li>\n</ol>\n<p class=\"da-suivi__note\">Expédiée sous trois jours ouvrés, contrôlée et affûtée à la main avant le départ.</p>"
+          }
         }
       },
       "block_order": [
@@ -383,7 +355,7 @@
         "5fcc0428-e768-4cb7-bea3-eb0274198dd1",
         "buy_buttons",
         "da_promesses",
-        "e0a0b690-50df-4ca4-acfd-ce2980696cce",
+        "da_suivi",
         "description",
         "da_specs",
         "de158e68-5d0d-4819-a625-e2dabdff87d1",
