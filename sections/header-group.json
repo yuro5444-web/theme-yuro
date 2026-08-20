@@ -8,7 +8,39 @@
         "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "Forgé à la main. Affûtage à vie.",
+            "text": "Affûtage gratuit à vie",
+            "text_alignment": "center",
+            "mobile_text_size": 11,
+            "desktop_text_size": 12,
+            "icon": "",
+            "filled_icon": false,
+            "mobile_icon_size": 20,
+            "desktop_icon_size": 26,
+            "desktop_layout": "horizontal",
+            "mobile_layout": "horizontal"
+          },
+          "blocks": {}
+        },
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Livraison offerte en Europe",
+            "text_alignment": "center",
+            "mobile_text_size": 11,
+            "desktop_text_size": 12,
+            "icon": "",
+            "filled_icon": false,
+            "mobile_icon_size": 20,
+            "desktop_icon_size": 26,
+            "desktop_layout": "horizontal",
+            "mobile_layout": "horizontal"
+          },
+          "blocks": {}
+        },
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-3": {
+          "type": "announcement",
+          "settings": {
+            "text": "Trente jours pour changer d'avis",
             "text_alignment": "center",
             "mobile_text_size": 11,
             "desktop_text_size": 12,
@@ -23,16 +55,17 @@
         }
       },
       "block_order": [
-        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-1"
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-1",
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-2",
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-3"
       ],
-      "disabled": true,
       "settings": {
         "visibility": "always-display",
-        "columns_desktop": 1,
+        "columns_desktop": 3,
         "columns_mobile": 1,
         "desktop_spacing": 28,
         "mobile_spacing": 16,
-        "show_separator": false,
+        "show_separator": true,
         "color_scheme": "background-2",
         "custom_colors_background": "#dd1d1d",
         "custom_gradient_background": "",
@@ -40,13 +73,13 @@
         "slider_mobile": true,
         "slider_desktop": false,
         "type": "loop",
-        "autoplay": false,
-        "autoplay_speed": 3,
+        "autoplay": true,
+        "autoplay_speed": 4,
         "hidden_products": "",
         "enable_specific_display": false,
         "displayed_products": "",
-        "padding_top": 16,
-        "padding_bottom": 16
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "header": {

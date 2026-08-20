@@ -846,3 +846,63 @@ hr {
   .da-pilier__icone { width: 8rem; height: 8rem; margin-bottom: 2.2rem; }
   .da-pilier__texte { font-size: 1.4rem; }
 }
+
+/* --------------------------------------------------------------------------
+   14. Promesses sous le bouton d'achat
+   L'affutage a vie n'existait que dans deux accordeons replies : personne ne
+   l'ouvrait avant d'acheter. Il remonte au contact du prix, en premier, et
+   c'est la seule ligne qui porte l'accent.
+   -------------------------------------------------------------------------- */
+
+.da-promesses {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.da-promesses__item {
+  display: grid;
+  gap: 0.4rem;
+  padding-block: 1.6rem;
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-promesses__item:last-child { border-bottom: 1px solid var(--da-filet); }
+
+.da-promesses__cle {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+.da-promesses__val {
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.72);
+  max-width: 52ch;
+}
+
+/* La promesse d'affutage porte seule l'accent : c'est l'argument qui leve
+   la derniere objection sur une lame a ce prix. */
+.da-promesses__item--phare .da-promesses__cle {
+  font-family: var(--da-serif);
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--da-trempe);
+}
+
+.da-promesses__item--phare .da-promesses__val { color: rgba(var(--color-foreground), 0.8); }
+
+@media screen and (min-width: 750px) {
+  .da-promesses__item {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    column-gap: 2.4rem;
+    align-items: baseline;
+  }
+  .da-promesses__item--phare { grid-template-columns: 1fr; }
+}
