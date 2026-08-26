@@ -339,13 +339,7 @@
         "da_promesses": {
           "type": "custom-liquid",
           "settings": {
-            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
-          }
-        },
-        "da_suivi": {
-          "type": "custom-liquid",
-          "settings": {
-            "custom_liquid": "{%- liquid\n  assign t   = 'now' | date: '%s' | times: 1\n  assign d_a = t | plus: 345600\n  assign d_b = t | plus: 604800\n\n  comment\n    Le filtre date de Liquid rend les mois en anglais quelle que soit la\n    langue de la boutique. On les traduit donc a la main, sinon la fiche\n    annonce « 2 September » a un acheteur francais.\n  endcomment\n  assign mois   = 'janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre' | split: ','\n  assign i_a    = d_a | date: '%-m' | minus: 1\n  assign i_b    = d_b | date: '%-m' | minus: 1\n  assign mois_a = mois[i_a]\n  assign mois_b = mois[i_b]\n-%}\n<div class=\"da-livraison\">\n  <p class=\"da-livraison__eyebrow\">Livraison estimée</p>\n  <p class=\"da-livraison__date\">Chez vous entre le <span class=\"da-livraison__unite\"><em class=\"da-livraison__jour\">{{ d_a | date: '%-d' }}</em>{% if mois_a != mois_b %} {{ mois_a }}{% endif %}</span> et le <span class=\"da-livraison__unite\"><em class=\"da-livraison__jour\">{{ d_b | date: '%-d' }}</em> {{ mois_b }}</span></p>\n  <ul class=\"da-livraison__faits\">\n    <li>Expédiée sous trois jours ouvrés</li>\n    <li>Affûtée et contrôlée à la main avant le départ</li>\n    <li>Livraison offerte, suivi inclus</li>\n  </ul>\n</div>"
+            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Expédiée sous trois jours</span><span class=\"da-promesses__val\">Contrôlée et affûtée à la main avant le départ.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
           }
         }
       },
@@ -356,7 +350,6 @@
         "5fcc0428-e768-4cb7-bea3-eb0274198dd1",
         "buy_buttons",
         "da_promesses",
-        "da_suivi",
         "da_specs",
         "de158e68-5d0d-4819-a625-e2dabdff87d1",
         "recu",

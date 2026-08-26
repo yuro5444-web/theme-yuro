@@ -908,84 +908,14 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
-   15. Livraison : la date, pas le tuyau
-   La version precedente racontait le processus, commande puis expedition puis
-   livraison, trois reperes sur un filet. Lu a froid, ca ressemblait a un suivi
-   de colis, et personne n'achete une lame pour la beaute du transit. On annonce
-   maintenant la seule chose qui interesse a cet endroit de la page : le jour ou
-   le couteau est dans la cuisine. Ce qu'on lui a fait avant vient apres, en
-   trois faits courts, sous un filet.
+   15. Supprime : annonce de date de livraison
+   Le bloc annoncait une fourchette calculee, « chez vous entre le 30 aout et
+   le 2 septembre ». Trois problemes. Il repetait mot pour mot les promesses
+   juste au-dessus et l'accordeon juste en dessous. Le compte a rebours de
+   livraison est la signature visuelle du dropshipping, aucune maison de
+   coutellerie n'en affiche. Et il datait une expedition qu'on ne sait pas
+   encore tenir. Le delai d'expedition a rejoint la liste des promesses.
    -------------------------------------------------------------------------- */
-
-.da-livraison {
-  margin: 3.2rem 0 0;
-}
-
-.da-livraison__eyebrow {
-  margin: 0;
-  font-family: var(--da-mono);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--da-cendre);
-}
-
-.da-livraison__date {
-  margin: 1.4rem 0 0;
-  font-family: var(--da-serif);
-  font-size: clamp(2.2rem, 3.2vw, 3rem);
-  line-height: 1.22;
-  letter-spacing: -0.01em;
-  color: rgb(var(--color-foreground));
-  text-wrap: balance;
-}
-
-/* Le quantieme et son mois ne doivent jamais se retrouver sur deux lignes :
-   « le 30 » seul en fin de ligne se lit comme une coquille. */
-.da-livraison__unite {
-  white-space: nowrap;
-}
-
-/* Les quantiemes en tabulaire et en bleu de trempe : ce sont eux qu'on vient
-   lire, le reste de la phrase est du liant. */
-.da-livraison__jour {
-  font-style: normal;
-  font-variant-numeric: tabular-nums;
-  color: var(--da-trempe);
-}
-
-.da-livraison__faits {
-  list-style: none;
-  margin: 2.8rem 0 0;
-  padding: 2.4rem 0 0;
-  border-top: 1px solid var(--da-filet);
-  display: grid;
-  gap: 1.4rem;
-}
-
-.da-livraison__faits li {
-  position: relative;
-  margin: 0;
-  padding-left: 2.2rem;
-  font-size: 1.35rem;
-  line-height: 1.5;
-  color: rgba(var(--color-foreground), 0.72);
-}
-
-/* Un filet court remplace la puce : meme vocabulaire de trait que le reste. */
-.da-livraison__faits li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 1.2rem;
-  height: 1px;
-  background: var(--da-trempe);
-}
-
-@media screen and (max-width: 749px) {
-  .da-livraison__faits li { font-size: 1.3rem; }
-}
 
 /* --------------------------------------------------------------------------
    16. Comparatif de la gamme
