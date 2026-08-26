@@ -940,6 +940,12 @@ hr {
   text-wrap: balance;
 }
 
+/* Le quantieme et son mois ne doivent jamais se retrouver sur deux lignes :
+   « le 30 » seul en fin de ligne se lit comme une coquille. */
+.da-livraison__unite {
+  white-space: nowrap;
+}
+
 /* Les quantiemes en tabulaire et en bleu de trempe : ce sont eux qu'on vient
    lire, le reste de la phrase est du liant. */
 .da-livraison__jour {
@@ -975,13 +981,6 @@ hr {
   width: 1.2rem;
   height: 1px;
   background: var(--da-trempe);
-}
-
-@media screen and (min-width: 750px) {
-  .da-livraison__faits {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3.2rem;
-  }
 }
 
 @media screen and (max-width: 749px) {
