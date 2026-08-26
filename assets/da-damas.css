@@ -908,96 +908,84 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
-   15. Chronologie de commande
-   Le bloc du theme posait trois icones Material dans des pastilles claires,
-   reliees par des barres epaisses : la seule zone du site qui ressemblait a
-   un tableau de bord. Remplacee par un filet unique et trois reperes, meme
-   poids de trait que le reste, chiffres en tabulaire.
+   15. Livraison : la date, pas le tuyau
+   La version precedente racontait le processus, commande puis expedition puis
+   livraison, trois reperes sur un filet. Lu a froid, ca ressemblait a un suivi
+   de colis, et personne n'achete une lame pour la beaute du transit. On annonce
+   maintenant la seule chose qui interesse a cet endroit de la page : le jour ou
+   le couteau est dans la cuisine. Ce qu'on lui a fait avant vient apres, en
+   trois faits courts, sous un filet.
    -------------------------------------------------------------------------- */
 
-.da-suivi {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.da-livraison {
   margin: 3.2rem 0 0;
-  padding: 0;
 }
 
-.da-suivi__etape {
-  display: grid;
-  grid-template-rows: auto 2rem auto;
-  justify-items: center;
-  text-align: center;
-  gap: 0;
-}
-
-.da-suivi__date {
+.da-livraison__eyebrow {
+  margin: 0;
   font-family: var(--da-mono);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--da-cendre);
+}
+
+.da-livraison__date {
+  margin: 1.4rem 0 0;
+  font-family: var(--da-serif);
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: rgb(var(--color-foreground));
+  text-wrap: balance;
+}
+
+/* Les quantiemes en tabulaire et en bleu de trempe : ce sont eux qu'on vient
+   lire, le reste de la phrase est du liant. */
+.da-livraison__jour {
+  font-style: normal;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: var(--da-os);
-  padding-bottom: 1rem;
+  color: var(--da-trempe);
 }
 
-/* Le filet traverse les trois reperes, mais s'arrete net aux extremites :
-   une chronologie a un debut et une fin. */
-.da-suivi__marque {
-  grid-row: 2;
+.da-livraison__faits {
+  list-style: none;
+  margin: 2.8rem 0 0;
+  padding: 2.4rem 0 0;
+  border-top: 1px solid var(--da-filet);
+  display: grid;
+  gap: 1.4rem;
+}
+
+.da-livraison__faits li {
   position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  padding-left: 2.2rem;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.72);
 }
 
-.da-suivi__marque::before {
+/* Un filet court remplace la puce : meme vocabulaire de trait que le reste. */
+.da-livraison__faits li::before {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
+  top: 0.62em;
+  width: 1.2rem;
   height: 1px;
-  background: var(--da-filet);
-}
-
-.da-suivi__etape:first-child .da-suivi__marque::before { left: 50%; }
-.da-suivi__etape:last-child  .da-suivi__marque::before { right: 50%; }
-
-.da-suivi__point {
-  position: relative;
-  width: 0.7rem;
-  height: 0.7rem;
   background: var(--da-trempe);
 }
 
-/* La derniere etape est celle qui compte pour l'acheteur : elle seule est
-   pleine, les deux premieres restent des jalons. */
-.da-suivi__etape:not(:last-child) .da-suivi__point {
-  background: var(--da-encre);
-  box-shadow: inset 0 0 0 1px var(--da-trempe);
-}
-
-.da-suivi__label {
-  font-family: var(--font-body-family);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--da-cendre);
-  padding-top: 1rem;
-}
-
-.da-suivi__note {
-  margin: 1.6rem 0 0;
-  font-size: 1.3rem;
-  line-height: 1.55;
-  color: rgba(var(--color-foreground), 0.6);
-  text-align: center;
+@media screen and (min-width: 750px) {
+  .da-livraison__faits {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+  }
 }
 
 @media screen and (max-width: 749px) {
-  .da-suivi__date { font-size: 1.1rem; }
-  .da-suivi__label { font-size: 1rem; letter-spacing: 0.12em; }
-  .da-suivi__note { font-size: 1.2rem; }
+  .da-livraison__faits li { font-size: 1.3rem; }
 }
 
 /* --------------------------------------------------------------------------
