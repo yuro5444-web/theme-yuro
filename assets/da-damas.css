@@ -1007,3 +1007,161 @@ hr {
   .da-compare__table { font-size: 1.3rem; }
   .da-compare__table tbody th { font-size: 1.5rem; }
 }
+
+/* --------------------------------------------------------------------------
+   17. Anatomie : ce qu'il y a dans la lame
+   Sur une lame a 129 euros la seule objection qui compte est le prix, et le
+   tableau de specifications n'y repond pas : il dit combien, pas pourquoi.
+   La vue eclatee y repond en montrant qu'il y a des pieces, et que chacune
+   regle un probleme. Les reperes sont poses en pourcentage du cadre, donc ils
+   suivent l'image a toutes les largeurs sans une ligne de script.
+   -------------------------------------------------------------------------- */
+
+.da-anat__eyebrow {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--da-cendre);
+  margin: 0 0 1.4rem;
+}
+
+.da-anat__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  letter-spacing: -0.015em;
+  margin: 0 0 1.6rem;
+}
+
+.da-anat__intro {
+  max-width: 62ch;
+  margin: 0 0 clamp(3.2rem, 5vw, 5.6rem);
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.da-anat__corps {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  gap: clamp(3.2rem, 5vw, 6.4rem);
+  align-items: start;
+}
+
+.da-anat__vue {
+  position: relative;
+  margin: 0;
+  background: var(--da-encre);
+}
+
+.da-anat__vue img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.da-anat__repere {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  background: var(--da-trempe);
+  /* Un filet sombre plutot qu'une ombre : sans lui le repere disparait sur
+     l'acier poli, et la regle 2 interdit l'ombre portee. */
+  border: 1px solid rgba(15, 14, 13, 0.55);
+  color: var(--da-encre);
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.da-anat__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.8rem;
+}
+
+.da-anat__piece {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  column-gap: 1.8rem;
+  padding-bottom: 2.8rem;
+  border-bottom: 1px solid var(--da-filet);
+}
+
+.da-anat__piece:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.da-anat__num {
+  grid-row: 1 / 3;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--da-filet-net);
+  color: var(--da-trempe);
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.da-anat__nom {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+  align-self: center;
+}
+
+.da-anat__role {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.da-anat__coupe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(3.2rem, 5vw, 6.4rem);
+  align-items: center;
+  margin-top: clamp(4.8rem, 7vw, 8rem);
+  padding-top: clamp(4.8rem, 7vw, 8rem);
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-anat__texte { display: grid; gap: 1.6rem; }
+
+.da-anat__nom--grand {
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  margin: 0;
+}
+
+/* Le detail du fil ne se lit qu'en gros : sur telephone on cadre le tranchant
+   plutot que de reduire toute la coupe a une vignette illisible. */
+.da-anat__vue--coupe img { aspect-ratio: 4 / 5; object-fit: cover; }
+
+@media screen and (max-width: 989px) {
+  .da-anat__corps,
+  .da-anat__coupe { grid-template-columns: minmax(0, 1fr); }
+  .da-anat__coupe { align-items: start; }
+  /* La coupe passe sous son texte : l'image sert de preuve, pas d'ouverture. */
+  .da-anat__coupe .da-anat__vue { order: 2; }
+  .da-anat__vue--coupe img { aspect-ratio: 3 / 2; object-position: 62% 45%; }
+}
+
+@media screen and (max-width: 749px) {
+  .da-anat__repere { width: 2rem; height: 2rem; font-size: 1rem; }
+  .da-anat__liste { gap: 2.2rem; }
+  .da-anat__piece { padding-bottom: 2.2rem; column-gap: 1.4rem; }
+  .da-anat__nom { font-size: 1.7rem; }
+  .da-anat__role { font-size: 1.4rem; }
+}
