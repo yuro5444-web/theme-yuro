@@ -908,6 +908,19 @@ hr {
 
 .da-promesses__item--phare .da-promesses__val { color: rgba(var(--color-foreground), 0.8); }
 
+/* La garantie va un cran plus loin que l'accent : elle est surlignee, fond
+   plein et texte encre. Meme vocabulaire que les reperes de la vue eclatee,
+   donc rien de nouveau dans la charte. Le justify-self arrete le fond au mot
+   au lieu de le tirer sur toute la colonne de la grille. */
+.da-promesses__item--surligne .da-promesses__cle {
+  justify-self: start;
+  background: var(--da-trempe);
+  color: var(--da-encre);
+  padding: 0.3rem 1rem 0.45rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 @media screen and (min-width: 750px) {
   .da-promesses__item {
     grid-template-columns: 15rem minmax(0, 1fr);
