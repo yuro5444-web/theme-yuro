@@ -1,12 +1,5 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 48,
-        "padding_bottom": 24
-      }
-    },
     "contact_form_U9ptC4": {
       "type": "contact-form",
       "blocks": {
@@ -119,7 +112,7 @@
         "errors_border_radius": 8,
         "errors_border_width": 1,
         "errors_border_color": "#ff0000",
-        "padding_top": 8,
+        "padding_top": 72,
         "padding_bottom": 36
       }
     },
@@ -128,7 +121,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "<div class=\"page-width page-width--narrow da-apres\">\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Nous écrire directement</h2>\n    <p class=\"da-apres__texte\">Courriel : <a href=\"mailto:contact@atelieryuro.com\">contact@atelieryuro.com</a><br>Téléphone : 06 48 59 58 68</p>\n    <p class=\"da-apres__texte\">Atelier Yuro<br>97 rue des remparts<br>34400 Lunel, France</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">La réponse est peut-être déjà quelque part</h2>\n    <p class=\"da-apres__texte\">Le choix entre deux lames, l'entretien courant et l'affûtage sur pierre sont détaillés sur la page <a href=\"/pages/entretien-affutage\">entretien et affûtage</a>. La fabrication, le pliage et l'attaque à l'acide sont expliqués sur <a href=\"/pages/notre-fabrication\">notre fabrication</a>.</p>\n    <p class=\"da-apres__texte\">Les délais et les pays desservis figurent dans la <a href=\"/policies/shipping-policy\">politique de livraison</a>, les retours et les deux garanties à vie dans la <a href=\"/policies/refund-policy\">politique de retours et remboursements</a>.</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Renvoyer une lame pour affûtage</h2>\n    <p class=\"da-apres__texte\">L'affûtage est repris à vie, sans limite de durée ni nombre de passages. Écrivez-nous avant d'expédier : nous vous indiquons l'adresse et la façon d'emballer la lame pour qu'elle voyage sans risque. Les frais aller sont à votre charge, le retour est au nôtre.</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Un problème sur une commande</h2>\n    <p class=\"da-apres__texte\">Indiquez votre numéro de commande dès le premier message, avec une photo si la lame est arrivée abîmée. C'est ce qui nous permet de trancher tout de suite plutôt que d'échanger trois courriels.</p>\n  </div>\n</div>",
+        "custom_liquid": "<div class=\"page-width page-width--narrow da-apres\">\n  <div class=\"da-apres__bloc da-apres__bloc--intro\">\n    <p class=\"da-apres__texte\">Nous répondons nous-mêmes, sous un jour ouvré, du lundi au vendredi. Il n'y a ni service client externalisé ni réponse automatique : la personne qui vous répond est celle qui prépare et affûte les lames.</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Nous écrire directement</h2>\n    <p class=\"da-apres__texte\">Courriel : <a href=\"mailto:contact@atelieryuro.com\">contact@atelieryuro.com</a><br>Téléphone : 06 48 59 58 68</p>\n    <p class=\"da-apres__texte\">Atelier Yuro<br>97 rue des remparts<br>34400 Lunel, France</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">La réponse est peut-être déjà quelque part</h2>\n    <p class=\"da-apres__texte\">Le choix entre deux lames, l'entretien courant et l'affûtage sur pierre sont détaillés sur la page <a href=\"/pages/entretien-affutage\">entretien et affûtage</a>. La fabrication, le pliage et l'attaque à l'acide sont expliqués sur <a href=\"/pages/notre-fabrication\">notre fabrication</a>.</p>\n    <p class=\"da-apres__texte\">Les délais et les pays desservis figurent dans la <a href=\"/policies/shipping-policy\">politique de livraison</a>, les retours et les deux garanties à vie dans la <a href=\"/policies/refund-policy\">politique de retours et remboursements</a>.</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Renvoyer une lame pour affûtage</h2>\n    <p class=\"da-apres__texte\">L'affûtage est repris à vie, sans limite de durée ni nombre de passages. Écrivez-nous avant d'expédier : nous vous indiquons l'adresse et la façon d'emballer la lame pour qu'elle voyage sans risque. Les frais aller sont à votre charge, le retour est au nôtre.</p>\n  </div>\n  <div class=\"da-apres__bloc\">\n    <h2 class=\"da-apres__titre\">Un problème sur une commande</h2>\n    <p class=\"da-apres__texte\">Indiquez votre numéro de commande dès le premier message, avec une photo si la lame est arrivée abîmée. C'est ce qui nous permet de trancher tout de suite plutôt que d'échanger trois courriels.</p>\n  </div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 8,
         "padding_bottom": 72
@@ -136,7 +129,6 @@
     }
   },
   "order": [
-    "main",
     "contact_form_U9ptC4",
     "apres_contact"
   ]

@@ -1274,6 +1274,14 @@ hr {
 }
 
 .da-apres__bloc:first-child { border-top-color: var(--da-filet-net); }
+
+/* Le paragraphe d'introduction n'a pas de titre au-dessus de lui : une
+   graisse de texte un cran plus haute suffit a le distinguer des rubriques
+   qui suivent, sans lui inventer un intertitre. */
+.da-apres__bloc--intro .da-apres__texte {
+  font-size: clamp(1.6rem, 2vw, 1.7rem);
+  color: rgba(var(--color-foreground), 0.82);
+}
 .da-apres__bloc:last-child { padding-bottom: 0; }
 
 .da-apres__titre {
