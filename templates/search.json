@@ -33,18 +33,21 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "title": "Le carnet d'atelier"
           }
         },
         "paragraph": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Join our email list for exclusive offers and the latest news. </p>"
+            "text": "<p>Une lettre courte, envoyée seulement quand il y a quelque chose à dire : une nouvelle série, un point de technique, une date d'atelier.</p>"
           }
         },
         "email-form": {
           "type": "email_form",
-          "settings": {}
+          "settings": {
+            "button_label": "S'inscrire"
+          }
         }
       },
       "block_order": [

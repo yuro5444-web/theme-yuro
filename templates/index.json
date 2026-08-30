@@ -253,7 +253,9 @@
         },
         "f": {
           "type": "email_form",
-          "settings": {}
+          "settings": {
+            "button_label": "S'inscrire"
+          }
         }
       },
       "block_order": [

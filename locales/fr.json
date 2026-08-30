@@ -464,5 +464,29 @@
       "copy_code_success": "Le code a bien été copié",
       "print_gift_card": "Imprimer"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "contact_method_title": "Adresse e-mail ou téléphone"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Recevoir le suivi de ma commande et nos actualités"
+      },
+      "general": {
+        "continue_to_payment_method": "Confirmer la livraison",
+        "pay_now_button_label": "Payer ma commande"
+      },
+      "shipping": {
+        "shipping_method_title": "Mode de livraison"
+      },
+      "payment": {
+        "title": "Paiement sécurisé",
+        "card_security_notice": "Toutes les transactions sont sécurisées et chiffrées. Livraison offerte et trente jours pour changer d'avis, retour à notre charge."
+      },
+      "delivery_options": {
+        "shipping_address": "Adresse de livraison"
+      }
+    }
   }
 }
