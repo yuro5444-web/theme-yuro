@@ -1255,3 +1255,46 @@ hr {
   .da-serie__bouton { width: 100%; }
   .da-serie__texte { font-size: 1.4rem; margin-bottom: 2.4rem; }
 }
+
+/* --------------------------------------------------------------------------
+   19. Contact : ce qui suit le formulaire
+   Le formulaire est remonte en tete de page, juste sous l'intro : quelqu'un
+   qui a une question doit pouvoir la poser sans lire quatre rubriques
+   d'abord. Le reste, coordonnees directes et renvois vers les pages qui
+   repondent deja, descend ici. Chaque bloc est separe par un filet plutot
+   que par un fond : la page reste une colonne de texte, pas une grille de
+   cartes.
+   -------------------------------------------------------------------------- */
+
+.da-apres { display: grid; gap: 0; }
+
+.da-apres__bloc {
+  padding-block: clamp(2.8rem, 4vw, 4rem);
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-apres__bloc:first-child { border-top-color: var(--da-filet-net); }
+.da-apres__bloc:last-child { padding-bottom: 0; }
+
+.da-apres__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 2.6vw, 2.2rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.4rem;
+}
+
+.da-apres__texte {
+  margin: 0 0 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: rgba(var(--color-foreground), 0.72);
+}
+
+.da-apres__texte:last-child { margin-bottom: 0; }
+
+.da-apres__texte a { color: var(--da-trempe); text-underline-offset: 0.4rem; }
+
+@media screen and (max-width: 749px) {
+  .da-apres__texte { font-size: 1.4rem; }
+}
