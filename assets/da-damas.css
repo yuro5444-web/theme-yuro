@@ -783,10 +783,12 @@ hr {
 
 /* --------------------------------------------------------------------------
    13. Piliers : ce qui distingue ces lames
-   Le theme posait trois fois la meme coche Material. Trois icones identiques
-   n'apportent aucune information : chaque colonne a maintenant son propre
-   dessin, l'enclume pour la forge, le microscope pour la durete, la pierre
-   pour l'affutage.
+   Le theme posait trois fois la meme coche Material. Des icones identiques
+   n'apportent aucune information : chaque colonne a son propre dessin,
+   l'enclume pour la forge, le microscope pour la durete, la pierre pour
+   l'affutage, le sablier pour la garantie a vie. Le sablier est dessine a
+   la main dans le meme trait de 4 px et la meme couleur que les trois
+   autres : une icone generee aurait jure dans la rangee.
    -------------------------------------------------------------------------- */
 
 .da-piliers__titre {
@@ -800,11 +802,17 @@ hr {
 
 .da-piliers__liste {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Quatre piliers depuis l'ajout de la garantie. En dessous de 1100 px les
+     colonnes passent a deux : a quatre, le texte tombe a deux mots par ligne. */
+  grid-template-columns: repeat(4, 1fr);
   gap: 5.6rem 4.8rem;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .da-piliers__liste { grid-template-columns: repeat(2, 1fr); }
 }
 
 .da-pilier {

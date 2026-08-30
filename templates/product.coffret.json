@@ -339,7 +339,53 @@
         "da_promesses": {
           "type": "custom-liquid",
           "settings": {
-            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Expédiée sous trois jours</span><span class=\"da-promesses__val\">Contrôlée et affûtée à la main avant le départ.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
+            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Garantie à vie</span><span class=\"da-promesses__val\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, et nous remplaçons si la réparation est impossible.</span></li><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Expédiée sous trois jours</span><span class=\"da-promesses__val\">Contrôlée et affûtée à la main avant le départ.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
+          }
+        },
+        "garantie_vie": {
+          "type": "collapsible-row",
+          "settings": {
+            "open": false,
+            "heading": "Garantie à vie",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "collapse_icon_style": "standard",
+            "collapse_icon_radius": 15,
+            "animation_speed": 0.4,
+            "border_type": "bottom",
+            "border_thickness": 1,
+            "border_style": "solid",
+            "corner_radius": 8,
+            "enable_custom_style": false,
+            "heading_padding_vertical": 12,
+            "heading_padding_horizontal": 10,
+            "content_padding_vertical": 10,
+            "content_padding_horizontal": 10,
+            "closed_state_border": "#dddddd",
+            "closed_state_header_bg": "#f9f9f9",
+            "closed_state_header_text": "#121212",
+            "closed_state_row_icon": "#121212",
+            "closed_state_collapse_icon": "#121212",
+            "closed_state_collapse_icon_solid": "#ffffff",
+            "closed_state_collapse_bg": "#121212",
+            "closed_state_content_bg": "#f9f9f9",
+            "closed_state_content_text": "#121212",
+            "open_colors_on_hover": true,
+            "open_state_border": "#d5aeea",
+            "open_state_header_bg": "#fefaff",
+            "open_state_header_text": "#000000",
+            "open_state_row_icon": "#6d388b",
+            "open_state_collapse_icon": "#121212",
+            "open_state_collapse_icon_solid": "#ffffff",
+            "open_state_collapse_bg": "#6d388b",
+            "open_state_content_bg": "#fefaff",
+            "open_state_content_text": "#121212",
+            "content": "<p>Nous garantissons chaque lame contre les défauts de fabrication aussi longtemps qu'elle vous appartient : décollement des couches, fissure dans l'acier, manche qui prend du jeu, corrosion apparue malgré un entretien normal. Nous réparons la lame, et si la réparation est impossible nous la remplaçons.</p><p>Ne sont pas couverts l'usure normale du fil, qui relève de l'affûtage gratuit, les éclats dus à un os, à un produit surgelé ou à une surface dure, les dégâts du lave-vaisselle, la rouille due à un rangement humide prolongé, et l'usage de la lame comme outil.</p><p>La garantie est nominative et ne se transmet pas à la revente. Le numéro de série gravé sur la soie identifie votre lame.</p><p>Cette garantie commerciale s'ajoute aux garanties légales dont vous bénéficiez de plein droit, la garantie légale de conformité de deux ans et la garantie contre les vices cachés. Elle ne les remplace pas et ne les limite pas.</p>",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
           }
         }
       },
@@ -354,6 +400,7 @@
         "de158e68-5d0d-4819-a625-e2dabdff87d1",
         "recu",
         "livraison",
+        "garantie_vie",
         "garantie",
         "e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5"
       ],

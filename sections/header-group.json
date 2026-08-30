@@ -52,9 +52,25 @@
             "mobile_layout": "horizontal"
           },
           "blocks": {}
+        },
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-4": {
+          "type": "announcement",
+          "settings": {
+            "text": "Garantie à vie",
+            "text_alignment": "center",
+            "mobile_text_size": 11,
+            "desktop_text_size": 12,
+            "icon": "",
+            "filled_icon": false,
+            "mobile_icon_size": 20,
+            "desktop_icon_size": 26,
+            "desktop_layout": "horizontal",
+            "mobile_layout": "horizontal"
+          }
         }
       },
       "block_order": [
+        "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-4",
         "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-1",
         "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-2",
         "sections-21450414096679_fe1c8c67-b84c-4466-a515-70df3134c1c0-announcement-3"
