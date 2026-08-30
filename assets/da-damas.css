@@ -897,39 +897,20 @@ hr {
 }
 
 /* Les deux promesses a vie portent l'accent : ce sont les arguments qui
-   levent la derniere objection sur une lame a ce prix. */
+   levent la derniere objection sur une lame a ce prix. Serif, bleu trempe et
+   gras. Le 700 plutot qu'un 600 : les six polices de la pile serif ont une
+   graisse grasse, aucune n'a de demi-gras, un 600 tomberait donc au hasard
+   sur l'une ou l'autre selon la machine. */
 .da-promesses__item--phare .da-promesses__cle {
   font-family: var(--da-serif);
   font-size: 1.9rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
   text-transform: none;
   color: var(--da-trempe);
 }
 
 .da-promesses__item--phare .da-promesses__val { color: rgba(var(--color-foreground), 0.8); }
-
-/* La garantie est surlignee, pas encadree : une bande de surligneur sur le
-   tiers bas du mot. Le fond plein essaye precedemment faisait un pave qui
-   pesait plus lourd que le titre de la page. Le texte reste en os, ni bleu
-   ni inverse, c'est la bande seule qui marque. */
-.da-promesses__item--surligne .da-promesses__cle {
-  justify-self: start;
-  color: var(--da-os);
-  /* Interligne serree pour que la boite colle au texte : sans cela le bas de
-     la boite tombe sous les jambages et la bande se lit comme un souligne au
-     lieu de passer derriere les lettres. */
-  line-height: 1.2;
-  background-image: linear-gradient(
-    to top,
-    transparent 0.14em,
-    rgba(169, 190, 198, 0.34) 0.14em,
-    rgba(169, 190, 198, 0.34) 0.5em,
-    transparent 0.5em
-  );
-  padding-inline: 0.1em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
 
 @media screen and (min-width: 750px) {
   .da-promesses__item {
