@@ -522,21 +522,21 @@
         "h": {
           "type": "heading",
           "settings": {
-            "title": "Forgé, pas gravé",
+            "title": "Soixante-sept couches",
             "title_highlight_1_color": "#A9BEC6"
           }
         },
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Le motif de ces lames vient du pliage de l'acier, pas d'un laser ni d'un bain d'acide. Il traverse toute l'épaisseur et reste visible jusqu'au fil. Vous pouvez le vérifier vous-même : regardez la tranche, pas le plat.</p><p>C'est la seule différence qui compte, et c'est celle que les fiches produit passent sous silence.</p>",
+            "text": "<p>Trente-trois strates de chaque côté d'une âme en VG-10 sur chaque lame. C'est le pliage de l'acier qui dessine le motif, révélé ensuite à l'acide.</p><p>Le dessin qui apparaît est la trace de ce pliage. Aucune des lames du coffret ne porte le même.</p>",
             "alignment": "left"
           }
         },
         "b": {
           "type": "button",
           "settings": {
-            "button_label": "Voir comment on forge",
+            "button_label": "Voir comment on les forge",
             "button_link": "shopify://pages/notre-fabrication",
             "button_style_secondary": true
           }

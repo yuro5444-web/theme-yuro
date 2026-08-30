@@ -39,14 +39,14 @@
         "h": {
           "type": "heading",
           "settings": {
-            "title": "Forgé, jamais gravé",
+            "title": "Deux aciers, pliés l'un dans l'autre",
             "title_highlight_1_color": "#A9BEC6"
           }
         },
         "t1": {
           "type": "text",
           "settings": {
-            "text": "<p>La différence se vérifie à l'œil. Sur un damas forgé, le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Sur un acier marqué au laser ou attaqué chimiquement, il s'arrête à la surface et disparaît au premier affûtage sérieux.</p><p>Chaque fiche indique la nuance d'acier, le nombre de couches, la dureté Rockwell et l'angle d'affûtage. Ces chiffres sont l'argument : ils se vérifient, contrairement aux adjectifs.</p>",
+            "text": "<p>Le damas n'est pas une nuance d'acier, c'est une construction. Deux nuances soudées à la forge, pliées l'une dans l'autre, puis révélées à l'acide. Le dessin qui apparaît est la trace du pliage.</p><p>Il traverse toute l'épaisseur de la lame et reste visible sur la tranche, jusqu'au fil.</p>",
             "alignment": "left"
           }
         }

@@ -67,7 +67,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Forgé, non gravé</h3><p class=\"da-pilier__texte\">Le motif traverse l'épaisseur de la lame et reste visible sur la tranche. Un acier marqué au laser s'arrête à la surface.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-sablier.png' | asset_url }}\" alt=\"Sablier\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Garantie à vie</h3><p class=\"da-pilier__texte\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, ou nous remplaçons.</p></li></ul></div>",
+        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Soixante-sept couches</h3><p class=\"da-pilier__texte\">Trente-trois strates de chaque côté d'une âme en VG-10. Le motif traverse l'épaisseur et reste visible sur la tranche.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-sablier.png' | asset_url }}\" alt=\"Sablier\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Garantie à vie</h3><p class=\"da-pilier__texte\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, ou nous remplaçons.</p></li></ul></div>",
         "color_scheme": "background-1",
         "padding_top": 72,
         "padding_bottom": 72
@@ -112,7 +112,7 @@
           "type": "column",
           "settings": {
             "title": "Le pliage",
-            "text": "<p>Deux aciers sont soudés à la forge puis repliés l'un dans l'autre. Ici, trente-trois strates de chaque côté d'une âme en VG-10 : soixante-sept couches au total. C'est le pliage qui dessine le motif, pas un outil de gravure.</p>",
+            "text": "<p>Deux aciers sont soudés à la forge puis repliés l'un dans l'autre. Ici, trente-trois strates de chaque côté d'une âme en VG-10 : soixante-sept couches au total. C'est le pliage qui dessine le motif.</p>",
             "image": "shopify://shop_images/yuro-forge-pliage.png"
           }
         },
@@ -164,14 +164,6 @@
     "faq": {
       "type": "collapsible-content",
       "blocks": {
-        "q1": {
-          "type": "collapsible-row-content",
-          "settings": {
-            "heading": "Comment reconnaître un vrai damas ?",
-            "row_content": "<p>Regardez la tranche. Sur une lame forgée, le motif traverse l'épaisseur et reste visible jusqu'au fil. Sur un acier gravé au laser ou attaqué à l'acide, il s'arrête à la surface et s'efface au premier affûtage sérieux.</p>",
-            "open": true
-          }
-        },
         "q2": {
           "type": "collapsible-row-content",
           "settings": {
@@ -206,7 +198,6 @@
         }
       },
       "block_order": [
-        "q1",
         "q2",
         "q3",
         "q4",
