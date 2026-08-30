@@ -858,8 +858,10 @@ hr {
 /* --------------------------------------------------------------------------
    14. Promesses sous le bouton d'achat
    L'affutage a vie n'existait que dans deux accordeons replies : personne ne
-   l'ouvrait avant d'acheter. Il remonte au contact du prix, en premier, et
-   c'est la seule ligne qui porte l'accent.
+   l'ouvrait avant d'acheter. Il remonte au contact du prix. Depuis l'ajout de
+   la garantie, deux lignes portent l'accent au lieu d'une : ce sont les deux
+   engagements a vie, et les lire ensemble vaut mieux que les separer. Les
+   trois lignes de logistique restent en retrait, sinon plus rien ne ressort.
    -------------------------------------------------------------------------- */
 
 .da-promesses {
@@ -894,8 +896,8 @@ hr {
   max-width: 52ch;
 }
 
-/* La promesse d'affutage porte seule l'accent : c'est l'argument qui leve
-   la derniere objection sur une lame a ce prix. */
+/* Les deux promesses a vie portent l'accent : ce sont les arguments qui
+   levent la derniere objection sur une lame a ce prix. */
 .da-promesses__item--phare .da-promesses__cle {
   font-family: var(--da-serif);
   font-size: 1.9rem;
