@@ -1,4 +1,10 @@
 {% assign title = section.settings.title %}
+{%- comment -%}
+  balise : h2 par defaut. La page contact n'a plus de section main-page
+  depuis que son titre a ete retire, le titre du formulaire y devient donc
+  le H1 de la page. Les autres sections n'envoient rien et restent en h2.
+{%- endcomment -%}
+{% assign balise_titre = tag | default: 'h2' %}
 {% assign highlight_style_1 = section.settings.title_highlight_1 %}
 {% assign highlight_style_2 = section.settings.title_highlight_2 %}
 
@@ -14,7 +20,7 @@
     }
   </style>
 {% endif %}
-<h2
+<{{ balise_titre }}
   class="
     {{ className }}
     heading heading-{{ section.id }} center
@@ -218,4 +224,4 @@
       {{ inner_em[1] }}
     {% endfor %}
   {% endfor %}
-</h2>
+</{{ balise_titre }}>

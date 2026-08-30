@@ -56,7 +56,7 @@
     id="ContactForm-{{ section.id }}"
   >
     {%- if section.settings.title != blank -%}
-      {% render 'section-title', className: 'title title-wrapper--no-top-margin', animate: true %}
+      {% render 'section-title', className: 'title title-wrapper--no-top-margin', animate: true, tag: 'h1' %}
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
