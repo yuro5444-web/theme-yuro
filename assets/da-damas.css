@@ -1167,3 +1167,91 @@ hr {
   .da-anat__nom { font-size: 1.7rem; }
   .da-anat__role { font-size: 1.4rem; }
 }
+
+/* --------------------------------------------------------------------------
+   18. Prochaine serie : le teaser en bas de collection
+   Une annonce « bientot » sans moyen d'etre prevenu ne sert a rien : le
+   visiteur note l'information et repart. Le champ transforme l'attente en
+   adresse. Le formulaire est celui de Shopify, marque du tag « prochaine-serie »
+   pour distinguer ces inscrits de ceux du carnet d'atelier.
+   -------------------------------------------------------------------------- */
+
+.da-serie {
+  max-width: 62ch;
+  border-top: 1px solid var(--da-filet-net);
+  padding-top: clamp(3.2rem, 5vw, 4.8rem);
+}
+
+.da-serie__eyebrow {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--da-trempe);
+  margin: 0 0 1.4rem;
+}
+
+.da-serie__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+  letter-spacing: -0.015em;
+  margin: 0 0 1.6rem;
+}
+
+.da-serie__texte {
+  margin: 0 0 3.2rem;
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.da-serie__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+.da-serie__champ {
+  flex: 1 1 26rem;
+  min-width: 0;
+  background: transparent;
+  border: 1px solid var(--da-filet-net);
+  color: var(--da-os);
+  font-size: 1.5rem;
+  padding: 1.4rem 1.6rem;
+}
+
+.da-serie__champ::placeholder { color: var(--da-cendre); }
+.da-serie__champ:focus { outline: 1px solid var(--da-trempe); outline-offset: -1px; }
+
+.da-serie__bouton {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid var(--da-trempe);
+  color: var(--da-trempe);
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 1.4rem 2.4rem;
+  cursor: pointer;
+  transition: color var(--da-transition), background-color var(--da-transition);
+}
+
+.da-serie__bouton:hover { background: var(--da-trempe); color: var(--da-encre); }
+
+.da-serie__retour {
+  margin: 1.6rem 0 0;
+  font-size: 1.4rem;
+  color: var(--da-trempe);
+}
+
+.da-serie__erreur { color: #C97B6B; }
+
+@media screen and (max-width: 749px) {
+  .da-serie__champ { flex-basis: 100%; }
+  .da-serie__bouton { width: 100%; }
+  .da-serie__texte { font-size: 1.4rem; margin-bottom: 2.4rem; }
+}

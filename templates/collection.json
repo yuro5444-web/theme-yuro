@@ -63,11 +63,23 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "prochaine_serie": {
+      "type": "custom-liquid",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "<div class=\"page-width\">\n  <div class=\"da-serie\">\n    <p class=\"da-serie__eyebrow\">Prochainement</p>\n    <h2 class=\"da-serie__titre\">Une autre série est en cours de forge</h2>\n    <p class=\"da-serie__texte\">Elle sortira de l'atelier en quantité limitée, comme les précédentes. Laissez votre adresse si vous voulez être prévenu le jour de la mise en ligne. Vous ne recevrez que ce message, rien d'autre.</p>\n    {%- form 'customer', class: 'da-serie__form' -%}\n      <input type=\"hidden\" name=\"contact[tags]\" value=\"prochaine-serie\">\n      <label class=\"visually-hidden\" for=\"da-serie-email\">Adresse e-mail</label>\n      <input\n        id=\"da-serie-email\"\n        class=\"da-serie__champ\"\n        type=\"email\"\n        name=\"contact[email]\"\n        value=\"{{ form.email }}\"\n        placeholder=\"Votre adresse e-mail\"\n        autocomplete=\"email\"\n        required\n      >\n      <button class=\"da-serie__bouton\" type=\"submit\">Prévenez-moi</button>\n      {%- if form.errors -%}\n        <p class=\"da-serie__retour da-serie__erreur\">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>\n      {%- elsif form.posted_successfully? -%}\n        <p class=\"da-serie__retour\">C'est noté. Vous serez prévenu à la sortie.</p>\n      {%- endif -%}\n    {%- endform -%}\n  </div>\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 8,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
     "main-collection-banner",
     "main-collection-product-grid",
-    "argumentaire"
+    "argumentaire",
+    "prochaine_serie"
   ]
 }
