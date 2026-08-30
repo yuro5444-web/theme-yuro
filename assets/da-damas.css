@@ -1128,34 +1128,22 @@ hr {
   color: rgba(var(--color-foreground), 0.7);
 }
 
-.da-anat__coupe {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-  gap: clamp(3.2rem, 5vw, 6.4rem);
-  align-items: center;
-  margin-top: clamp(4.8rem, 7vw, 8rem);
-  padding-top: clamp(4.8rem, 7vw, 8rem);
+.da-anat__pied {
+  max-width: 62ch;
+  margin-top: clamp(4rem, 6vw, 6.4rem);
+  padding-top: clamp(4rem, 6vw, 6.4rem);
   border-top: 1px solid var(--da-filet);
+  display: grid;
+  gap: 1.6rem;
 }
-
-.da-anat__texte { display: grid; gap: 1.6rem; }
 
 .da-anat__nom--grand {
   font-size: clamp(2.2rem, 3vw, 2.8rem);
   margin: 0;
 }
 
-/* Le detail du fil ne se lit qu'en gros : sur telephone on cadre le tranchant
-   plutot que de reduire toute la coupe a une vignette illisible. */
-.da-anat__vue--coupe img { aspect-ratio: 4 / 5; object-fit: cover; }
-
 @media screen and (max-width: 989px) {
-  .da-anat__corps,
-  .da-anat__coupe { grid-template-columns: minmax(0, 1fr); }
-  .da-anat__coupe { align-items: start; }
-  /* La coupe passe sous son texte : l'image sert de preuve, pas d'ouverture. */
-  .da-anat__coupe .da-anat__vue { order: 2; }
-  .da-anat__vue--coupe img { aspect-ratio: 3 / 2; object-position: 62% 45%; }
+  .da-anat__corps { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media screen and (max-width: 749px) {
