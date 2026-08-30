@@ -78,8 +78,15 @@
             if titre_panier == blank or titre_panier contains 'Cart •'
               assign titre_panier = 'Panier • [count] article(s)'
             endif
+            # Le gabarit du theme ecrit « article(s) ». Le francais accorde :
+            # un article, deux articles, et zero article au singulier.
+            assign nom_article = 'article'
+            if non_upsell_count > 1
+              assign nom_article = 'articles'
+            endif
+            assign titre_panier = titre_panier | replace: 'article(s)', nom_article | replace: '[count]', non_upsell_count
           -%}
-          {{ titre_panier | replace: '[count]', non_upsell_count }}
+          {{ titre_panier }}
         </h2>
         <button
           class="drawer__close"
