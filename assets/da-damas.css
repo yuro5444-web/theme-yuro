@@ -1306,3 +1306,93 @@ hr {
 @media screen and (max-width: 749px) {
   .da-apres__texte { font-size: 1.4rem; }
 }
+
+/* --------------------------------------------------------------------------
+   20. Galerie : le couteau hors studio
+   Les photos de la fiche montrent l'objet, pas l'usage. Ce carrousel montre
+   la lame dans une cuisine reelle, posee, rangee, en main. Il repond a la
+   question que le studio ne traite pas : de quoi ca a l'air chez moi.
+   Defilement natif avec accroche, donc lisible au clavier et au doigt sans
+   script. Les fleches ne sont qu'un confort de bureau et disparaissent
+   quand le pointeur est grossier.
+   -------------------------------------------------------------------------- */
+
+.da-galerie__entete {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 0 clamp(2.4rem, 4vw, 3.6rem);
+}
+
+.da-galerie__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.da-galerie__fleches {
+  display: none;
+  gap: 0.8rem;
+  flex: 0 0 auto;
+}
+
+.da-galerie__fleche {
+  width: 4.4rem;
+  height: 4.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--da-filet-net);
+  color: inherit;
+  cursor: pointer;
+  transition: border-color var(--da-transition), color var(--da-transition);
+}
+
+.da-galerie__fleche:hover { border-color: var(--da-trempe); color: var(--da-trempe); }
+.da-galerie__fleche:focus-visible { outline: 2px solid var(--da-trempe); outline-offset: 2px; }
+.da-galerie__fleche svg { width: 1.3rem; height: 1.3rem; }
+
+.da-galerie__piste {
+  display: flex;
+  gap: clamp(1.2rem, 1.6vw, 2rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.da-galerie__piste::-webkit-scrollbar { display: none; }
+
+.da-galerie__vue {
+  flex: 0 0 auto;
+  width: clamp(24rem, 28vw, 32rem);
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.da-galerie__vue img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (hover: hover) and (min-width: 990px) {
+  .da-galerie__fleches { display: flex; }
+}
+
+@media screen and (max-width: 749px) {
+  .da-galerie__vue { width: 70vw; }
+}
+
+/* Le defilement doux est une preference, pas une obligation. */
+@media (prefers-reduced-motion: reduce) {
+  .da-galerie__piste { scroll-behavior: auto; }
+}
