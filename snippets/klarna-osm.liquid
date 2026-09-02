@@ -1,36 +1,64 @@
 {%- comment -%}
-  YURO - Klarna On-Site Messaging (widget officiel Klarna)
-  Affiche le message "Payez en 3x / 4x avec Klarna" sous le bouton d'achat.
+  YURO - Bloc paiement en plusieurs fois (affichage seul, look Klarna).
+  Aucun script externe, aucun compte requis. Le montant se recalcule
+  automatiquement selon la variante selectionnee.
 
   Parametres :
-    product         : l'objet produit
-    uid             : identifiant unique du rendu (block.id)
-    form_id         : id du formulaire produit (product-form-<section.id>)
-    client_id       : Client ID Klarna (Merchant Portal > On-site messaging)
-    placement_key   : credit-promotion-auto-size | credit-promotion-badge | credit-promotion-small
-    locale          : fr-FR
-    placement_theme : default | dark | custom
-    margin_top      : px
+    product      : l'objet produit
+    uid          : identifiant unique du rendu (block.id)
+    form_id      : id du formulaire produit
+    installments : nombre de mensualites (2, 3, 4...)
+    text_before  : texte avant le montant
+    text_after   : texte apres le montant
+    show_info    : afficher le lien "En savoir plus"
+    info_text    : contenu du depliant
+    style        : pink | light | dark
+    margin_top   : px
 {%- endcomment -%}
 
-{%- if client_id != blank and product != blank -%}
+{%- if product != blank -%}
   {%- liquid
-    assign klarna_amount = product.selected_or_first_available_variant.price
-    if klarna_amount == blank or klarna_amount == 0
-      assign klarna_amount = product.price
+    assign n = installments | default: 4 | times: 1
+    if n < 2
+      assign n = 4
     endif
+
+    assign amount = product.selected_or_first_available_variant.price
+    if amount == blank or amount == 0
+      assign amount = product.price
+    endif
+    assign per = amount | divided_by: n
   -%}
 
-  <div class="klarna-osm" id="KlarnaOsm-{{ uid }}" style="margin-top: {{ margin_top | default: 12 }}px;">
-    <klarna-placement
-      data-key="{{ placement_key | default: 'credit-promotion-auto-size' }}"
-      data-locale="{{ locale | default: 'fr-FR' }}"
-      data-purchase-amount="{{ klarna_amount }}"
-      {%- if placement_theme != blank and placement_theme != 'default' %} data-theme="{{ placement_theme }}"{% endif %}
-    ></klarna-placement>
+  <div
+    class="yuro-instal yuro-instal--{{ style | default: 'pink' }}"
+    id="YuroInstal-{{ uid }}"
+    data-installments="{{ n }}"
+    style="margin-top: {{ margin_top | default: 12 }}px;"
+  >
+    <div class="yuro-instal__row">
+      <span class="yuro-instal__badge" aria-hidden="true">Klarna.</span>
+      <span class="yuro-instal__text">
+        {{ text_before | default: 'Payez en' }}
+        <strong class="yuro-instal__n">{{ n }}x</strong>
+        <strong class="yuro-instal__amount" data-yuro-instal-amount>{{ per | money }}</strong>
+        {{ text_after | default: 'sans frais' }}
+      </span>
+      {%- if show_info -%}
+        <button type="button" class="yuro-instal__more" aria-expanded="false" aria-controls="YuroInstalInfo-{{ uid }}">
+          En savoir plus
+        </button>
+      {%- endif -%}
+    </div>
+
+    {%- if show_info -%}
+      <div class="yuro-instal__info" id="YuroInstalInfo-{{ uid }}" hidden>
+        {{ info_text }}
+      </div>
+    {%- endif -%}
   </div>
 
-  <script type="application/json" id="KlarnaOsmPrices-{{ uid }}">
+  <script type="application/json" id="YuroInstalPrices-{{ uid }}">
     {
       {%- for v in product.variants -%}
         "{{ v.id }}": {{ v.price }}{%- unless forloop.last -%},{%- endunless -%}
@@ -38,45 +66,111 @@
     }
   </script>
 
-  <script async src="https://js.klarna.com/web-sdk/v1/klarna.js" data-client-id="{{ client_id }}"></script>
+  {%- style -%}
+    .yuro-instal { font-size: 1.3rem; line-height: 1.4; }
+    .yuro-instal__row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+    }
+    .yuro-instal__badge {
+      display: inline-flex;
+      align-items: center;
+      height: 2.2rem;
+      padding: 0 0.8rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .yuro-instal__text { flex: 1 1 auto; }
+    .yuro-instal__amount, .yuro-instal__n { font-weight: 600; white-space: nowrap; }
+    .yuro-instal__more {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 1.2rem;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      opacity: 0.75;
+      color: inherit;
+    }
+    .yuro-instal__more:hover { opacity: 1; }
+    .yuro-instal__info {
+      margin-top: 0.6rem;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      background: rgba(var(--color-foreground), 0.04);
+    }
+    .yuro-instal--pink .yuro-instal__row { background: #ffb3c7; color: #0b051d; }
+    .yuro-instal--pink .yuro-instal__badge { background: #0b051d; color: #ffb3c7; }
+    .yuro-instal--light .yuro-instal__row {
+      background: rgba(var(--color-foreground), 0.04);
+      border: 1px solid rgba(var(--color-foreground), 0.1);
+      color: rgb(var(--color-foreground));
+    }
+    .yuro-instal--light .yuro-instal__badge { background: #ffb3c7; color: #0b051d; }
+    .yuro-instal--dark .yuro-instal__row { background: #0b051d; color: #fff; }
+    .yuro-instal--dark .yuro-instal__badge { background: #ffb3c7; color: #0b051d; }
+  {%- endstyle -%}
 
   <script>
     (function () {
       var uid = '{{ uid }}';
       var formId = '{{ form_id }}';
-      window.__klarnaOsmBound = window.__klarnaOsmBound || {};
-      if (window.__klarnaOsmBound[uid]) return;
-      window.__klarnaOsmBound[uid] = true;
+      window.__yuroInstalBound = window.__yuroInstalBound || {};
+      if (window.__yuroInstalBound[uid]) return;
+      window.__yuroInstalBound[uid] = true;
 
       var prices = {};
       try {
-        var raw = document.getElementById('KlarnaOsmPrices-' + uid);
+        var raw = document.getElementById('YuroInstalPrices-' + uid);
         if (raw) prices = JSON.parse(raw.textContent);
       } catch (e) {}
 
+      var fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: '{{ cart.currency.iso_code | default: "EUR" }}' });
+
       function sync() {
-        var wrapper = document.getElementById('KlarnaOsm-' + uid);
-        if (!wrapper) return;
-        var placement = wrapper.querySelector('klarna-placement');
-        if (!placement) return;
+        var root = document.getElementById('YuroInstal-' + uid);
+        if (!root) return;
+        var target = root.querySelector('[data-yuro-instal-amount]');
+        if (!target) return;
+
+        var n = parseInt(root.getAttribute('data-installments'), 10) || 4;
 
         var input = null;
         if (formId) input = document.querySelector('#' + formId + ' input[name="id"]');
         if (!input) input = document.querySelector('form[action*="/cart/add"] input[name="id"]');
         if (!input) return;
 
-        var price = prices[input.value];
-        if (!price) return;
-        if (placement.getAttribute('data-purchase-amount') === String(price)) return;
+        var cents = prices[input.value];
+        if (!cents) return;
 
-        placement.setAttribute('data-purchase-amount', String(price));
-        if (window.Klarna && window.Klarna.OnsiteMessaging && window.Klarna.OnsiteMessaging.refresh) {
-          window.Klarna.OnsiteMessaging.refresh();
-        }
+        var next = fmt.format(cents / n / 100);
+        if (target.textContent.trim() !== next) target.textContent = next;
       }
 
-      document.addEventListener('change', function () { setTimeout(sync, 350); }, true);
-      document.addEventListener('variant:change', function () { setTimeout(sync, 350); }, true);
+      document.addEventListener('change', function () { setTimeout(sync, 300); }, true);
+      document.addEventListener('variant:change', function () { setTimeout(sync, 300); }, true);
+
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('#YuroInstal-' + uid + ' .yuro-instal__more') : null;
+        if (!btn) return;
+        var panel = document.getElementById('YuroInstalInfo-' + uid);
+        if (!panel) return;
+        var open = panel.hasAttribute('hidden');
+        if (open) { panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden', ''); }
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
       setInterval(sync, 1200);
     })();
   </script>
