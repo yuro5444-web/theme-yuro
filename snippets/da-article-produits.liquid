@@ -1,0 +1,57 @@
+{%- comment -%}
+  Encart produits en fin d'article.
+
+  Alimente par le metachamp article.metafields.custom.produits_lies
+  (liste de references produit, definie au niveau de la boutique).
+  Image, nom, type et prix sont lus en direct sur le produit : rien
+  n'est fige dans le corps de l'article, donc un changement de prix
+  ou de visuel se propage sans retoucher les articles.
+
+  Pour changer les produits d'un article : admin Shopify, article
+  concerne, section Metafields, champ "Produits lies".
+{%- endcomment -%}
+
+{%- assign produits = article.metafields.custom.produits_lies.value -%}
+
+{%- if produits != blank and produits.size > 0 -%}
+  <aside class="da-suite page-width">
+    <p class="da-suite__titre">
+      {%- if produits.size > 1 -%}
+        Les lames dont parle cet article
+      {%- else -%}
+        La lame dont parle cet article
+      {%- endif -%}
+    </p>
+
+    <ul class="da-suite__liste" role="list">
+      {%- for produit in produits -%}
+        <li class="da-suite__item">
+          <a class="da-suite__lien" href="{{ produit.url }}">
+            {%- if produit.featured_image -%}
+              <span class="da-suite__visuel">
+                {{
+                  produit.featured_image
+                  | image_url: width: 600
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '240, 360, 480, 600',
+                    sizes: '(min-width: 750px) 22rem, 40vw',
+                    alt: produit.title
+                }}
+              </span>
+            {%- endif -%}
+
+            <span class="da-suite__texte">
+              {%- if produit.type != blank -%}
+                <span class="da-suite__type">{{ produit.type }}</span>
+              {%- endif -%}
+              <span class="da-suite__nom">{{ produit.title }}</span>
+              <span class="da-suite__prix">{{ produit.price | money }}</span>
+              <span class="da-suite__cta">Voir la lame</span>
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </aside>
+{%- endif -%}

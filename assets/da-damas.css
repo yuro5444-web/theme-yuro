@@ -1448,3 +1448,90 @@ hr {
 
   .da-klarna__text { font-size: 1.3rem; }
 }
+
+/* --------------------------------------------------------------------------
+   Encart produits en fin d'article
+   Le lecteur vient de comprendre a quoi sert une lame : on la lui montre,
+   plutot que de lui laisser un lien souligne dans un paragraphe.
+   -------------------------------------------------------------------------- */
+
+.da-suite {
+  margin-block: var(--da-section) 0;
+  padding-block-start: 4rem;
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-suite__titre {
+  margin: 0 0 2.8rem;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--da-cendre);
+}
+
+.da-suite__liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 2.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.da-suite__lien {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.6rem;
+  border: 1px solid var(--da-filet);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--da-transition);
+}
+
+.da-suite__lien:hover { border-color: var(--da-filet-net); }
+
+.da-suite__visuel { display: block; overflow: hidden; }
+
+.da-suite__visuel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.da-suite__lien:hover .da-suite__visuel img { transform: scale(1.03); }
+
+.da-suite__texte { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.da-suite__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--da-cendre);
+}
+
+.da-suite__nom {
+  font-family: var(--da-serif);
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.da-suite__prix { font-size: 1.5rem; color: var(--da-os); }
+
+.da-suite__cta {
+  margin-block-start: 0.6rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--da-trempe);
+}
+
+@media screen and (max-width: 749px) {
+  .da-suite { padding-block-start: 3.2rem; }
+  .da-suite__liste { grid-template-columns: 1fr; gap: 1.6rem; }
+  .da-suite__lien { grid-template-columns: 9rem 1fr; gap: 1.6rem; padding: 1.2rem; }
+  .da-suite__nom { font-size: 1.8rem; }
+}
