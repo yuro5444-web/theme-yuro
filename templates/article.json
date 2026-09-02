@@ -14,7 +14,7 @@
       "name": "Scroll progress bar",
       "settings": {
         "bar_height": 4,
-        "corner_radius": 3,
+        "corner_radius": 0,
         "position": "top"
       }
     },
