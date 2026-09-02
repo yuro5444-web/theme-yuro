@@ -1396,3 +1396,55 @@ hr {
 @media (prefers-reduced-motion: reduce) {
   .da-galerie__piste { scroll-behavior: auto; }
 }
+
+/* --------------------------------------------------------------------------
+   Paiement fractionne Klarna, fiche produit
+   Pose au-dessus du bouton d'achat. Angle vif et filet, comme le reste :
+   la seule couleur admise est le rose de la marque, sur le badge seul.
+   -------------------------------------------------------------------------- */
+
+.da-klarna {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 1.6rem;
+  margin-block-end: 1.6rem;
+  border: 1px solid var(--da-filet);
+}
+
+.da-klarna__badge {
+  flex: 0 0 auto;
+  padding: 0.4rem 1rem;
+  background: #ffb3c7;
+  color: var(--da-encre);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.da-klarna__text {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--da-os);
+}
+
+.da-klarna__text strong { font-weight: 600; }
+
+.da-klarna__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  transition: color var(--da-transition);
+}
+
+.da-klarna__text a:hover { color: var(--da-trempe); }
+
+@media screen and (max-width: 749px) {
+  .da-klarna {
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .da-klarna__text { font-size: 1.3rem; }
+}
