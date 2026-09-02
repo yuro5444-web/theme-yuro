@@ -1,13 +1,16 @@
 {%- comment -%}
   YURO - Klarna On-Site Messaging (widget officiel Klarna)
-  Rendu sous le bouton d'achat.
-  Parametres attendus :
-    client_id     : Client ID Klarna (Merchant Portal > On-site messaging)
-    placement_key : credit-promotion-auto-size | credit-promotion-badge | credit-promotion-small
-    locale        : fr-FR
-    theme         : default | dark | custom
-    margin_top    : px
-    uid           : identifiant unique (block.id)
+  Affiche le message "Payez en 3x / 4x avec Klarna" sous le bouton d'achat.
+
+  Parametres :
+    product         : l'objet produit
+    uid             : identifiant unique du rendu (block.id)
+    form_id         : id du formulaire produit (product-form-<section.id>)
+    client_id       : Client ID Klarna (Merchant Portal > On-site messaging)
+    placement_key   : credit-promotion-auto-size | credit-promotion-badge | credit-promotion-small
+    locale          : fr-FR
+    placement_theme : default | dark | custom
+    margin_top      : px
 {%- endcomment -%}
 
 {%- if client_id != blank and product != blank -%}
@@ -23,7 +26,7 @@
       data-key="{{ placement_key | default: 'credit-promotion-auto-size' }}"
       data-locale="{{ locale | default: 'fr-FR' }}"
       data-purchase-amount="{{ klarna_amount }}"
-      {%- if theme != blank and theme != 'default' %} data-theme="{{ theme }}"{% endif %}
+      {%- if placement_theme != blank and placement_theme != 'default' %} data-theme="{{ placement_theme }}"{% endif %}
     ></klarna-placement>
   </div>
 
@@ -35,15 +38,14 @@
     }
   </script>
 
-  {%- unless request.design_mode and false -%}
-    <script async src="https://js.klarna.com/web-sdk/v1/klarna.js" data-client-id="{{ client_id }}"></script>
-  {%- endunless -%}
+  <script async src="https://js.klarna.com/web-sdk/v1/klarna.js" data-client-id="{{ client_id }}"></script>
 
   <script>
     (function () {
       var uid = '{{ uid }}';
-      if (window.__klarnaOsmBound && window.__klarnaOsmBound[uid]) return;
+      var formId = '{{ form_id }}';
       window.__klarnaOsmBound = window.__klarnaOsmBound || {};
+      if (window.__klarnaOsmBound[uid]) return;
       window.__klarnaOsmBound[uid] = true;
 
       var prices = {};
@@ -58,7 +60,8 @@
         var placement = wrapper.querySelector('klarna-placement');
         if (!placement) return;
 
-        var input = document.querySelector('#product-form-{{ section.id }} input[name="id"]');
+        var input = null;
+        if (formId) input = document.querySelector('#' + formId + ' input[name="id"]');
         if (!input) input = document.querySelector('form[action*="/cart/add"] input[name="id"]');
         if (!input) return;
 
