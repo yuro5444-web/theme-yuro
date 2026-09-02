@@ -58,8 +58,8 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
         "color_scheme": "background-1",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 96,
+        "padding_bottom": 32
       }
     },
     "piliers": {
@@ -69,8 +69,8 @@
         "visibility": "always-display",
         "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-enclume.png' | asset_url }}\" alt=\"Enclume de forge\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Soixante-sept couches</h3><p class=\"da-pilier__texte\">Trente-trois strates de chaque côté d'une âme en VG-10. Le motif traverse l'épaisseur et reste visible sur la tranche.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-sablier.png' | asset_url }}\" alt=\"Sablier\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Garantie à vie</h3><p class=\"da-pilier__texte\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, ou nous remplaçons.</p></li></ul></div>",
         "color_scheme": "background-1",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 32,
+        "padding_bottom": 88
       }
     },
     "lames": {
@@ -94,8 +94,8 @@
         "color_scheme": "background-1",
         "cards_color_scheme": "background-1",
         "title_highlight_1_color": "#A9BEC6",
-        "padding_top": 72,
-        "padding_bottom": 72,
+        "padding_top": 88,
+        "padding_bottom": 88,
         "desktop_dots_position": "hidden",
         "desktop_arrows_position": "hidden",
         "slider_mobile": true,
@@ -155,7 +155,7 @@
         "title_highlight_1_color": "#A9BEC6",
         "margin_top": 0,
         "margin_bottom": 0,
-        "padding_top": 72,
+        "padding_top": 48,
         "padding_bottom": 72,
         "media_position": "top",
         "image_width": "full"
@@ -310,8 +310,8 @@
         "display_grid_lines": false,
         "desktop_page_width": "normal",
         "color_scheme": "background-1",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 88,
+        "padding_bottom": 48
       }
     },
     "anatomie": {
@@ -321,8 +321,8 @@
         "visibility": "always-display",
         "custom_liquid": "<div class=\"page-width da-anat\">\n  <p class=\"da-anat__eyebrow\">L'anatomie d'une lame</p>\n  <h2 class=\"da-anat__titre\">Six pièces, un seul couteau</h2>\n  <p class=\"da-anat__intro\">Un couteau damas n'est pas une lame décorée. C'est un assemblage où chaque pièce règle un problème précis. Voici ce qu'il y a dedans et à quoi sert chaque élément.</p>\n  <div class=\"da-anat__corps\">\n    <figure class=\"da-anat__vue\">\n      <img src=\"{{ 'yuro-eclate.jpg' | asset_url }}\" width=\"1200\" height=\"1490\" loading=\"lazy\" decoding=\"async\"\n           alt=\"Vue éclatée d'un couteau damas : l'âme d'acier au centre, les couches empilées de chaque côté, la mitre de laiton, les deux plaquettes de bois et le culot.\">\n      <span class=\"da-anat__repere\" style=\"--x: 43.4%; --y: 65.0%;\" aria-hidden=\"true\">1</span>\n      <span class=\"da-anat__repere\" style=\"--x: 30.0%; --y: 54.0%;\" aria-hidden=\"true\">2</span>\n      <span class=\"da-anat__repere\" style=\"--x: 54.5%; --y: 41.5%;\" aria-hidden=\"true\">3</span>\n      <span class=\"da-anat__repere\" style=\"--x: 62.6%; --y: 34.4%;\" aria-hidden=\"true\">4</span>\n      <span class=\"da-anat__repere\" style=\"--x: 70.7%; --y: 19.7%;\" aria-hidden=\"true\">5</span>\n      <span class=\"da-anat__repere\" style=\"--x: 86.7%; --y: 10.5%;\" aria-hidden=\"true\">6</span>\n    </figure>\n    <ol class=\"da-anat__liste\">\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">1</span>\n        <h3 class=\"da-anat__nom\">L'âme</h3>\n        <p class=\"da-anat__role\">Une seule feuille d'acier VG-10, trempée à 61 HRC. Elle forme le tranchant et c'est la seule pièce qui coupe. Tout le reste existe pour la protéger.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">2</span>\n        <h3 class=\"da-anat__nom\">Les couches</h3>\n        <p class=\"da-anat__role\">Trente-trois de chaque côté, dans un acier plus souple. Elles encaissent les chocs qu'une âme à 61 HRC ne supporterait pas seule, et leur pliage dessine le motif visible sur la lame.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">3</span>\n        <h3 class=\"da-anat__nom\">La soie</h3>\n        <p class=\"da-anat__role\">Le prolongement de l'âme à l'intérieur du manche. Elle le traverse sur toute sa longueur : la lame ne peut pas jouer et l'équilibre tombe sous les doigts.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">4</span>\n        <h3 class=\"da-anat__nom\">La mitre</h3>\n        <p class=\"da-anat__role\">L'anneau de laiton massif entre la lame et le manche. Il ferme la jonction, là où l'eau s'infiltre sur les couteaux bon marché, et son poids ramène le centre de gravité vers la main.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">5</span>\n        <h3 class=\"da-anat__nom\">Les plaquettes</h3>\n        <p class=\"da-anat__role\">Deux joues de bois stabilisé, imprégné de résine sous vide. Le bois ne gonfle plus, ne fend plus et ne retient plus les odeurs.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">6</span>\n        <h3 class=\"da-anat__nom\">Le culot</h3>\n        <p class=\"da-anat__role\">La pièce de laiton en bout de manche. Contrepoids de la lame : sans lui le couteau tire vers l'avant et le poignet fatigue.</p>\n      </li>\n    </ol>\n  </div>\n</div>",
         "color_scheme": "background-2",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },
