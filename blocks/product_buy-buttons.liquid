@@ -35,12 +35,13 @@
     product: product,
     uid: block.id,
     form_id: product_form_id,
-    installments: block.settings.klarna_installments,
-    text_before: block.settings.klarna_text_before,
-    text_after: block.settings.klarna_text_after,
-    show_info: block.settings.klarna_show_info,
-    info_text: block.settings.klarna_info_text,
-    style: block.settings.klarna_style,
+    months_long: block.settings.klarna_months_long,
+    months_mid: block.settings.klarna_months_mid,
+    split_count: block.settings.klarna_split_count,
+    monthly_rate: block.settings.klarna_monthly_rate,
+    title: block.settings.klarna_title,
+    subtitle: block.settings.klarna_subtitle,
+    legal: block.settings.klarna_legal,
     margin_top: block.settings.klarna_margin_top
   -%}
 {%- endif -%}
@@ -121,8 +122,8 @@
     },
     {
       "type": "header",
-      "content": "Paiement en plusieurs fois",
-      "info": "Bloc d'affichage seul, affiche sous le bouton d'achat. Le montant se recalcule selon la variante."
+      "content": "Paiement en plusieurs fois (Klarna)",
+      "info": "Barre affichee sous le bouton d'achat + modale Exemples de plans. Montants calcules depuis le prix du variant."
     },
     {
       "type": "checkbox",
@@ -132,53 +133,62 @@
     },
     {
       "type": "range",
-      "id": "klarna_installments",
-      "label": "Nombre de mensualites",
+      "id": "klarna_months_long",
+      "label": "Plan long : nombre de mensualites",
       "min": 2,
-      "max": 12,
+      "max": 36,
       "step": 1,
-      "default": 4,
+      "default": 12,
+      "visible_if": "{{ block.settings.klarna_enable == true }}"
+    },
+    {
+      "type": "range",
+      "id": "klarna_months_mid",
+      "label": "Plan intermediaire : nombre de mensualites",
+      "min": 2,
+      "max": 24,
+      "step": 1,
+      "default": 6,
+      "visible_if": "{{ block.settings.klarna_enable == true }}"
+    },
+    {
+      "type": "range",
+      "id": "klarna_split_count",
+      "label": "Paiement sans frais : nombre d'echeances",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
       "type": "text",
-      "id": "klarna_text_before",
-      "label": "Texte avant le montant",
-      "default": "Payez en",
+      "id": "klarna_monthly_rate",
+      "label": "Taux mensuel (%)",
+      "default": "1.75",
+      "info": "Utilise pour calculer les mensualites et les interets des plans longs. Mets le taux reel pratique par Klarna en France. 0 = sans interets.",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
       "type": "text",
-      "id": "klarna_text_after",
-      "label": "Texte apres le montant",
-      "default": "sans frais",
+      "id": "klarna_title",
+      "label": "Titre de la modale",
+      "default": "Payez a votre rythme, des 0 % d'interet",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
-      "type": "select",
-      "id": "klarna_style",
-      "label": "Style",
-      "options": [
-        { "value": "pink", "label": "Fond rose Klarna" },
-        { "value": "light", "label": "Discret (fond clair)" },
-        { "value": "dark", "label": "Fond sombre" }
-      ],
-      "default": "pink",
+      "type": "textarea",
+      "id": "klarna_subtitle",
+      "label": "Sous-titre de la modale",
+      "default": "Lorsque vous faites des achats et payez avec Klarna, le montant que vous pouvez depenser avec Klarna peut augmenter.",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
-      "type": "checkbox",
-      "id": "klarna_show_info",
-      "label": "Afficher le lien En savoir plus",
-      "default": true,
+      "type": "textarea",
+      "id": "klarna_legal",
+      "label": "Mention legale (bas de modale)",
+      "default": "*Exemples donnes a titre indicatif. Offre soumise a conditions et a l'acceptation de Klarna. Le detail des echeances et le TAEG applicable sont affiches a l'etape de paiement.",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
-    },
-    {
-      "type": "richtext",
-      "id": "klarna_info_text",
-      "label": "Texte du depliant",
-      "default": "<p>Reglez votre commande en plusieurs echeances sans frais. Le choix du paiement en plusieurs fois se fait a l'etape de paiement, sous reserve d'acceptation.</p>",
-      "visible_if": "{{ block.settings.klarna_enable == true and block.settings.klarna_show_info == true }}"
     },
     {
       "type": "range",
