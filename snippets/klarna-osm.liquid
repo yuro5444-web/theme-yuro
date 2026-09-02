@@ -1,64 +1,143 @@
 {%- comment -%}
-  YURO - Bloc paiement en plusieurs fois (affichage seul, look Klarna).
-  Aucun script externe, aucun compte requis. Le montant se recalcule
-  automatiquement selon la variante selectionnee.
+  YURO - Bloc "paiement en plusieurs fois" style Klarna (affichage seul).
+  Barre sous le bouton d'achat + modale "Exemples de plans".
+  Aucun script externe. Les montants sont calcules depuis le prix du variant
+  (formule d'annuite) et recalcules en JS au changement de variante.
 
   Parametres :
-    product      : l'objet produit
-    uid          : identifiant unique du rendu (block.id)
-    form_id      : id du formulaire produit
-    installments : nombre de mensualites (2, 3, 4...)
-    text_before  : texte avant le montant
-    text_after   : texte apres le montant
-    show_info    : afficher le lien "En savoir plus"
-    info_text    : contenu du depliant
-    style        : pink | light | dark
-    margin_top   : px
+    product, uid, form_id
+    months_long   : duree du plan long (ex. 12)
+    months_mid    : duree du plan intermediaire (ex. 6)
+    split_count   : nombre d'echeances sans frais (ex. 3)
+    monthly_rate  : taux mensuel en % (ex. 1.75)
+    title, subtitle, legal
+    margin_top
 {%- endcomment -%}
 
 {%- if product != blank -%}
   {%- liquid
-    assign n = installments | default: 4 | times: 1
-    if n < 2
-      assign n = 4
-    endif
-
     assign amount = product.selected_or_first_available_variant.price
     if amount == blank or amount == 0
       assign amount = product.price
     endif
-    assign per = amount | divided_by: n
+    assign p = amount | divided_by: 100.0
+
+    assign n_long = months_long | default: 12
+    assign n_mid = months_mid | default: 6
+    assign n_split = split_count | default: 3
+
+    assign rate_pct = monthly_rate | default: 1.75 | times: 1.0
+    assign rate = rate_pct | divided_by: 100.0
+    assign one_plus = rate | plus: 1.0
+
+    assign f_long = 1.0
+    for i in (1..n_long)
+      assign f_long = f_long | times: one_plus
+    endfor
+    assign f_mid = 1.0
+    for i in (1..n_mid)
+      assign f_mid = f_mid | times: one_plus
+    endfor
+
+    if rate > 0
+      assign den_long = 1.0 | minus: 1.0 | plus: 1.0 | minus: 1.0
+      assign den_long = 1.0 | divided_by: f_long
+      assign den_long = 1.0 | minus: den_long
+      assign pmt_long = p | times: rate | divided_by: den_long
+
+      assign den_mid = 1.0 | divided_by: f_mid
+      assign den_mid = 1.0 | minus: den_mid
+      assign pmt_mid = p | times: rate | divided_by: den_mid
+    else
+      assign pmt_long = p | divided_by: n_long
+      assign pmt_mid = p | divided_by: n_mid
+    endif
+
+    assign total_long = pmt_long | times: n_long
+    assign int_long = total_long | minus: p
+    assign total_mid = pmt_mid | times: n_mid
+    assign int_mid = total_mid | minus: p
+    assign pmt_split = p | divided_by: n_split
+
+    assign c_pmt_long = pmt_long | times: 100 | round
+    assign c_int_long = int_long | times: 100 | round
+    assign c_tot_long = total_long | times: 100 | round
+    assign c_pmt_mid = pmt_mid | times: 100 | round
+    assign c_int_mid = int_mid | times: 100 | round
+    assign c_tot_mid = total_mid | times: 100 | round
+    assign c_pmt_split = pmt_split | times: 100 | round
+    assign c_tot_split = amount
+    assign c_from = pmt_long | round | times: 100
   -%}
 
-  <div
-    class="yuro-instal yuro-instal--{{ style | default: 'pink' }}"
-    id="YuroInstal-{{ uid }}"
-    data-installments="{{ n }}"
-    style="margin-top: {{ margin_top | default: 12 }}px;"
-  >
-    <div class="yuro-instal__row">
-      <span class="yuro-instal__badge" aria-hidden="true">Klarna.</span>
-      <span class="yuro-instal__text">
-        {{ text_before | default: 'Payez en' }}
-        <strong class="yuro-instal__n">{{ n }}x</strong>
-        <strong class="yuro-instal__amount" data-yuro-instal-amount>{{ per | money }}</strong>
-        {{ text_after | default: 'sans frais' }}
-      </span>
-      {%- if show_info -%}
-        <button type="button" class="yuro-instal__more" aria-expanded="false" aria-controls="YuroInstalInfo-{{ uid }}">
-          En savoir plus
-        </button>
-      {%- endif -%}
+  <div class="klx" id="Klx-{{ uid }}" style="margin-top: {{ margin_top | default: 12 }}px;"
+    data-n-long="{{ n_long }}" data-n-mid="{{ n_mid }}" data-n-split="{{ n_split }}" data-rate="{{ rate_pct }}">
+
+    <div class="klx__bar">
+      <span class="klx__logo" aria-label="Klarna">Klarna</span>
+      <div class="klx__copy">
+        <p class="klx__line">
+          A partir de <strong data-klx="from">{{ c_from | money }}</strong>/mois, ou {{ n_split }} paiements sans frais avec Klarna
+        </p>
+        <button type="button" class="klx__link" data-klx-open aria-haspopup="dialog">En savoir plus</button>
+      </div>
     </div>
 
-    {%- if show_info -%}
-      <div class="yuro-instal__info" id="YuroInstalInfo-{{ uid }}" hidden>
-        {{ info_text }}
+    <div class="klx__overlay" data-klx-overlay hidden>
+      <div class="klx__dialog" role="dialog" aria-modal="true" aria-labelledby="KlxTitle-{{ uid }}">
+        <button type="button" class="klx__close" data-klx-close aria-label="Fermer">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="klx__dialog-inner">
+          <span class="klx__logo klx__logo--lg" aria-label="Klarna">Klarna</span>
+          <h3 class="klx__title" id="KlxTitle-{{ uid }}">{{ title | default: "Payez a votre rythme, des 0 % d'interet" }}</h3>
+          <p class="klx__sub">{{ subtitle | default: "Lorsque vous faites des achats et payez avec Klarna, le montant que vous pouvez depenser avec Klarna peut augmenter." }}</p>
+
+          <p class="klx__plans-label">Exemples de plans</p>
+
+          <div class="klx__plan">
+            <div class="klx__plan-head">{{ n_long }} Paiements</div>
+            <div class="klx__plan-amount"><span data-klx="pmtLong">{{ c_pmt_long | money }}</span> par mois</div>
+            <div class="klx__plan-foot">
+              <span><span data-klx="intLong">{{ c_int_long | money }}</span> Interets*</span>
+              <span>Total <span data-klx="totLong">{{ c_tot_long | money }}</span></span>
+            </div>
+          </div>
+
+          <div class="klx__plan">
+            <div class="klx__plan-head">{{ n_mid }} Paiements</div>
+            <div class="klx__plan-amount"><span data-klx="pmtMid">{{ c_pmt_mid | money }}</span> par mois</div>
+            <div class="klx__plan-foot">
+              <span><span data-klx="intMid">{{ c_int_mid | money }}</span> Interets*</span>
+              <span>Total <span data-klx="totMid">{{ c_tot_mid | money }}</span></span>
+            </div>
+          </div>
+
+          <div class="klx__plan">
+            <div class="klx__plan-head">Payer en {{ n_split }} fois</div>
+            <div class="klx__plan-amount"><span data-klx="pmtSplit">{{ c_pmt_split | money }}</span> tous les 30 jours</div>
+            <div class="klx__plan-foot">
+              <span class="klx__free">0,00 &euro; frais</span>
+              <span>Total <span data-klx="totSplit">{{ c_tot_split | money }}</span></span>
+            </div>
+          </div>
+
+          {%- if legal != blank -%}
+            <p class="klx__legal">{{ legal }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="klx__dialog-footer">
+          <button type="button" class="klx__cta" data-klx-close>Fermer</button>
+        </div>
       </div>
-    {%- endif -%}
+    </div>
   </div>
 
-  <script type="application/json" id="YuroInstalPrices-{{ uid }}">
+  <script type="application/json" id="KlxPrices-{{ uid }}">
     {
       {%- for v in product.variants -%}
         "{{ v.id }}": {{ v.price }}{%- unless forloop.last -%},{%- endunless -%}
@@ -67,84 +146,158 @@
   </script>
 
   {%- style -%}
-    .yuro-instal { font-size: 1.3rem; line-height: 1.4; }
-    .yuro-instal__row {
+    .klx { font-size: 1.4rem; }
+    .klx__bar {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      padding: 1rem 1.2rem;
-      border-radius: 8px;
+      gap: 1.4rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #e3e3e3;
+      border-radius: 6px;
+      background: #fff;
+      color: #111;
     }
-    .yuro-instal__badge {
+    .klx__logo {
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
-      height: 2.2rem;
-      padding: 0 0.8rem;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-      white-space: nowrap;
+      justify-content: center;
+      min-width: 6.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 7px;
+      background: #ffa8cd;
+      color: #17120f;
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
     }
-    .yuro-instal__text { flex: 1 1 auto; }
-    .yuro-instal__amount, .yuro-instal__n { font-weight: 600; white-space: nowrap; }
-    .yuro-instal__more {
-      background: none;
-      border: 0;
+    .klx__logo--lg { font-size: 2rem; padding: 0.9rem 1.8rem; border-radius: 10px; }
+    .klx__copy { flex: 1 1 auto; min-width: 0; }
+    .klx__line { margin: 0; font-size: 1.4rem; line-height: 1.4; color: #111; }
+    .klx__line strong { font-weight: 700; }
+    .klx__link {
+      margin-top: 0.2rem;
       padding: 0;
+      border: 0;
+      background: none;
       font: inherit;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
+      color: #111;
       text-decoration: underline;
       text-underline-offset: 2px;
       cursor: pointer;
-      opacity: 0.75;
-      color: inherit;
     }
-    .yuro-instal__more:hover { opacity: 1; }
-    .yuro-instal__info {
-      margin-top: 0.6rem;
-      padding: 1rem 1.2rem;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      opacity: 0.85;
-      background: rgba(var(--color-foreground), 0.04);
+
+    .klx__overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
     }
-    .yuro-instal--pink .yuro-instal__row { background: #ffb3c7; color: #0b051d; }
-    .yuro-instal--pink .yuro-instal__badge { background: #0b051d; color: #ffb3c7; }
-    .yuro-instal--light .yuro-instal__row {
-      background: rgba(var(--color-foreground), 0.04);
-      border: 1px solid rgba(var(--color-foreground), 0.1);
-      color: rgb(var(--color-foreground));
+    .klx__overlay[hidden] { display: none; }
+    .klx__dialog {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 46rem;
+      max-height: 88vh;
+      border-radius: 18px;
+      background: #fff;
+      color: #17120f;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
     }
-    .yuro-instal--light .yuro-instal__badge { background: #ffb3c7; color: #0b051d; }
-    .yuro-instal--dark .yuro-instal__row { background: #0b051d; color: #fff; }
-    .yuro-instal--dark .yuro-instal__badge { background: #ffb3c7; color: #0b051d; }
+    .klx__dialog-inner { overflow-y: auto; padding: 3.2rem 2.6rem 1rem; }
+    .klx__close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      z-index: 2;
+      display: inline-flex;
+      padding: 0.6rem;
+      border: 0;
+      border-radius: 50%;
+      background: none;
+      color: #17120f;
+      cursor: pointer;
+    }
+    .klx__title { margin: 1.8rem 0 0.8rem; font-size: 2.2rem; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; }
+    .klx__sub { margin: 0 0 2.4rem; font-size: 1.4rem; line-height: 1.5; color: #4a4a4a; }
+    .klx__plans-label { margin: 0 0 1.2rem; font-size: 1.6rem; font-weight: 600; }
+    .klx__plan {
+      border: 1px solid #e3e3e3;
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    .klx__plan-head { font-size: 1.35rem; color: #4a4a4a; }
+    .klx__plan-amount { margin: 0.2rem 0 0.6rem; font-size: 1.8rem; font-weight: 700; }
+    .klx__plan-foot { display: flex; justify-content: space-between; gap: 1rem; font-size: 1.25rem; color: #6b6b6b; }
+    .klx__free { color: #0e8a4a; }
+    .klx__legal { margin: 1.6rem 0 0; font-size: 1.15rem; line-height: 1.5; color: #8a8a8a; text-align: left; }
+    .klx__dialog-footer { padding: 1.6rem 2.6rem 2.2rem; background: #fff; }
+    .klx__cta {
+      width: 100%;
+      padding: 1.5rem;
+      border: 0;
+      border-radius: 999px;
+      background: #17120f;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    body.klx-open { overflow: hidden; }
+
+    @media screen and (max-width: 749px) {
+      .klx__dialog-inner { padding: 2.8rem 1.8rem 1rem; }
+      .klx__dialog-footer { padding: 1.4rem 1.8rem 1.8rem; }
+      .klx__title { font-size: 1.9rem; }
+    }
   {%- endstyle -%}
 
   <script>
     (function () {
       var uid = '{{ uid }}';
       var formId = '{{ form_id }}';
-      window.__yuroInstalBound = window.__yuroInstalBound || {};
-      if (window.__yuroInstalBound[uid]) return;
-      window.__yuroInstalBound[uid] = true;
+      window.__klxBound = window.__klxBound || {};
+      if (window.__klxBound[uid]) return;
+      window.__klxBound[uid] = true;
 
       var prices = {};
       try {
-        var raw = document.getElementById('YuroInstalPrices-' + uid);
+        var raw = document.getElementById('KlxPrices-' + uid);
         if (raw) prices = JSON.parse(raw.textContent);
       } catch (e) {}
 
-      var fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: '{{ cart.currency.iso_code | default: "EUR" }}' });
+      var iso = '{{ cart.currency.iso_code | default: "EUR" }}';
+      var money = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: iso });
+      var money0 = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: iso, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+      function root() { return document.getElementById('Klx-' + uid); }
+
+      function annuity(p, rate, n) {
+        if (!rate || rate <= 0) return p / n;
+        var f = Math.pow(1 + rate, n);
+        return (p * rate) / (1 - 1 / f);
+      }
+
+      function set(el, key, value) {
+        var node = el.querySelector('[data-klx="' + key + '"]');
+        if (node && node.textContent !== value) node.textContent = value;
+      }
 
       function sync() {
-        var root = document.getElementById('YuroInstal-' + uid);
-        if (!root) return;
-        var target = root.querySelector('[data-yuro-instal-amount]');
-        if (!target) return;
-
-        var n = parseInt(root.getAttribute('data-installments'), 10) || 4;
+        var el = root();
+        if (!el) return;
 
         var input = null;
         if (formId) input = document.querySelector('#' + formId + ' input[name="id"]');
@@ -154,24 +307,74 @@
         var cents = prices[input.value];
         if (!cents) return;
 
-        var next = fmt.format(cents / n / 100);
-        if (target.textContent.trim() !== next) target.textContent = next;
+        var p = cents / 100;
+        var nLong = parseInt(el.getAttribute('data-n-long'), 10) || 12;
+        var nMid = parseInt(el.getAttribute('data-n-mid'), 10) || 6;
+        var nSplit = parseInt(el.getAttribute('data-n-split'), 10) || 3;
+        var rate = (parseFloat(el.getAttribute('data-rate')) || 0) / 100;
+
+        var pmtLong = annuity(p, rate, nLong);
+        var pmtMid = annuity(p, rate, nMid);
+        var totLong = pmtLong * nLong;
+        var totMid = pmtMid * nMid;
+
+        set(el, 'from', money0.format(Math.round(pmtLong)));
+        set(el, 'pmtLong', money.format(pmtLong));
+        set(el, 'intLong', money.format(totLong - p));
+        set(el, 'totLong', money.format(totLong));
+        set(el, 'pmtMid', money.format(pmtMid));
+        set(el, 'intMid', money.format(totMid - p));
+        set(el, 'totMid', money.format(totMid));
+        set(el, 'pmtSplit', money.format(p / nSplit));
+        set(el, 'totSplit', money.format(p));
       }
+
+      function overlay() {
+        var el = root();
+        return el ? el.querySelector('[data-klx-overlay]') : null;
+      }
+
+      function open() {
+        var o = overlay();
+        if (!o) return;
+        o.removeAttribute('hidden');
+        document.body.classList.add('klx-open');
+      }
+
+      function close() {
+        var o = overlay();
+        if (!o) return;
+        o.setAttribute('hidden', '');
+        document.body.classList.remove('klx-open');
+      }
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest) return;
+        var el = root();
+        if (!el) return;
+
+        if (e.target.closest('#Klx-' + uid + ' [data-klx-open]')) {
+          e.preventDefault();
+          open();
+          return;
+        }
+        if (e.target.closest('#Klx-' + uid + ' [data-klx-close]')) {
+          e.preventDefault();
+          close();
+          return;
+        }
+        var o = overlay();
+        if (o && !o.hasAttribute('hidden') && e.target === o) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
 
       document.addEventListener('change', function () { setTimeout(sync, 300); }, true);
       document.addEventListener('variant:change', function () { setTimeout(sync, 300); }, true);
-
-      document.addEventListener('click', function (e) {
-        var btn = e.target.closest ? e.target.closest('#YuroInstal-' + uid + ' .yuro-instal__more') : null;
-        if (!btn) return;
-        var panel = document.getElementById('YuroInstalInfo-' + uid);
-        if (!panel) return;
-        var open = panel.hasAttribute('hidden');
-        if (open) { panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden', ''); }
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-
       setInterval(sync, 1200);
+      sync();
     })();
   </script>
 {%- endif -%}
