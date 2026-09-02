@@ -35,10 +35,12 @@
     product: product,
     uid: block.id,
     form_id: product_form_id,
-    client_id: block.settings.klarna_client_id,
-    placement_key: block.settings.klarna_placement_key,
-    locale: block.settings.klarna_locale,
-    placement_theme: block.settings.klarna_theme,
+    installments: block.settings.klarna_installments,
+    text_before: block.settings.klarna_text_before,
+    text_after: block.settings.klarna_text_after,
+    show_info: block.settings.klarna_show_info,
+    info_text: block.settings.klarna_info_text,
+    style: block.settings.klarna_style,
     margin_top: block.settings.klarna_margin_top
   -%}
 {%- endif -%}
@@ -119,58 +121,69 @@
     },
     {
       "type": "header",
-      "content": "Klarna",
-      "info": "Affiche le message officiel Klarna (paiement en plusieurs fois) juste sous le bouton d'achat."
+      "content": "Paiement en plusieurs fois",
+      "info": "Bloc d'affichage seul, affiche sous le bouton d'achat. Le montant se recalcule selon la variante."
     },
     {
       "type": "checkbox",
       "id": "klarna_enable",
-      "label": "Afficher le message Klarna",
+      "label": "Afficher le bloc",
       "default": false
     },
     {
-      "type": "text",
-      "id": "klarna_client_id",
-      "label": "Klarna Client ID",
-      "info": "Klarna Merchant Portal > On-site messaging > Client ID. Sans cet ID, rien ne s'affiche.",
-      "visible_if": "{{ block.settings.klarna_enable == true }}"
-    },
-    {
-      "type": "select",
-      "id": "klarna_placement_key",
-      "label": "Style du message",
-      "options": [
-        { "value": "credit-promotion-auto-size", "label": "Texte + logo (auto-size)" },
-        { "value": "credit-promotion-badge", "label": "Badge avec logo Klarna" },
-        { "value": "credit-promotion-small", "label": "Version compacte" }
-      ],
-      "default": "credit-promotion-auto-size",
+      "type": "range",
+      "id": "klarna_installments",
+      "label": "Nombre de mensualites",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
       "type": "text",
-      "id": "klarna_locale",
-      "label": "Locale",
-      "default": "fr-FR",
-      "info": "Langue et pays de facturation, par exemple fr-FR.",
+      "id": "klarna_text_before",
+      "label": "Texte avant le montant",
+      "default": "Payez en",
+      "visible_if": "{{ block.settings.klarna_enable == true }}"
+    },
+    {
+      "type": "text",
+      "id": "klarna_text_after",
+      "label": "Texte apres le montant",
+      "default": "sans frais",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
     },
     {
       "type": "select",
-      "id": "klarna_theme",
-      "label": "Theme du widget",
+      "id": "klarna_style",
+      "label": "Style",
       "options": [
-        { "value": "default", "label": "Par defaut (clair)" },
-        { "value": "dark", "label": "Sombre" },
-        { "value": "custom", "label": "Personnalise (CSS)" }
+        { "value": "pink", "label": "Fond rose Klarna" },
+        { "value": "light", "label": "Discret (fond clair)" },
+        { "value": "dark", "label": "Fond sombre" }
       ],
-      "default": "default",
+      "default": "pink",
       "visible_if": "{{ block.settings.klarna_enable == true }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "klarna_show_info",
+      "label": "Afficher le lien En savoir plus",
+      "default": true,
+      "visible_if": "{{ block.settings.klarna_enable == true }}"
+    },
+    {
+      "type": "richtext",
+      "id": "klarna_info_text",
+      "label": "Texte du depliant",
+      "default": "<p>Reglez votre commande en plusieurs echeances sans frais. Le choix du paiement en plusieurs fois se fait a l'etape de paiement, sous reserve d'acceptation.</p>",
+      "visible_if": "{{ block.settings.klarna_enable == true and block.settings.klarna_show_info == true }}"
     },
     {
       "type": "range",
       "id": "klarna_margin_top",
-      "label": "Espace au-dessus du message Klarna",
+      "label": "Espace au-dessus du bloc",
       "min": 0,
       "max": 45,
       "step": 3,
