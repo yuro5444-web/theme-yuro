@@ -43,7 +43,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "You may also like",
+        "title": "Dans le même atelier",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -93,6 +93,7 @@
         "email-form"
       ],
       "settings": {
+        "button_label": "S'inscrire",
         "color_scheme": "background-2",
         "full_width": true,
         "padding_top": 68,

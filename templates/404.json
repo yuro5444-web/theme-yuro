@@ -42,6 +42,7 @@
         "email-form"
       ],
       "settings": {
+        "button_label": "S'inscrire",
         "color_scheme": "background-2",
         "full_width": true,
         "padding_top": 68,
