@@ -1955,132 +1955,223 @@ hr {
 
 
 /* ------------------------------------------------------------------
-   25. Le plan de la lame
-   Plan d'atelier annote : le couteau entier en elevation, six reperes
-   relies a leur piece par une ligne de rappel. Remplace la vue eclatee,
-   dont l'image ne portait pas ses propres legendes, notamment la soie qui
-   n'y figurait pas.
+   26. L'anatomie, vue photographique annotee
+   Remplace le plan au trait : une photo du couteau porte mieux le desir
+   qu'un dessin, et les quatre reperes portent leur texte au lieu d'un
+   simple nom, donc la liste separee en dessous n'a plus lieu d'etre.
+   Trois cartes de detail ferment la section.
 
-   Les coordonnees --x et --y sont en pourcentage de l'image, jamais en
-   pixels : le dessin se redimensionne, les reperes suivent.
+   Comme pour le plan, --x et --y sont en pourcentage de l'image, jamais
+   en pixels : la photo se redimensionne, les reperes suivent.
    ------------------------------------------------------------------ */
 
-/* Marge laterale de 4rem : l'etiquette du culot est ancree a 97 % de la
-   largeur, elle deborde sinon du cadre. */
-.da-plan {
-  margin: 0;
-  padding: 6.4rem 4rem;
+.da-anato { padding-block: clamp(4rem, 7vw, 8rem); }
+
+.da-anato__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0 0 1.8rem;
+  text-wrap: balance;
 }
 
-.da-plan__zone {
-  position: relative;
+.da-anato__chapo {
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--da-cendre);
+  text-align: center;
+  max-width: 52ch;
+  margin: 0 auto clamp(8rem, 11vw, 14rem);
 }
 
-.da-plan__vue {
+/* --- la photo et ses quatre reperes --- */
+.da-anato__vue { position: relative; margin: 0; }
+
+.da-anato__photo {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.da-plan__annot {
+.da-anato__rep {
   position: absolute;
   left: var(--x);
-  transform: translateX(-50%);
+  width: 26rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   pointer-events: none;
 }
 
-.da-plan__annot--haut {
-  top: -5.2rem;
-  height: calc(var(--y) + 5.2rem);
+/* Les blocs debordent volontairement au-dessus et en dessous de la photo :
+   la section reserve la place, la photo reste la seule reference des
+   coordonnees --y. */
+.da-anato__rep--haut {
+  top: -12rem;
+  height: calc(var(--y) + 12rem);
 }
 
-.da-plan__annot--bas {
+.da-anato__rep--bas {
   top: var(--y);
-  bottom: -5.2rem;
+  bottom: -13rem;
   flex-direction: column-reverse;
 }
 
-.da-plan__etiq {
+/* Les reperes de gauche poussent leur texte a gauche du trait, ceux de
+   droite a droite, sinon les blocs se chevauchent au centre. */
+.da-anato__rep--g { transform: translateX(-100%); align-items: flex-end; text-align: right; }
+.da-anato__rep--d { align-items: flex-start; }
+
+.da-anato__bloc {
   display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: var(--da-mono);
-  font-size: 1.1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--da-os);
-  white-space: nowrap;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding-inline: 1.6rem;
 }
 
-.da-plan__annot--haut .da-plan__etiq { margin-bottom: 0.9rem; }
-.da-plan__annot--bas  .da-plan__etiq { margin-top: 0.9rem; }
+.da-anato__rep--g .da-anato__bloc { flex-direction: row-reverse; }
 
-.da-plan__num {
-  width: 1.9rem;
-  height: 1.9rem;
+.da-anato__n {
   flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
   display: grid;
   place-items: center;
-  border: 1px solid var(--da-trempe);
-  color: var(--da-trempe);
+  border: 1px solid var(--da-filet-net);
+  color: var(--da-os);
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
   font-style: normal;
-  font-size: 1.05rem;
   line-height: 1;
 }
 
-/* La ligne de rappel s'etire jusqu'a la piece : c'est elle qui porte
-   l'ancrage, d'ou le flex: 1. */
-.da-plan__trait {
-  flex: 1;
-  width: 1px;
-  background: var(--da-filet-net);
-  position: relative;
+.da-anato__nom {
+  display: block;
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-os);
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
 }
 
-/* Le carre d'ancrage est positionne en absolu au bout du trait cote piece.
-   Une marge en pourcentage se resoudrait sur la largeur du trait, un pixel,
-   et non sur sa hauteur. */
-.da-plan__trait::after {
+.da-anato__dit {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  font-style: normal;
+  color: var(--da-cendre);
+}
+
+.da-anato__trait {
+  flex: 1;
+  width: 1px;
+  min-height: 2.4rem;
+  background: var(--da-filet-net);
+  position: relative;
+  margin-block: 1rem;
+}
+
+.da-anato__rep--g .da-anato__trait { align-self: flex-end; margin-right: 1.6rem; }
+.da-anato__rep--d .da-anato__trait { align-self: flex-start; margin-left: 1.6rem; }
+
+.da-anato__trait::after {
   content: "";
   position: absolute;
   left: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
-  background: var(--da-trempe);
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--da-trempe);
+  background: var(--da-encre);
 }
 
-.da-plan__annot--haut .da-plan__trait::after {
+.da-anato__rep--haut .da-anato__trait::after { bottom: 0; transform: translate(-50%, 50%); }
+.da-anato__rep--bas  .da-anato__trait::after { top: 0;    transform: translate(-50%, -50%); }
+
+/* --- les trois cartes de detail --- */
+.da-anato__detail {
+  margin-top: clamp(9.6rem, 13vw, 17rem);
+}
+
+.da-anato__surtitre {
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+  text-align: center;
+  margin: 0 0 clamp(2.8rem, 4vw, 4rem);
+}
+
+.da-anato__cartes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.6rem, 2.4vw, 2.8rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.da-anato__carte { position: relative; overflow: hidden; }
+
+.da-anato__carte img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.da-anato__legende {
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
-  transform: translate(-50%, 50%);
+  padding: 2.4rem 2.2rem 2rem;
+  background: linear-gradient(to top, rgba(15, 14, 13, 0.96) 0%, rgba(15, 14, 13, 0.86) 45%, rgba(15, 14, 13, 0) 100%);
 }
 
-.da-plan__annot--bas .da-plan__trait::after {
-  top: 0;
-  transform: translate(-50%, -50%);
+.da-anato__carte-nom {
+  display: block;
+  font-family: var(--da-mono);
+  font-size: 1.25rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--da-os);
+  margin-bottom: 0.6rem;
 }
 
-/* En dessous de 990 px la lame devient trop courte pour porter six
-   etiquettes lisibles. Le dessin reste, la liste numerotee en dessous
-   porte seule l'information. */
-@media screen and (max-width: 989px) {
-  .da-plan { padding: 2.4rem 0; }
-  .da-plan__annot { display: none; }
+.da-anato__carte-dit {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--da-cendre);
 }
 
-
-/* La liste des pieces passe sous le plan, donc sur toute la largeur :
-   deux colonnes a partir de 990 px, sinon les lignes s'etirent trop. */
-.da-anat__liste--large {
-  margin-top: clamp(3.2rem, 5vw, 4.8rem);
-}
-
-@media screen and (min-width: 990px) {
-  .da-anat__liste--large {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 6.4rem;
-    row-gap: 0;
+/* En dessous de 1100 px la lame est trop courte pour porter quatre blocs
+   de texte. Les reperes deviennent une liste sous la photo. */
+@media screen and (max-width: 1099px) {
+  .da-anato__rep {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding-block: 1.8rem;
+    border-top: 1px solid var(--da-filet);
   }
+  .da-anato__rep--g .da-anato__bloc { flex-direction: row; }
+  .da-anato__bloc { padding-inline: 0; }
+  .da-anato__trait { display: none; }
+  .da-anato__vue { display: grid; }
+  .da-anato__photo { margin-bottom: 3.2rem; }
+  .da-anato__cartes { grid-template-columns: 1fr; }
 }
