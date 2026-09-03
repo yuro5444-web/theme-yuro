@@ -1952,3 +1952,135 @@ hr {
   line-height: 1.5;
   color: rgba(var(--color-foreground), 0.78);
 }
+
+
+/* ------------------------------------------------------------------
+   25. Le plan de la lame
+   Plan d'atelier annote : le couteau entier en elevation, six reperes
+   relies a leur piece par une ligne de rappel. Remplace la vue eclatee,
+   dont l'image ne portait pas ses propres legendes, notamment la soie qui
+   n'y figurait pas.
+
+   Les coordonnees --x et --y sont en pourcentage de l'image, jamais en
+   pixels : le dessin se redimensionne, les reperes suivent.
+   ------------------------------------------------------------------ */
+
+/* Marge laterale de 4rem : l'etiquette du culot est ancree a 97 % de la
+   largeur, elle deborde sinon du cadre. */
+.da-plan {
+  margin: 0;
+  padding: 6.4rem 4rem;
+}
+
+.da-plan__zone {
+  position: relative;
+}
+
+.da-plan__vue {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.da-plan__annot {
+  position: absolute;
+  left: var(--x);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.da-plan__annot--haut {
+  top: -5.2rem;
+  height: calc(var(--y) + 5.2rem);
+}
+
+.da-plan__annot--bas {
+  top: var(--y);
+  bottom: -5.2rem;
+  flex-direction: column-reverse;
+}
+
+.da-plan__etiq {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--da-os);
+  white-space: nowrap;
+}
+
+.da-plan__annot--haut .da-plan__etiq { margin-bottom: 0.9rem; }
+.da-plan__annot--bas  .da-plan__etiq { margin-top: 0.9rem; }
+
+.da-plan__num {
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--da-trempe);
+  color: var(--da-trempe);
+  font-style: normal;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+/* La ligne de rappel s'etire jusqu'a la piece : c'est elle qui porte
+   l'ancrage, d'ou le flex: 1. */
+.da-plan__trait {
+  flex: 1;
+  width: 1px;
+  background: var(--da-filet-net);
+  position: relative;
+}
+
+/* Le carre d'ancrage est positionne en absolu au bout du trait cote piece.
+   Une marge en pourcentage se resoudrait sur la largeur du trait, un pixel,
+   et non sur sa hauteur. */
+.da-plan__trait::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--da-trempe);
+}
+
+.da-plan__annot--haut .da-plan__trait::after {
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+
+.da-plan__annot--bas .da-plan__trait::after {
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* En dessous de 990 px la lame devient trop courte pour porter six
+   etiquettes lisibles. Le dessin reste, la liste numerotee en dessous
+   porte seule l'information. */
+@media screen and (max-width: 989px) {
+  .da-plan { padding: 2.4rem 0; }
+  .da-plan__annot { display: none; }
+}
+
+
+/* La liste des pieces passe sous le plan, donc sur toute la largeur :
+   deux colonnes a partir de 990 px, sinon les lignes s'etirent trop. */
+.da-anat__liste--large {
+  margin-top: clamp(3.2rem, 5vw, 4.8rem);
+}
+
+@media screen and (min-width: 990px) {
+  .da-anat__liste--large {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6.4rem;
+    row-gap: 0;
+  }
+}
