@@ -1633,3 +1633,21 @@ hr {
   .da-repere__note { font-size: 1.2rem; max-width: 18ch; }
   .da-dispo { font-size: 1.25rem; padding: 1.2rem 1.4rem; }
 }
+
+/* Les liens du theme ne sont soulignes qu'au survol. Dans la description
+   produit, cela rend 'Voir comment on le forge' indistinguable du texte
+   courant : personne ne clique sur ce qui ne ressemble pas a un lien. */
+.product__description a,
+.da-args a,
+.da-anat a {
+  color: var(--da-trempe);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.product__description a:hover,
+.da-args a:hover,
+.da-anat a:hover {
+  color: var(--da-os);
+}
