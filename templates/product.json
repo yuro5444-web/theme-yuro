@@ -12,6 +12,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "da_reperes": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- comment -%}\n  Trois reperes visuels, fiche produit.\n\n  Places entre la mention Klarna et le bouton d'achat : c'est la que se\n  prend la decision. Le texte est volontairement identique sur les six\n  produits, les trois faits enonces etant vrais pour toute la gamme. Cela\n  evite de maintenir six variantes et d'y glisser une erreur, notamment\n  sur le Deba qui est trempe a 60 HRC et affute a 17 degres.\n\n  Pictogrammes dessines pour la marque, au trait, monochromes, herites de\n  currentColor. Pas de police d'icones tierce.\n{%- endcomment -%}\n<ul class=\"da-reperes\">\n  <li class=\"da-repere\">\n    <svg class=\"da-repere__ico\" viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.15\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\">\n      <path d=\"M17 13 H47\"/>\n      <path d=\"M17 13 L32 53 L47 13\"/>\n      <path d=\"M32 13 V53\"/>\n      <path d=\"M24 13 L32 36\"/>\n      <path d=\"M40 13 L32 36\"/>\n    </svg>\n    <p class=\"da-repere__titre\">Âme VG-10</p>\n    <p class=\"da-repere__note\">Le fil tient des mois</p>\n  </li>\n  <li class=\"da-repere\">\n    <svg class=\"da-repere__ico\" viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.15\" aria-hidden=\"true\" focusable=\"false\">\n      <path d=\"M11 19 C18 14 25 24 32 19 C39 14 46 24 53 19\"/>\n      <path d=\"M11 27 C18 22 25 32 32 27 C39 22 46 32 53 27\"/>\n      <path d=\"M11 35 C18 30 25 40 32 35 C39 30 46 40 53 35\"/>\n      <path d=\"M11 43 C18 38 25 48 32 43 C39 38 46 48 53 43\"/>\n      <path d=\"M11 51 C18 46 25 56 32 51 C39 46 46 56 53 51\"/>\n    </svg>\n    <p class=\"da-repere__titre\">Soixante-sept couches</p>\n    <p class=\"da-repere__note\">Un motif par lame, jamais deux fois</p>\n  </li>\n  <li class=\"da-repere\">\n    <svg class=\"da-repere__ico\" viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.15\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\">\n      <path d=\"M12 26 L54 23 L54 41 L12 38 Z\"/>\n      <path d=\"M19 25.5 V38.5\"/>\n      <path d=\"M47 23.2 V40.8\"/>\n      <path d=\"M6 32 H12\"/>\n    </svg>\n    <p class=\"da-repere__titre\">Bois stabilisé, mitre laiton</p>\n    <p class=\"da-repere__note\">L'équilibre tombe sous la main</p>\n  </li>\n</ul>"
+          }
+        },
+        "da_dispo": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- comment -%}\n  Disponibilite et fenetre de livraison estimee.\n\n  Le suivi de stock est desactive sur la boutique, product.available est\n  donc toujours vrai. La mention reste conditionnee a Shopify pour ne pas\n  annoncer un stock sur un produit retire, et n'est jamais accompagnee\n  d'un compte a rebours.\n\n  Fenetre calculee a +5 et +8 jours calendaires depuis la visite, chaque\n  borne repoussee au lundi si elle tombe un samedi ou un dimanche. Cela\n  correspond aux trois jours ouvres d'expedition annonces, plus le transit.\n  Le mot \"estimee\" est volontaire : ce n'est pas un engagement de date.\n\n  Les noms de jours sont ecrits en dur parce que le filtre date de Liquid\n  rend les jours en anglais quelle que soit la langue de la boutique.\n{%- endcomment -%}\n{%- liquid\n  assign jours = 'dimanche,lundi,mardi,mercredi,jeudi,vendredi,samedi' | split: ','\n  assign base = 'now' | date: '%s' | times: 1\n  assign t1 = base | plus: 432000\n  assign w1 = t1 | date: '%w' | times: 1\n  if w1 == 6\n    assign t1 = t1 | plus: 172800\n  elsif w1 == 0\n    assign t1 = t1 | plus: 86400\n  endif\n  assign w1 = t1 | date: '%w' | times: 1\n  assign t2 = base | plus: 691200\n  assign w2 = t2 | date: '%w' | times: 1\n  if w2 == 6\n    assign t2 = t2 | plus: 172800\n  elsif w2 == 0\n    assign t2 = t2 | plus: 86400\n  endif\n  assign w2 = t2 | date: '%w' | times: 1\n-%}\n{%- if product.available -%}\n  <p class=\"da-dispo\">\n    <span class=\"da-dispo__point\" aria-hidden=\"true\"></span>\n    <span class=\"da-dispo__etat\">En stock</span>\n    <span class=\"da-dispo__delai\">Expédiée sous trois jours ouvrés, livraison estimée entre le <strong>{{ jours[w1] }} {{ t1 | date: '%d/%m' }}</strong> et le <strong>{{ jours[w2] }} {{ t2 | date: '%d/%m' }}</strong></span>\n  </p>\n{%- endif -%}"
+          }
+        },
         "title": {
           "type": "product_title",
           "settings": {
@@ -416,8 +428,10 @@
         "price",
         "description",
         "5fcc0428-e768-4cb7-bea3-eb0274198dd1",
-        "buy_buttons",
         "da_klarna",
+        "da_reperes",
+        "da_dispo",
+        "buy_buttons",
         "da_promesses",
         "da_specs",
         "de158e68-5d0d-4819-a625-e2dabdff87d1",
