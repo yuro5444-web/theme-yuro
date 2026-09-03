@@ -1750,3 +1750,59 @@ hr {
   .da-engage__second { margin-top: 2.4rem; padding-top: 2.4rem; }
   .da-engage__faits { font-size: 1rem; letter-spacing: 0.06em; }
 }
+
+
+/* ------------------------------------------------------------------
+   23. Pages de service
+   Visuels pleine largeur et legendes dans le corps d'une page Shopify.
+   Le contenu de page est rendu dans .rte, limite a --da-mesure : les
+   visuels doivent pouvoir en sortir.
+   ------------------------------------------------------------------ */
+
+.da-service__visuel {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: clamp(3.2rem, 5vw, 4.8rem) 0 1.2rem;
+  background: var(--da-suie);
+}
+
+.da-service__legende {
+  font-family: var(--da-mono);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--da-cendre);
+  margin: 0 0 clamp(3.2rem, 5vw, 4.8rem);
+}
+
+.da-service__cle {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.da-service__cle li {
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--da-filet);
+}
+
+.da-service__cle li:last-child { border-bottom: 1px solid var(--da-filet); }
+
+.da-service__cle strong {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.da-service__note {
+  border-left: 2px solid var(--da-trempe);
+  padding: 0.4rem 0 0.4rem 1.8rem;
+  margin: 2.8rem 0;
+}
+
+.da-service__note p { margin: 0; }
