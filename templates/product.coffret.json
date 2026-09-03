@@ -113,36 +113,17 @@
           },
           "blocks": {}
         },
-        "e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5": {
-          "type": "product_sticky-atc",
+        "da_klarna": {
+          "type": "custom-liquid",
           "settings": {
-            "function": "add_to_cart",
-            "display_when": "after_scroll",
-            "button_label": "Ajouter au panier",
-            "enable_custom_btn_color": false,
-            "custom_btn_color": "#dd1d1d",
-            "color_scheme": "background-1",
-            "star_color": "#ffcc00",
-            "stars_label": "",
-            "picker_type": "combined",
-            "desktop_show_image": true,
-            "desktop_show_title": true,
-            "desktop_rating_stars": false,
-            "desktop_show_price": true,
-            "desktop_show_sale_badge": true,
-            "desktop_variant_picker": true,
-            "desktop_full_button_width": false,
-            "desktop_show_price_in_button": false,
-            "desktop_transparent_bg": false,
-            "mobile_show_image": false,
-            "mobile_show_title": true,
-            "mobile_rating_stars": false,
-            "mobile_show_price": true,
-            "mobile_show_sale_badge": false,
-            "mobile_variant_picker": false,
-            "mobile_full_button_width": false,
-            "mobile_show_price_in_button": false,
-            "mobile_transparent_bg": false
+            "custom_liquid": "{%- comment -%}\n  Mention Klarna, fiche produit.\n\n  Pourquoi ce bloc manuel et non l'app Klarna On-Site Messaging :\n  Klarna est active ici via Shopify Payments (Moyens de paiement locaux).\n  Dans cette configuration le contrat Klarna est porte par Shopify, la\n  boutique n'a donc aucun Merchant ID propre. Or l'app On-Site Messaging\n  exige un MID actif : elle ne peut pas se connecter, quoi qu'on saisisse.\n  Ne pas reinstaller l'app en esperant un autre resultat.\n\n  Limite au 3x sans frais a dessein : une mention mensualisee releve du\n  credit a la consommation et impose des mentions legales.\n{%- endcomment -%}\n{%- liquid\n  assign variant = product.selected_or_first_available_variant\n  assign price = variant.price\n  assign part = price | divided_by: 3\n-%}\n{%- if price > 0 -%}\n  <div class=\"da-klarna\">\n    <span class=\"da-klarna__badge\">Klarna</span>\n    <span class=\"da-klarna__text\">\n      Ou <strong>3 paiements sans frais</strong> à partir de {{ part | money }},\n      ou payez sous 30 jours.\n      <a href=\"https://www.klarna.com/fr/\" target=\"_blank\" rel=\"noopener nofollow\">En savoir plus</a>\n    </span>\n  </div>\n{%- endif -%}"
+          },
+          "blocks": {}
+        },
+        "da_promesses": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Garantie à vie</span><span class=\"da-promesses__val\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, et nous remplaçons si la réparation est impossible.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Expédiée sous trois jours</span><span class=\"da-promesses__val\">Contrôlée et affûtée à la main avant le départ.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
           },
           "blocks": {}
         },
@@ -151,6 +132,13 @@
           "settings": {
             "margin_top": 24,
             "margin_bottom": 24
+          },
+          "blocks": {}
+        },
+        "da_specs": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid\n  assign s = product.metafields.specs\n-%}\n{%- capture rows -%}\n  {%- if s.acier != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Acier</span><span class=\"da-specs__value\">{{ s.acier }}</span></li>{%- endif -%}\n  {%- if s.couches != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Couches</span><span class=\"da-specs__value\">{{ s.couches }}</span></li>{%- endif -%}\n  {%- if s.durete_hrc != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Dureté</span><span class=\"da-specs__value\">{{ s.durete_hrc }}</span></li>{%- endif -%}\n  {%- if s.angle != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Angle d'affûtage</span><span class=\"da-specs__value\">{{ s.angle }}</span></li>{%- endif -%}\n  {%- if s.longueur_lame != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Longueur de lame</span><span class=\"da-specs__value\">{{ s.longueur_lame }}</span></li>{%- endif -%}\n  {%- if s.poids != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Poids</span><span class=\"da-specs__value\">{{ s.poids }}</span></li>{%- endif -%}\n  {%- if s.manche != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Manche</span><span class=\"da-specs__value\">{{ s.manche }}</span></li>{%- endif -%}\n{%- endcapture -%}\n{%- if rows != blank -%}\n  <ul class=\"da-specs\">{{ rows }}</ul>\n{%- endif -%}"
           },
           "blocks": {}
         },
@@ -188,10 +176,10 @@
             "open_state_border": "#d5aeea",
             "open_state_header_bg": "#fefaff",
             "open_state_header_text": "#000000",
-            "open_state_row_icon": "#A9BEC6",
+            "open_state_row_icon": "#a9bec6",
             "open_state_collapse_icon": "#121212",
             "open_state_collapse_icon_solid": "#ffffff",
-            "open_state_collapse_bg": "#DCD7CF",
+            "open_state_collapse_bg": "#dcd7cf",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
             "content": "<p>Lavez la lame à la main, à l'eau tiède, et séchez-la immédiatement. Le damas n'est pas inoxydable : l'eau qui stagne le marque.</p><p>Jamais au lave-vaisselle, jamais laissée dans l'évier.</p><p>Un passage sur pierre 1000 puis 6000 tous les deux à trois mois suffit à garder le fil. Si vous préférez ne pas vous en occuper, renvoyez-nous la lame : l'affûtage est gratuit à vie.</p>",
@@ -200,12 +188,6 @@
             "margin_bottom": 0
           },
           "blocks": {}
-        },
-        "da_specs": {
-          "type": "custom-liquid",
-          "settings": {
-            "custom_liquid": "{%- liquid\n  assign s = product.metafields.specs\n-%}\n{%- capture rows -%}\n  {%- if s.acier != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Acier</span><span class=\"da-specs__value\">{{ s.acier }}</span></li>{%- endif -%}\n  {%- if s.couches != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Couches</span><span class=\"da-specs__value\">{{ s.couches }}</span></li>{%- endif -%}\n  {%- if s.durete_hrc != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Dureté</span><span class=\"da-specs__value\">{{ s.durete_hrc }}</span></li>{%- endif -%}\n  {%- if s.angle != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Angle d'affûtage</span><span class=\"da-specs__value\">{{ s.angle }}</span></li>{%- endif -%}\n  {%- if s.longueur_lame != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Longueur de lame</span><span class=\"da-specs__value\">{{ s.longueur_lame }}</span></li>{%- endif -%}\n  {%- if s.poids != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Poids</span><span class=\"da-specs__value\">{{ s.poids }}</span></li>{%- endif -%}\n  {%- if s.manche != blank -%}<li class=\"da-specs__row\"><span class=\"da-specs__key\">Manche</span><span class=\"da-specs__value\">{{ s.manche }}</span></li>{%- endif -%}\n{%- endcapture -%}\n{%- if rows != blank -%}\n  <ul class=\"da-specs\">{{ rows }}</ul>\n{%- endif -%}"
-          }
         },
         "recu": {
           "type": "collapsible-row",
@@ -241,17 +223,18 @@
             "open_state_border": "#d5aeea",
             "open_state_header_bg": "#fefaff",
             "open_state_header_text": "#000000",
-            "open_state_row_icon": "#A9BEC6",
+            "open_state_row_icon": "#a9bec6",
             "open_state_collapse_icon": "#121212",
             "open_state_collapse_icon_solid": "#ffffff",
-            "open_state_collapse_bg": "#DCD7CF",
+            "open_state_collapse_bg": "#dcd7cf",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
             "content": "<p>Chaque lame du coffret arrive protégée dans son étui carton rigide et son linge huilé, accompagnée de la notice d'entretien. Pas de mallette superflue : l'emballage sert à protéger, pas à gonfler le prix.</p><p>Chaque lame part avec son numéro de série gravé sur la soie, sous le manche.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
         "livraison": {
           "type": "collapsible-row",
@@ -287,69 +270,18 @@
             "open_state_border": "#d5aeea",
             "open_state_header_bg": "#fefaff",
             "open_state_header_text": "#000000",
-            "open_state_row_icon": "#A9BEC6",
+            "open_state_row_icon": "#a9bec6",
             "open_state_collapse_icon": "#121212",
             "open_state_collapse_icon_solid": "#ffffff",
-            "open_state_collapse_bg": "#DCD7CF",
+            "open_state_collapse_bg": "#dcd7cf",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
             "content": "<p>Expédition sous trois jours ouvrés depuis l'atelier. Livraison incluse en France et dans trente pays européens, sans montant minimum.</p><p>Trente jours pour changer d'avis. La lame doit revenir non affûtée et non utilisée sur planche. Retour à notre charge.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
-          }
-        },
-        "garantie": {
-          "type": "collapsible-row",
-          "settings": {
-            "open": false,
-            "heading": "Affûtage gratuit à vie",
-            "heading_size": "medium",
-            "icon": "check_box",
-            "filled_icon": false,
-            "collapse_icon": "carret",
-            "collapse_icon_style": "standard",
-            "collapse_icon_radius": 15,
-            "animation_speed": 0.4,
-            "border_type": "bottom",
-            "border_thickness": 1,
-            "border_style": "solid",
-            "corner_radius": 8,
-            "enable_custom_style": false,
-            "heading_padding_vertical": 12,
-            "heading_padding_horizontal": 10,
-            "content_padding_vertical": 10,
-            "content_padding_horizontal": 10,
-            "closed_state_border": "#dddddd",
-            "closed_state_header_bg": "#f9f9f9",
-            "closed_state_header_text": "#121212",
-            "closed_state_row_icon": "#121212",
-            "closed_state_collapse_icon": "#121212",
-            "closed_state_collapse_icon_solid": "#ffffff",
-            "closed_state_collapse_bg": "#121212",
-            "closed_state_content_bg": "#f9f9f9",
-            "closed_state_content_text": "#121212",
-            "open_colors_on_hover": true,
-            "open_state_border": "#d5aeea",
-            "open_state_header_bg": "#fefaff",
-            "open_state_header_text": "#000000",
-            "open_state_row_icon": "#A9BEC6",
-            "open_state_collapse_icon": "#121212",
-            "open_state_collapse_icon_solid": "#ffffff",
-            "open_state_collapse_bg": "#DCD7CF",
-            "open_state_content_bg": "#fefaff",
-            "open_state_content_text": "#121212",
-            "content": "<p>Vous nous renvoyez la lame quand elle ne coupe plus à votre goût, nous la remettons à quinze degrés par face et nous vous la retournons. Sans limite de temps, sans nombre de passages, sans condition d'usure.</p><p>Le seul cas exclu est la casse due à un usage hors cuisine : désosser au marteau, ouvrir une boîte, faire levier.</p>",
-            "page": "",
-            "margin_top": 24,
-            "margin_bottom": 0
-          }
-        },
-        "da_promesses": {
-          "type": "custom-liquid",
-          "settings": {
-            "custom_liquid": "<ul class=\"da-promesses\"><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Affûtage gratuit à vie</span><span class=\"da-promesses__val\">Vous renvoyez la lame quand elle ne coupe plus, nous la remettons à l'angle d'origine. Sans limite de durée ni nombre de passages, seul l'envoi est à votre charge.</span></li><li class=\"da-promesses__item da-promesses__item--phare\"><span class=\"da-promesses__cle\">Garantie à vie</span><span class=\"da-promesses__val\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, et nous remplaçons si la réparation est impossible.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Expédiée sous trois jours</span><span class=\"da-promesses__val\">Contrôlée et affûtée à la main avant le départ.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Livraison offerte</span><span class=\"da-promesses__val\">France et trente pays européens, sans minimum.</span></li><li class=\"da-promesses__item\"><span class=\"da-promesses__cle\">Trente jours</span><span class=\"da-promesses__val\">Pour changer d'avis, retour à notre charge.</span></li></ul>"
-          }
+          },
+          "blocks": {}
         },
         "garantie_vie": {
           "type": "collapsible-row",
@@ -385,31 +317,106 @@
             "open_state_border": "#d5aeea",
             "open_state_header_bg": "#fefaff",
             "open_state_header_text": "#000000",
-            "open_state_row_icon": "#A9BEC6",
+            "open_state_row_icon": "#a9bec6",
             "open_state_collapse_icon": "#121212",
             "open_state_collapse_icon_solid": "#ffffff",
-            "open_state_collapse_bg": "#DCD7CF",
+            "open_state_collapse_bg": "#dcd7cf",
             "open_state_content_bg": "#fefaff",
             "open_state_content_text": "#121212",
             "content": "<p>Nous garantissons chaque lame contre les défauts de fabrication aussi longtemps qu'elle vous appartient : décollement des couches, fissure dans l'acier, manche qui prend du jeu, corrosion apparue malgré un entretien normal. Nous réparons la lame, et si la réparation est impossible nous la remplaçons.</p><p>Ne sont pas couverts l'usure normale du fil, qui relève de l'affûtage gratuit, les éclats dus à un os, à un produit surgelé ou à une surface dure, les dégâts du lave-vaisselle, la rouille due à un rangement humide prolongé, et l'usage de la lame comme outil.</p><p>La garantie est nominative et ne se transmet pas à la revente. Le numéro de série gravé sur la soie identifie votre lame.</p><p>Cette garantie commerciale s'ajoute aux garanties légales dont vous bénéficiez de plein droit, la garantie légale de conformité de deux ans et la garantie contre les vices cachés. Elle ne les remplace pas et ne les limite pas.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
-        "da_klarna": {
-          "type": "custom-liquid",
+        "garantie": {
+          "type": "collapsible-row",
           "settings": {
-            "custom_liquid": "{%- comment -%}\n  Mention Klarna, fiche produit.\n\n  Pourquoi ce bloc manuel et non l'app Klarna On-Site Messaging :\n  Klarna est active ici via Shopify Payments (Moyens de paiement locaux).\n  Dans cette configuration le contrat Klarna est porte par Shopify, la\n  boutique n'a donc aucun Merchant ID propre. Or l'app On-Site Messaging\n  exige un MID actif : elle ne peut pas se connecter, quoi qu'on saisisse.\n  Ne pas reinstaller l'app en esperant un autre resultat.\n\n  Limite au 3x sans frais a dessein : une mention mensualisee releve du\n  credit a la consommation et impose des mentions legales.\n{%- endcomment -%}\n{%- liquid\n  assign variant = product.selected_or_first_available_variant\n  assign price = variant.price\n  assign part = price | divided_by: 3\n-%}\n{%- if price > 0 -%}\n  <div class=\"da-klarna\">\n    <span class=\"da-klarna__badge\">Klarna</span>\n    <span class=\"da-klarna__text\">\n      Ou <strong>3 paiements sans frais</strong> à partir de {{ part | money }},\n      ou payez sous 30 jours.\n      <a href=\"https://www.klarna.com/fr/\" target=\"_blank\" rel=\"noopener nofollow\">En savoir plus</a>\n    </span>\n  </div>\n{%- endif -%}"
-          }
+            "open": false,
+            "heading": "Affûtage gratuit à vie",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "collapse_icon_style": "standard",
+            "collapse_icon_radius": 15,
+            "animation_speed": 0.4,
+            "border_type": "bottom",
+            "border_thickness": 1,
+            "border_style": "solid",
+            "corner_radius": 8,
+            "enable_custom_style": false,
+            "heading_padding_vertical": 12,
+            "heading_padding_horizontal": 10,
+            "content_padding_vertical": 10,
+            "content_padding_horizontal": 10,
+            "closed_state_border": "#dddddd",
+            "closed_state_header_bg": "#f9f9f9",
+            "closed_state_header_text": "#121212",
+            "closed_state_row_icon": "#121212",
+            "closed_state_collapse_icon": "#121212",
+            "closed_state_collapse_icon_solid": "#ffffff",
+            "closed_state_collapse_bg": "#121212",
+            "closed_state_content_bg": "#f9f9f9",
+            "closed_state_content_text": "#121212",
+            "open_colors_on_hover": true,
+            "open_state_border": "#d5aeea",
+            "open_state_header_bg": "#fefaff",
+            "open_state_header_text": "#000000",
+            "open_state_row_icon": "#a9bec6",
+            "open_state_collapse_icon": "#121212",
+            "open_state_collapse_icon_solid": "#ffffff",
+            "open_state_collapse_bg": "#dcd7cf",
+            "open_state_content_bg": "#fefaff",
+            "open_state_content_text": "#121212",
+            "content": "<p>Vous nous renvoyez la lame quand elle ne coupe plus à votre goût, nous la remettons à quinze degrés par face et nous vous la retournons. Sans limite de temps, sans nombre de passages, sans condition d'usure.</p><p>Le seul cas exclu est la casse due à un usage hors cuisine : désosser au marteau, ouvrir une boîte, faire levier.</p>",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5": {
+          "type": "product_sticky-atc",
+          "settings": {
+            "function": "add_to_cart",
+            "display_when": "after_scroll",
+            "button_label": "Ajouter au panier",
+            "enable_custom_btn_color": false,
+            "custom_btn_color": "#dd1d1d",
+            "color_scheme": "background-1",
+            "star_color": "#ffcc00",
+            "stars_label": "",
+            "picker_type": "combined",
+            "desktop_show_image": true,
+            "desktop_show_title": true,
+            "desktop_rating_stars": false,
+            "desktop_show_price": true,
+            "desktop_show_sale_badge": true,
+            "desktop_variant_picker": true,
+            "desktop_full_button_width": false,
+            "desktop_show_price_in_button": false,
+            "desktop_transparent_bg": false,
+            "mobile_show_image": false,
+            "mobile_show_title": true,
+            "mobile_rating_stars": false,
+            "mobile_show_price": true,
+            "mobile_show_sale_badge": false,
+            "mobile_variant_picker": false,
+            "mobile_full_button_width": false,
+            "mobile_show_price_in_button": false,
+            "mobile_transparent_bg": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "title",
         "price",
         "5fcc0428-e768-4cb7-bea3-eb0274198dd1",
-        "da_klarna",
         "buy_buttons",
+        "da_klarna",
         "da_promesses",
         "description",
         "da_specs",
@@ -473,6 +480,166 @@
         "desktop_padding_bottom": 36
       }
     },
+    "contenu": {
+      "type": "custom-liquid",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "{%- liquid\n  assign items = product.metafields.pack.contenu.value\n-%}\n{%- if items != blank -%}\n<div class=\"page-width da-pack\">\n  <h2 class=\"da-pack__title\">Ce que contient le coffret</h2>\n  <ul class=\"da-pack__list da-pack__list--{{ items.size }}\">\n    {%- for item in items -%}\n      <li class=\"da-pack__item\">\n        <a class=\"da-pack__link\" href=\"{{ item.url }}\">\n          {%- if item.featured_image != blank -%}\n            <img class=\"da-pack__img\"\n                 src=\"{{ item.featured_image | image_url: width: 600 }}\"\n                 srcset=\"{{ item.featured_image | image_url: width: 400 }} 400w, {{ item.featured_image | image_url: width: 600 }} 600w, {{ item.featured_image | image_url: width: 900 }} 900w\"\n                 sizes=\"(min-width: 750px) 22vw, 44vw\"\n                 alt=\"{{ item.featured_image.alt | escape }}\"\n                 width=\"{{ item.featured_image.width }}\" height=\"{{ item.featured_image.height }}\"\n                 loading=\"lazy\">\n          {%- endif -%}\n          <span class=\"da-pack__name\">{{ item.title }}</span>\n          <span class=\"da-pack__price\">Vendu seul {{ item.price | money }}</span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n</div>\n{%- endif -%}",
+        "color_scheme": "background-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "preuve": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "title": "Soixante-sept couches",
+            "title_highlight_1": "solid-color",
+            "title_highlight_1_gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
+            "title_highlight_1_bg-color": "#dcd7cf",
+            "title_highlight_1_color": "#a9bec6",
+            "highlighted-1_border_radius": 8,
+            "highlighted-1_border_width": 0,
+            "highlighted-1_border": "solid",
+            "highlighted-1_border_color": "#a9bec6",
+            "highlighted-1_padding-block": 0.3,
+            "highlighted-1_padding-inline": 0.3,
+            "title_highlight_1_underline-thickness": 2,
+            "title_highlight_1_underline-color": "#a9bec6",
+            "title_highlight_1_underline-color--gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
+            "title_highlight_1_underline-color-position": 25,
+            "title_highlight_1_handwritten-color": "#a9bec6",
+            "title_highlight_1_handwritten-stroke-width": 3,
+            "title_highlight_1_handwritten-position": 60,
+            "title_highlight_2": "none",
+            "title_highlight_2_gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
+            "title_highlight_2_bg-color": "#dcd7cf",
+            "title_highlight_2_color": "#a9bec6",
+            "highlighted-2_border_radius": 8,
+            "highlighted-2_border_width": 0,
+            "highlighted-2_border": "solid",
+            "highlighted-2_border_color": "#a9bec6",
+            "highlighted-2_padding-block": 0.3,
+            "highlighted-2_padding-inline": 0.3,
+            "title_highlight_2_underline-thickness": 2,
+            "title_highlight_2_underline-color": "#a9bec6",
+            "title_highlight_2_underline-color--gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
+            "title_highlight_2_underline-color-position": 25,
+            "title_highlight_2_handwritten-color": "#a9bec6",
+            "title_highlight_2_handwritten-stroke-width": 3,
+            "title_highlight_2_handwritten-position": 60,
+            "heading_size": "h1",
+            "custom_desktop_size": 39,
+            "custom_mobile_size": 28,
+            "alignment": "left",
+            "mobile_alignment": "mobile-left",
+            "enable_custom_color": false,
+            "custom_color": "#ff0000",
+            "margin_top": 15,
+            "margin_bottom": 15
+          },
+          "blocks": {}
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Trente-trois strates de chaque côté d'une âme en VG-10 sur chaque lame. C'est le pliage de l'acier qui dessine le motif, révélé ensuite à l'acide.</p><p>Le dessin qui apparaît est la trace de ce pliage. Aucune des lames du coffret ne porte le même.</p>",
+            "alignment": "left",
+            "mobile_alignment": "mobile-center",
+            "text_size": 14,
+            "enable_custom_color": false,
+            "custom_text_color": "#ff0000",
+            "margin_top": 15,
+            "margin_bottom": 15
+          },
+          "blocks": {}
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Voir comment on les forge",
+            "button_link": "shopify://pages/notre-fabrication",
+            "button_style_secondary": true,
+            "large_font_size": false,
+            "enable_custom_color": false,
+            "custom_color": "#dd1d1d",
+            "custom_text_color": "#ffffff",
+            "custom_outline_hover_text_color": "#ffffff",
+            "full_width": false,
+            "alignment": "flex-start",
+            "mobile_alignment": "center",
+            "icon_scale": 120,
+            "icon_spacing": 10,
+            "margin_top": 15,
+            "margin_bottom": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "image": "shopify://shop_images/yuro-forge-revelation.png",
+        "video_autoplay": true,
+        "video_loop": true,
+        "height": "medium",
+        "color_scheme": "background-2",
+        "custom_colors_background": "#2e2a39",
+        "custom_gradient_background": "",
+        "custom_colors_text": "#ffffff",
+        "custom_colors_solid_button_background": "#dd1d1d",
+        "custom_colors_solid_button_text": "#ffffff",
+        "custom_colors_outline_button": "#dd1d1d",
+        "section_color_scheme": "background-2",
+        "custom_section_colors_background": "#ffffff",
+        "custom_section_gradient_background": "",
+        "full_desktop_width": false,
+        "content_layout": "no-overlap",
+        "desktop_media_width": 50,
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_full_media_width": false,
+        "mobile_direction": "normal",
+        "mobile_image_quanlity": "2",
+        "mobile_content_alignment": "left",
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48,
+        "desktop_padding_top": 72,
+        "desktop_padding_bottom": 72
+      }
+    },
+    "anatomie": {
+      "type": "custom-liquid",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "<div class=\"page-width da-anat\">\n  <p class=\"da-anat__eyebrow\">L'anatomie d'une lame</p>\n  <h2 class=\"da-anat__titre\">Six pièces, un seul couteau</h2>\n  <p class=\"da-anat__intro\">Un couteau damas n'est pas une lame décorée. C'est un assemblage où chaque pièce règle un problème précis. Voici ce qu'il y a dedans et à quoi sert chaque élément.</p>\n  <div class=\"da-anat__corps\">\n    <figure class=\"da-anat__vue\">\n      <img src=\"{{ 'yuro-eclate.jpg' | asset_url }}\" width=\"1200\" height=\"1490\" loading=\"lazy\" decoding=\"async\"\n           alt=\"Vue éclatée d'un couteau damas : l'âme d'acier au centre, les couches empilées de chaque côté, la mitre de laiton, les deux plaquettes de bois et le culot.\">\n      <span class=\"da-anat__repere\" style=\"--x: 43.4%; --y: 65.0%;\" aria-hidden=\"true\">1</span>\n      <span class=\"da-anat__repere\" style=\"--x: 30.0%; --y: 54.0%;\" aria-hidden=\"true\">2</span>\n      <span class=\"da-anat__repere\" style=\"--x: 54.5%; --y: 41.5%;\" aria-hidden=\"true\">3</span>\n      <span class=\"da-anat__repere\" style=\"--x: 62.6%; --y: 34.4%;\" aria-hidden=\"true\">4</span>\n      <span class=\"da-anat__repere\" style=\"--x: 70.7%; --y: 19.7%;\" aria-hidden=\"true\">5</span>\n      <span class=\"da-anat__repere\" style=\"--x: 86.7%; --y: 10.5%;\" aria-hidden=\"true\">6</span>\n    </figure>\n    <ol class=\"da-anat__liste\">\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">1</span>\n        <h3 class=\"da-anat__nom\">L'âme</h3>\n        <p class=\"da-anat__role\">Une seule feuille d'acier VG-10, trempée à 61 HRC. Elle forme le tranchant et c'est la seule pièce qui coupe. Tout le reste existe pour la protéger.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">2</span>\n        <h3 class=\"da-anat__nom\">Les couches</h3>\n        <p class=\"da-anat__role\">Trente-trois de chaque côté, dans un acier plus souple. Elles encaissent les chocs qu'une âme à 61 HRC ne supporterait pas seule, et leur pliage dessine le motif visible sur la lame.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">3</span>\n        <h3 class=\"da-anat__nom\">La soie</h3>\n        <p class=\"da-anat__role\">Le prolongement de l'âme à l'intérieur du manche. Elle le traverse sur toute sa longueur : la lame ne peut pas jouer et l'équilibre tombe sous les doigts.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">4</span>\n        <h3 class=\"da-anat__nom\">La mitre</h3>\n        <p class=\"da-anat__role\">L'anneau de laiton massif entre la lame et le manche. Il ferme la jonction, là où l'eau s'infiltre sur les couteaux bon marché, et son poids ramène le centre de gravité vers la main.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">5</span>\n        <h3 class=\"da-anat__nom\">Les plaquettes</h3>\n        <p class=\"da-anat__role\">Deux joues de bois stabilisé, imprégné de résine sous vide. Le bois ne gonfle plus, ne fend plus et ne retient plus les odeurs.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">6</span>\n        <h3 class=\"da-anat__nom\">Le culot</h3>\n        <p class=\"da-anat__role\">La pièce de laiton en bout de manche. Contrepoids de la lame : sans lui le couteau tire vers l'avant et le poignet fatigue.</p>\n      </li>\n    </ol>\n  </div>\n</div>",
+        "color_scheme": "background-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "faq_produit": {
+      "type": "custom-liquid",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "{%- liquid\n  assign faq = product.metafields.seo.faq.value\n-%}\n{%- if faq != blank -%}\n<div class=\"page-width da-faq\">\n  <h2 class=\"da-faq__title\">Questions sur ce coffret</h2>\n  {%- for row in faq -%}\n    <details class=\"da-faq__row\"{% if forloop.first %} open{% endif %}>\n      <summary class=\"da-faq__q\">{{ row.question }}</summary>\n      <div class=\"da-faq__a\"><p>{{ row.answer }}</p></div>\n    </details>\n  {%- endfor -%}\n</div>\n{%- endif -%}",
+        "color_scheme": "background-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -481,36 +648,36 @@
         "title": "Dans le même atelier",
         "title_highlight_1": "solid-color",
         "title_highlight_1_gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
-        "title_highlight_1_bg-color": "#DCD7CF",
-        "title_highlight_1_color": "#A9BEC6",
+        "title_highlight_1_bg-color": "#dcd7cf",
+        "title_highlight_1_color": "#a9bec6",
         "highlighted-1_border_radius": 8,
         "highlighted-1_border_width": 0,
         "highlighted-1_border": "solid",
-        "highlighted-1_border_color": "#A9BEC6",
+        "highlighted-1_border_color": "#a9bec6",
         "highlighted-1_padding-block": 0.3,
         "highlighted-1_padding-inline": 0.3,
         "title_highlight_1_underline-thickness": 2,
-        "title_highlight_1_underline-color": "#A9BEC6",
+        "title_highlight_1_underline-color": "#a9bec6",
         "title_highlight_1_underline-color--gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
         "title_highlight_1_underline-color-position": 25,
-        "title_highlight_1_handwritten-color": "#A9BEC6",
+        "title_highlight_1_handwritten-color": "#a9bec6",
         "title_highlight_1_handwritten-stroke-width": 3,
         "title_highlight_1_handwritten-position": 60,
         "title_highlight_2": "none",
         "title_highlight_2_gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
-        "title_highlight_2_bg-color": "#DCD7CF",
-        "title_highlight_2_color": "#A9BEC6",
+        "title_highlight_2_bg-color": "#dcd7cf",
+        "title_highlight_2_color": "#a9bec6",
         "highlighted-2_border_radius": 8,
         "highlighted-2_border_width": 0,
         "highlighted-2_border": "solid",
-        "highlighted-2_border_color": "#A9BEC6",
+        "highlighted-2_border_color": "#a9bec6",
         "highlighted-2_padding-block": 0.3,
         "highlighted-2_padding-inline": 0.3,
         "title_highlight_2_underline-thickness": 2,
-        "title_highlight_2_underline-color": "#A9BEC6",
+        "title_highlight_2_underline-color": "#a9bec6",
         "title_highlight_2_underline-color--gradient": "linear-gradient(57deg, rgba(169, 190, 198, 1) 8%, rgba(220, 215, 207, 1) 47%, rgba(139, 135, 129, 1) 83%)",
         "title_highlight_2_underline-color-position": 25,
-        "title_highlight_2_handwritten-color": "#A9BEC6",
+        "title_highlight_2_handwritten-color": "#a9bec6",
         "title_highlight_2_handwritten-stroke-width": 3,
         "title_highlight_2_handwritten-position": 60,
         "heading_size": "h2",
@@ -527,91 +694,11 @@
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": false,
+        "button_funcionality": "add-to-cart",
+        "button_label": "Go to product",
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 24
-      }
-    },
-    "preuve": {
-      "type": "image-with-text",
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "title": "Soixante-sept couches",
-            "title_highlight_1_color": "#A9BEC6"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Trente-trois strates de chaque côté d'une âme en VG-10 sur chaque lame. C'est le pliage de l'acier qui dessine le motif, révélé ensuite à l'acide.</p><p>Le dessin qui apparaît est la trace de ce pliage. Aucune des lames du coffret ne porte le même.</p>",
-            "alignment": "left"
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_label": "Voir comment on les forge",
-            "button_link": "shopify://pages/notre-fabrication",
-            "button_style_secondary": true
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t",
-        "b"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/yuro-forge-revelation.png",
-        "height": "medium",
-        "layout": "image_first",
-        "desktop_media_width": 50,
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "mobile_direction": "normal",
-        "color_scheme": "background-2",
-        "section_color_scheme": "background-2",
-        "desktop_padding_top": 72,
-        "desktop_padding_bottom": 72,
-        "mobile_padding_top": 48,
-        "mobile_padding_bottom": 48
-      }
-    },
-    "faq_produit": {
-      "type": "custom-liquid",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "custom_liquid": "{%- liquid\n  assign faq = product.metafields.seo.faq.value\n-%}\n{%- if faq != blank -%}\n<div class=\"page-width da-faq\">\n  <h2 class=\"da-faq__title\">Questions sur ce coffret</h2>\n  {%- for row in faq -%}\n    <details class=\"da-faq__row\"{% if forloop.first %} open{% endif %}>\n      <summary class=\"da-faq__q\">{{ row.question }}</summary>\n      <div class=\"da-faq__a\"><p>{{ row.answer }}</p></div>\n    </details>\n  {%- endfor -%}\n</div>\n{%- endif -%}",
-        "color_scheme": "background-1",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "contenu": {
-      "type": "custom-liquid",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "custom_liquid": "{%- liquid\n  assign items = product.metafields.pack.contenu.value\n-%}\n{%- if items != blank -%}\n<div class=\"page-width da-pack\">\n  <h2 class=\"da-pack__title\">Ce que contient le coffret</h2>\n  <ul class=\"da-pack__list da-pack__list--{{ items.size }}\">\n    {%- for item in items -%}\n      <li class=\"da-pack__item\">\n        <a class=\"da-pack__link\" href=\"{{ item.url }}\">\n          {%- if item.featured_image != blank -%}\n            <img class=\"da-pack__img\"\n                 src=\"{{ item.featured_image | image_url: width: 600 }}\"\n                 srcset=\"{{ item.featured_image | image_url: width: 400 }} 400w, {{ item.featured_image | image_url: width: 600 }} 600w, {{ item.featured_image | image_url: width: 900 }} 900w\"\n                 sizes=\"(min-width: 750px) 22vw, 44vw\"\n                 alt=\"{{ item.featured_image.alt | escape }}\"\n                 width=\"{{ item.featured_image.width }}\" height=\"{{ item.featured_image.height }}\"\n                 loading=\"lazy\">\n          {%- endif -%}\n          <span class=\"da-pack__name\">{{ item.title }}</span>\n          <span class=\"da-pack__price\">Vendu seul {{ item.price | money }}</span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n</div>\n{%- endif -%}",
-        "color_scheme": "background-1",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "anatomie": {
-      "type": "custom-liquid",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "custom_liquid": "<div class=\"page-width da-anat\">\n  <p class=\"da-anat__eyebrow\">L'anatomie d'une lame</p>\n  <h2 class=\"da-anat__titre\">Six pièces, un seul couteau</h2>\n  <p class=\"da-anat__intro\">Un couteau damas n'est pas une lame décorée. C'est un assemblage où chaque pièce règle un problème précis. Voici ce qu'il y a dedans et à quoi sert chaque élément.</p>\n  <div class=\"da-anat__corps\">\n    <figure class=\"da-anat__vue\">\n      <img src=\"{{ 'yuro-eclate.jpg' | asset_url }}\" width=\"1200\" height=\"1490\" loading=\"lazy\" decoding=\"async\"\n           alt=\"Vue éclatée d'un couteau damas : l'âme d'acier au centre, les couches empilées de chaque côté, la mitre de laiton, les deux plaquettes de bois et le culot.\">\n      <span class=\"da-anat__repere\" style=\"--x: 43.4%; --y: 65.0%;\" aria-hidden=\"true\">1</span>\n      <span class=\"da-anat__repere\" style=\"--x: 30.0%; --y: 54.0%;\" aria-hidden=\"true\">2</span>\n      <span class=\"da-anat__repere\" style=\"--x: 54.5%; --y: 41.5%;\" aria-hidden=\"true\">3</span>\n      <span class=\"da-anat__repere\" style=\"--x: 62.6%; --y: 34.4%;\" aria-hidden=\"true\">4</span>\n      <span class=\"da-anat__repere\" style=\"--x: 70.7%; --y: 19.7%;\" aria-hidden=\"true\">5</span>\n      <span class=\"da-anat__repere\" style=\"--x: 86.7%; --y: 10.5%;\" aria-hidden=\"true\">6</span>\n    </figure>\n    <ol class=\"da-anat__liste\">\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">1</span>\n        <h3 class=\"da-anat__nom\">L'âme</h3>\n        <p class=\"da-anat__role\">Une seule feuille d'acier VG-10, trempée à 61 HRC. Elle forme le tranchant et c'est la seule pièce qui coupe. Tout le reste existe pour la protéger.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">2</span>\n        <h3 class=\"da-anat__nom\">Les couches</h3>\n        <p class=\"da-anat__role\">Trente-trois de chaque côté, dans un acier plus souple. Elles encaissent les chocs qu'une âme à 61 HRC ne supporterait pas seule, et leur pliage dessine le motif visible sur la lame.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">3</span>\n        <h3 class=\"da-anat__nom\">La soie</h3>\n        <p class=\"da-anat__role\">Le prolongement de l'âme à l'intérieur du manche. Elle le traverse sur toute sa longueur : la lame ne peut pas jouer et l'équilibre tombe sous les doigts.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">4</span>\n        <h3 class=\"da-anat__nom\">La mitre</h3>\n        <p class=\"da-anat__role\">L'anneau de laiton massif entre la lame et le manche. Il ferme la jonction, là où l'eau s'infiltre sur les couteaux bon marché, et son poids ramène le centre de gravité vers la main.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">5</span>\n        <h3 class=\"da-anat__nom\">Les plaquettes</h3>\n        <p class=\"da-anat__role\">Deux joues de bois stabilisé, imprégné de résine sous vide. Le bois ne gonfle plus, ne fend plus et ne retient plus les odeurs.</p>\n      </li>\n      <li class=\"da-anat__piece\">\n        <span class=\"da-anat__num\" aria-hidden=\"true\">6</span>\n        <h3 class=\"da-anat__nom\">Le culot</h3>\n        <p class=\"da-anat__role\">La pièce de laiton en bout de manche. Contrepoids de la lame : sans lui le couteau tire vers l'avant et le poignet fatigue.</p>\n      </li>\n    </ol>\n  </div>\n</div>",
-        "color_scheme": "background-2",
-        "padding_top": 72,
-        "padding_bottom": 72
       }
     }
   },
