@@ -865,62 +865,18 @@ hr {
    trois lignes de logistique restent en retrait, sinon plus rien ne ressort.
    -------------------------------------------------------------------------- */
 
-.da-promesses {
-  list-style: none;
-  margin: 2.4rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0;
-}
 
-.da-promesses__item {
-  display: grid;
-  gap: 0.4rem;
-  padding-block: 1.6rem;
-  border-top: 1px solid var(--da-filet);
-}
 
-.da-promesses__item:last-child { border-bottom: 1px solid var(--da-filet); }
 
-.da-promesses__cle {
-  font-family: var(--da-mono);
-  font-size: 1.1rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--da-cendre);
-}
 
-.da-promesses__val {
-  font-size: 1.4rem;
-  line-height: 1.55;
-  color: rgba(var(--color-foreground), 0.72);
-  max-width: 52ch;
-}
 
 /* Les deux promesses a vie portent l'accent : ce sont les arguments qui
    levent la derniere objection sur une lame a ce prix. Serif, bleu trempe et
    gras. Le 700 plutot qu'un 600 : les six polices de la pile serif ont une
    graisse grasse, aucune n'a de demi-gras, un 600 tomberait donc au hasard
    sur l'une ou l'autre selon la machine. */
-.da-promesses__item--phare .da-promesses__cle {
-  font-family: var(--da-serif);
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--da-trempe);
-}
 
-.da-promesses__item--phare .da-promesses__val { color: rgba(var(--color-foreground), 0.8); }
 
-@media screen and (min-width: 750px) {
-  .da-promesses__item {
-    grid-template-columns: 15rem minmax(0, 1fr);
-    column-gap: 2.4rem;
-    align-items: baseline;
-  }
-  .da-promesses__item--phare { grid-template-columns: 1fr; }
-}
 
 /* --------------------------------------------------------------------------
    15. Supprime : annonce de date de livraison
@@ -1656,4 +1612,141 @@ hr {
 .da-args a:hover,
 .da-anat a:hover {
   color: var(--da-os);
+}
+
+
+/* ------------------------------------------------------------------
+   22. L'engagement produit
+   Remplace da-promesses. L'affutage repris a vie etait la premiere ligne
+   d'une liste de cinq promesses de meme poids, donc invisible, alors que
+   c'est le seul argument qu'aucun concurrent du segment n'offre.
+   Trois niveaux : l'affutage en tete avec sa mecanique, la garantie en
+   dessous, les faits d'expedition en une ligne.
+   Filet de tete en trempe plutot qu'un cadre : la ligne de disponibilite
+   juste au-dessus est deja un bloc borde, deux cadres empiles pesent.
+   ------------------------------------------------------------------ */
+
+.da-engage {
+  border-top: 2px solid var(--da-trempe);
+  padding-top: 2.8rem;
+  margin-top: 3.2rem;
+}
+
+.da-engage__eyebrow {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin: 0 0 1.2rem;
+}
+
+.da-engage__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 3.4vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.6rem;
+}
+
+.da-engage__texte {
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.75);
+  max-width: 52ch;
+  margin: 0 0 2.4rem;
+}
+
+.da-engage__texte--court { margin-bottom: 0; }
+
+.da-engage__etapes {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.da-engage__etape {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  align-items: center;
+  column-gap: 1.4rem;
+  font-size: 1.45rem;
+  line-height: 1.4;
+}
+
+/* Meme carre numerote que l'anatomie de la lame, motif deja pose. */
+.da-engage__num {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--da-filet-net);
+  color: var(--da-trempe);
+  font-family: var(--da-mono);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.da-engage__note {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--da-cendre);
+  margin: 0;
+}
+
+.da-engage__note a {
+  color: var(--da-trempe);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3rem;
+}
+
+.da-engage__note a:hover { color: var(--da-os); }
+
+.da-engage__second {
+  border-top: 1px solid var(--da-filet);
+  margin-top: 2.8rem;
+  padding-top: 2.8rem;
+}
+
+.da-engage__soustitre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.25;
+  margin: 0 0 0.8rem;
+}
+
+.da-engage__faits {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin: 2.8rem 0 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--da-filet);
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+/* Separateur en ::after et non ::before : accroche au terme precedent,
+   sinon un retour a la ligne fait commencer la ligne par un point orphelin. */
+.da-engage__faits li:not(:last-child)::after {
+  content: "\00B7";
+  margin-left: 1.4rem;
+  color: var(--da-filet-net);
+}
+
+@media (max-width: 749px) {
+  .da-engage { padding-top: 2.4rem; margin-top: 2.8rem; }
+  .da-engage__texte { font-size: 1.4rem; }
+  .da-engage__etape { font-size: 1.35rem; column-gap: 1.2rem; }
+  .da-engage__second { margin-top: 2.4rem; padding-top: 2.4rem; }
+  .da-engage__faits { font-size: 1rem; letter-spacing: 0.06em; }
 }
