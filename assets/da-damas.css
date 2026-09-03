@@ -1863,13 +1863,20 @@ hr {
   padding: 0 1.2rem;
 }
 
+/* Hauteur minimale de deux lignes : dans la colonne de lecture, le libelle
+   de l'aller passe sur deux lignes et celui du retour sur une. Sans cette
+   reserve, les deux fleches ne sont pas a la meme hauteur. */
 .da-trajet__cout {
   font-family: var(--da-mono);
   font-size: 1rem;
+  line-height: 1.35;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--da-cendre);
   text-align: center;
+  min-height: 2.7rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 .da-trajet__lien--nous .da-trajet__cout { color: var(--da-trempe); }
