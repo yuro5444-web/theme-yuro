@@ -10,6 +10,7 @@
   --da-cendre: #8B8781;
   --da-os:     #DCD7CF;
   --da-trempe: #A9BEC6;
+  --da-vert:   #6FA368;   /* disponibilite uniquement, seule couleur signal de la DA */
 
   --da-filet:     rgba(169, 190, 198, 0.15);
   --da-filet-net: rgba(169, 190, 198, 0.28);
@@ -1594,6 +1595,7 @@ hr {
 /* Disponibilite. Le point est carre : le border-radius 0 de la DA
    s'applique, et un carre de trempe se lit mieux qu'une pastille verte
    d'e-commerce. */
+/* Placee sous les boutons d'achat, d'ou la marge haute. */
 .da-dispo {
   display: flex;
   flex-wrap: wrap;
@@ -1605,19 +1607,19 @@ hr {
   background: var(--da-suie);
   border: 1px solid var(--da-filet);
   padding: 1.4rem 1.6rem;
-  margin: 0 0 2.4rem;
+  margin: 1.6rem 0 2.4rem;
 }
 
 .da-dispo__point {
   width: 0.7rem;
   height: 0.7rem;
-  background: var(--da-trempe);
+  background: var(--da-vert);
   align-self: center;
   flex: 0 0 auto;
 }
 
 .da-dispo__etat {
-  color: var(--da-trempe);
+  color: var(--da-vert);
   letter-spacing: 0.02em;
 }
 
