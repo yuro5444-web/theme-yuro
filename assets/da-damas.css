@@ -1562,9 +1562,9 @@ hr {
 }
 
 .da-repere__ico {
-  width: 4.8rem;
-  height: 4.8rem;
-  color: var(--da-os);
+  width: 7.2rem;
+  height: 7.2rem;
+  object-fit: contain;
   opacity: 0.85;
   margin-bottom: 1.6rem;
   flex: 0 0 auto;
@@ -1628,7 +1628,7 @@ hr {
     padding-top: 2.8rem;
     margin-bottom: 2rem;
   }
-  .da-repere__ico { width: 4rem; height: 4rem; margin-bottom: 1.2rem; }
+  .da-repere__ico { width: 6rem; height: 6rem; margin-bottom: 1.2rem; }
   .da-repere__titre { font-size: 1.35rem; }
   .da-repere__note { font-size: 1.2rem; max-width: 18ch; }
   .da-dispo { font-size: 1.25rem; padding: 1.2rem 1.4rem; }
