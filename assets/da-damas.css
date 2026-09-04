@@ -1518,11 +1518,14 @@ hr {
   text-align: center;
 }
 
+/* Opacite pleine : a 0.85 sur un trait deja fin, le contraste tombe sous
+   le seuil de lisibilite. Le trait des fichiers a par ailleurs ete epaissi,
+   il ne faisait que 0.40 px a cette taille d'affichage. */
 .da-repere__ico {
-  width: 7.2rem;
-  height: 7.2rem;
+  width: 7.6rem;
+  height: 7.6rem;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 1;
   margin-bottom: 1.6rem;
   flex: 0 0 auto;
 }
