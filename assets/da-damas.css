@@ -2151,3 +2151,21 @@ hr {
 }
 
 .da-compare__coffret:hover { color: var(--da-os); }
+
+
+/* ------------------------------------------------------------------
+   28. Pied de page
+   ------------------------------------------------------------------ */
+
+/* Deux filets se superposaient en haut du pied de page, celui du theme sur
+   .footer et celui de la DA sur .footer__content-top, separes par les 24 px
+   de padding : ca donnait une bande claire au lieu d'une ligne. */
+.footer { border-top: 0 !important; }
+
+/* La regle de menu en capitales espacees vise la navigation d'en-tete, ou
+   les libelles font un mot. Dans le pied de page ce sont des phrases :
+   a 0.18em, 'Conditions generales de vente' tenait sur trois lignes. */
+.footer .list-menu__item--link {
+  letter-spacing: 0.08em;
+  font-size: 1.3rem;
+}
