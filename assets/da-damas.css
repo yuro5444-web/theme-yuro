@@ -1967,126 +1967,29 @@ hr {
 
 .da-anato { padding-block: clamp(4rem, 7vw, 8rem); }
 
-.da-anato__titre {
-  font-family: var(--da-serif);
-  font-weight: 400;
-  font-size: clamp(2.8rem, 5vw, 4.6rem);
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-align: center;
-  margin: 0 0 clamp(8rem, 11vw, 14rem);
-  text-wrap: balance;
-}
 
 
-/* --- la photo et ses quatre reperes --- */
-.da-anato__vue { position: relative; margin: 0; }
 
-.da-anato__photo {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
-.da-anato__rep {
-  position: absolute;
-  left: var(--x);
-  width: 26rem;
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
-}
 
-/* Les blocs debordent volontairement au-dessus et en dessous de la photo :
-   la section reserve la place, la photo reste la seule reference des
-   coordonnees --y. */
-.da-anato__rep--haut {
-  top: -12rem;
-  height: calc(var(--y) + 12rem);
-}
 
-.da-anato__rep--bas {
-  top: var(--y);
-  bottom: -13rem;
-  flex-direction: column-reverse;
-}
 
-/* Les reperes de gauche poussent leur texte a gauche du trait, ceux de
-   droite a droite, sinon les blocs se chevauchent au centre. */
-.da-anato__rep--g { transform: translateX(-100%); align-items: flex-end; text-align: right; }
-.da-anato__rep--d { align-items: flex-start; }
 
-.da-anato__bloc {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-  padding-inline: 1.6rem;
-}
 
-.da-anato__rep--g .da-anato__bloc { flex-direction: row-reverse; }
 
-.da-anato__n {
-  flex: 0 0 auto;
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--da-filet-net);
-  color: var(--da-os);
-  font-family: var(--da-mono);
-  font-size: 1.2rem;
-  font-style: normal;
-  line-height: 1;
-}
 
-.da-anato__nom {
-  display: block;
-  font-family: var(--da-mono);
-  font-size: 1.2rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--da-os);
-  margin-bottom: 0.7rem;
-  line-height: 1.3;
-}
 
-.da-anato__dit {
-  display: block;
-  font-size: 1.35rem;
-  line-height: 1.55;
-  font-style: normal;
-  color: var(--da-cendre);
-}
 
-.da-anato__trait {
-  flex: 1;
-  width: 1px;
-  min-height: 2.4rem;
-  background: var(--da-filet-net);
-  position: relative;
-  margin-block: 1rem;
-}
 
-.da-anato__rep--g .da-anato__trait { align-self: flex-end; margin-right: 1.6rem; }
-.da-anato__rep--d .da-anato__trait { align-self: flex-start; margin-left: 1.6rem; }
 
-.da-anato__trait::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 0.6rem;
-  height: 0.6rem;
-  border: 1px solid var(--da-trempe);
-  background: var(--da-encre);
-}
 
-.da-anato__rep--haut .da-anato__trait::after { bottom: 0; transform: translate(-50%, 50%); }
-.da-anato__rep--bas  .da-anato__trait::after { top: 0;    transform: translate(-50%, -50%); }
 
 /* --- les trois cartes de detail --- */
-.da-anato__detail {
-  margin-top: clamp(9.6rem, 13vw, 17rem);
-}
+/* La vue annotee a ete retiree : plus de titre ni de photo au-dessus,
+   donc plus de reserve d'espace a menager. */
+.da-anato__detail { margin-top: 0; }
+
+.da-anato--cartes { padding-block: clamp(3.2rem, 5vw, 5.6rem); }
 
 .da-anato__surtitre {
   font-family: var(--da-mono);
@@ -2143,25 +2046,9 @@ hr {
   color: var(--da-cendre);
 }
 
-/* En dessous de 1100 px la lame est trop courte pour porter quatre blocs
-   de texte. Les reperes deviennent une liste sous la photo. */
+/* Les trois cartes passent en colonne unique quand la largeur ne permet
+   plus de les lire cote a cote. */
 @media screen and (max-width: 1099px) {
-  .da-anato__rep {
-    position: static;
-    width: auto;
-    height: auto;
-    transform: none;
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    padding-block: 1.8rem;
-    border-top: 1px solid var(--da-filet);
-  }
-  .da-anato__rep--g .da-anato__bloc { flex-direction: row; }
-  .da-anato__bloc { padding-inline: 0; }
-  .da-anato__trait { display: none; }
-  .da-anato__vue { display: grid; }
-  .da-anato__photo { margin-bottom: 3.2rem; }
   .da-anato__cartes { grid-template-columns: 1fr; }
 }
 
@@ -2218,14 +2105,6 @@ hr {
     max-width: none;
   }
 
-  /* Le carre rose de Klarna est l'element le plus clair de la page en
-     mobile, plus clair que le bouton d'achat. Reduit, pas supprime :
-     la reconnaissance de la marque sert la conversion. */
-  .da-klarna__badge {
-    font-size: 1.05rem;
-    padding: 0.3rem 0.8rem;
-  }
-
   /* Cle et valeur sur la meme ligne se touchent des que la valeur est
      longue, 'Bois stabilise, mitre laiton' ne laisse plus d'espace. */
   .da-specs__row {
@@ -2257,3 +2136,18 @@ hr {
   border-color: var(--da-trempe) !important;
   color: var(--da-trempe) !important;
 }
+
+
+/* Les deux coffrets sont les seules sorties commerciales de ce tableau :
+   ils doivent se voir comme des liens, pas se fondre dans la phrase. */
+.da-compare__coffret {
+  font-family: var(--da-serif);
+  font-size: 1.18em;
+  color: var(--da-trempe);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.32em;
+  transition: color var(--da-transition);
+}
+
+.da-compare__coffret:hover { color: var(--da-os); }
