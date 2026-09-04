@@ -2164,3 +2164,96 @@ hr {
   .da-anato__photo { margin-bottom: 3.2rem; }
   .da-anato__cartes { grid-template-columns: 1fr; }
 }
+
+
+/* ------------------------------------------------------------------
+   27. Corrections mobile
+   Releves sur un rendu reel a 375 px, pas sur une capture headless :
+   celle-ci n'applique pas la fenetre d'affichage mobile et montrait un
+   faux debordement. La page ne deborde pas, les defauts sont de densite
+   et de poids visuel.
+   ------------------------------------------------------------------ */
+
+/* Les trois reperes sur trois colonnes a 375 px donnent 110 px par colonne :
+   titres sur deux lignes, notes sur trois, icones ecrasees. Une colonne,
+   icone a gauche, texte a droite. */
+@media screen and (max-width: 749px) {
+  .da-reperes {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .da-repere {
+    display: grid;
+    grid-template-columns: 5.4rem minmax(0, 1fr);
+    grid-template-areas: "ico titre" "ico note";
+    align-items: center;
+    column-gap: 1.8rem;
+    text-align: left;
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--da-filet);
+  }
+
+  .da-repere:first-child { border-top: 0; padding-top: 0; }
+
+  .da-repere__ico {
+    grid-area: ico;
+    width: 5.4rem;
+    height: 5.4rem;
+    margin-bottom: 0;
+  }
+
+  .da-repere__titre {
+    grid-area: titre;
+    font-size: 1.6rem;
+    min-height: 0;
+    margin-bottom: 0.3rem;
+  }
+
+  .da-repere__note {
+    grid-area: note;
+    font-size: 1.35rem;
+    max-width: none;
+  }
+
+  /* Le carre rose de Klarna est l'element le plus clair de la page en
+     mobile, plus clair que le bouton d'achat. Reduit, pas supprime :
+     la reconnaissance de la marque sert la conversion. */
+  .da-klarna__badge {
+    font-size: 1.05rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* Cle et valeur sur la meme ligne se touchent des que la valeur est
+     longue, 'Bois stabilise, mitre laiton' ne laisse plus d'espace. */
+  .da-specs__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 1.2rem 0;
+  }
+
+  .da-specs__value { text-align: left; }
+}
+
+/* Le pictogramme qui precede chaque accordeon est un 'check_box' Material,
+   soit une case a cocher devant 'Entretien et affutage'. Le chevron a
+   droite indique deja l'ouverture. */
+.collapsible-content .summary__title .material-icon { display: none; }
+.collapsible-content .summary__title { gap: 0; }
+
+/* Le bouton de retour en haut etait un aplat de trempe, troisieme grand
+   element bleu pale de la page apres le bouton d'achat et la barre collante. */
+.scroll-to-top-btn {
+  background: var(--da-suie) !important;
+  border: 1px solid var(--da-filet-net) !important;
+  color: var(--da-os) !important;
+  transition: border-color var(--da-transition), color var(--da-transition);
+}
+
+.scroll-to-top-btn:hover {
+  border-color: var(--da-trempe) !important;
+  color: var(--da-trempe) !important;
+}
