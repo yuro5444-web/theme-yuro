@@ -631,7 +631,8 @@
             "title": "Émincer",
             "text": "<p>Lame droite, coupe verticale, contact sur toute la longueur : la rondelle se détache au lieu de rester pendue par un fil de peau. C'est la différence qu'on sent dès le premier oignon.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/yuro-nakiri-emincer.png"
           }
         },
         "u2": {
@@ -641,7 +642,8 @@
             "title": "Tailler en julienne",
             "text": "<p>La hauteur de lame dégage les doigts de la planche et donne un appui stable contre les phalanges. On garde le même guide du début à la fin de la coupe.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/yuro-nakiri-julienne.png"
           }
         },
         "u3": {
@@ -651,7 +653,8 @@
             "title": "Transporter",
             "text": "<p>La surface plate et large sert de pelle. On récupère tout ce qu'on vient de couper et on le porte à la casserole sans changer d'outil.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/yuro-nakiri-transporter.png"
           }
         }
       },
@@ -724,7 +727,7 @@
         "stretch_cards": false,
         "stretched_cards_content_alignment": "center",
         "image_width": "full",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "media_position": "top",
         "column_alignment": "left",
         "desktop_heading_size": 20,
