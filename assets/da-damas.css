@@ -2172,3 +2172,67 @@ hr {
   letter-spacing: 0.08em;
   font-size: 1.3rem;
 }
+
+/* --------------------------------------------------------------------------
+   A quoi sert un nakiri : trois usages illustres par un pictogramme
+   Meme trait que les reperes produit. Le SVG herite de la couleur du texte,
+   donc il suit la palette sans fichier a maintenir.
+   -------------------------------------------------------------------------- */
+
+.da-usages {
+  max-width: var(--page-width, 120rem);
+  margin-inline: auto;
+  padding-inline: 3rem;
+}
+
+.da-usages__titre {
+  text-align: center;
+  margin: 0 0 5.6rem;
+}
+
+.da-usages__liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 4.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.da-usage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.da-usage__ico {
+  width: 8.8rem;
+  height: 8.8rem;
+  color: var(--da-os);
+  margin-bottom: 2.4rem;
+  flex: 0 0 auto;
+}
+
+.da-usage__titre {
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.25;
+  margin: 0 0 1.2rem;
+}
+
+.da-usage__texte {
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: var(--da-cendre);
+  max-width: 34ch;
+  margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .da-usages__liste { grid-template-columns: 1fr; gap: 4rem 0; }
+  .da-usages__titre { margin-bottom: 4rem; }
+  .da-usage__ico { width: 7.2rem; height: 7.2rem; margin-bottom: 1.8rem; }
+  .da-usage__texte { max-width: none; }
+}
