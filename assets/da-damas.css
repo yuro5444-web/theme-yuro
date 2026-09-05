@@ -2207,9 +2207,9 @@ hr {
 }
 
 .da-usage__ico {
-  width: 8.8rem;
-  height: 8.8rem;
-  color: var(--da-os);
+  width: 9.6rem;
+  height: 9.6rem;
+  object-fit: contain;
   margin-bottom: 2.4rem;
   flex: 0 0 auto;
 }
