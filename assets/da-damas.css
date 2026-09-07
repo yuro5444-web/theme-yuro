@@ -2151,7 +2151,17 @@ hr {
    a vie. Le carre reprend le bleu du bouton d'achat, mais en trait et non
    en aplat : c'est un reperage, pas un appel a l'action, il ne doit pas
    entrer en concurrence avec le seul bouton plein de la page. */
-.collapsible-content .summary__title .material-icon {
+/* Par defaut le pictogramme reste masque. Ailleurs sur le site, notamment
+   devant les cinq questions de la FAQ produit, le theme pose la meme coche
+   sur chaque ligne : la rallumer partout ferait cinq carres identiques qui
+   n'apprennent rien. */
+.collapsible-content .summary__title .material-icon { display: none; }
+.collapsible-content .summary__title { gap: 0; }
+
+/* Dans la colonne de la fiche, en revanche, chaque rubrique a son propre
+   dessin regle dans le gabarit. La portee est la section 'main' du gabarit
+   produit, ce qui laisse la FAQ qui la suit inchangee. */
+[id$="__main"] .collapsible-content .summary__title .material-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2168,12 +2178,21 @@ hr {
 
 /* Le titre s'alignait sur la ligne de base, ce qui n'a plus de sens face a
    un carre : les deux se centrent l'un sur l'autre. */
-.collapsible-content .summary__title {
+[id$="__main"] .collapsible-content .summary__title {
   gap: 1.2rem;
   align-items: center;
 }
 
-.collapsible-content .accordion__summary { align-items: center; }
+[id$="__main"] .collapsible-content .accordion__summary { align-items: center; }
+
+@media (max-width: 749px) {
+  [id$="__main"] .collapsible-content .summary__title .material-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.6rem;
+  }
+  [id$="__main"] .collapsible-content .summary__title { gap: 1rem; }
+}
 
 /* Le bouton de retour en haut etait un aplat de trempe, troisieme grand
    element bleu pale de la page apres le bouton d'achat et la barre collante. */
