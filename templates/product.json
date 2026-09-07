@@ -21,7 +21,7 @@
         "da_dispo": {
           "type": "custom-liquid",
           "settings": {
-            "custom_liquid": "{%- comment -%}\n  Disponibilite et fenetre de livraison estimee.\n\n  Le suivi de stock est desactive sur la boutique, product.available est\n  donc toujours vrai. La mention reste conditionnee a Shopify pour ne pas\n  annoncer un stock sur un produit retire, et n'est jamais accompagnee\n  d'un compte a rebours.\n\n  Fenetre calculee a +5 et +8 jours calendaires depuis la visite, chaque\n  borne repoussee au lundi si elle tombe un samedi ou un dimanche. Cela\n  correspond aux trois jours ouvres d'expedition annonces, plus le transit.\n  Le mot \"estimee\" est volontaire : ce n'est pas un engagement de date.\n\n  Les noms de jours sont ecrits en dur parce que le filtre date de Liquid\n  rend les jours en anglais quelle que soit la langue de la boutique.\n{%- endcomment -%}\n{%- liquid\n  assign jours = 'dimanche,lundi,mardi,mercredi,jeudi,vendredi,samedi' | split: ','\n  assign base = 'now' | date: '%s' | times: 1\n  assign t1 = base | plus: 432000\n  assign w1 = t1 | date: '%w' | times: 1\n  if w1 == 6\n    assign t1 = t1 | plus: 172800\n  elsif w1 == 0\n    assign t1 = t1 | plus: 86400\n  endif\n  assign w1 = t1 | date: '%w' | times: 1\n  assign t2 = base | plus: 691200\n  assign w2 = t2 | date: '%w' | times: 1\n  if w2 == 6\n    assign t2 = t2 | plus: 172800\n  elsif w2 == 0\n    assign t2 = t2 | plus: 86400\n  endif\n  assign w2 = t2 | date: '%w' | times: 1\n-%}\n{%- if product.available -%}\n  <p class=\"da-dispo\">\n    <span class=\"da-dispo__point\" aria-hidden=\"true\"></span>\n    <span class=\"da-dispo__etat\">En stock</span>\n    <span class=\"da-dispo__delai\">Expédiée sous trois jours ouvrés, livraison estimée entre le <strong>{{ jours[w1] }} {{ t1 | date: '%d/%m' }}</strong> et le <strong>{{ jours[w2] }} {{ t2 | date: '%d/%m' }}</strong></span>\n  </p>\n{%- endif -%}"
+            "custom_liquid": "{%- comment -%}\n  Disponibilite et fenetre de livraison estimee.\n\n  Le suivi de stock est desactive sur la boutique, product.available est\n  donc toujours vrai. La mention reste conditionnee a Shopify pour ne pas\n  annoncer un stock sur un produit retire, et n'est jamais accompagnee\n  d'un compte a rebours.\n\n  Fenetre calculee a +5 et +8 jours calendaires depuis la visite, chaque\n  borne repoussee au lundi si elle tombe un samedi ou un dimanche. Cela\n  correspond aux trois jours ouvres d'expedition annonces, plus le transit.\n  Le mot \"estimee\" est volontaire : ce n'est pas un engagement de date.\n\n  Les noms de jours sont ecrits en dur parce que le filtre date de Liquid\n  rend les jours en anglais quelle que soit la langue de la boutique.\n{%- endcomment -%}\n{%- liquid\n  assign jours = 'dimanche,lundi,mardi,mercredi,jeudi,vendredi,samedi' | split: ','\n  assign base = 'now' | date: '%s' | times: 1\n  assign t1 = base | plus: 432000\n  assign w1 = t1 | date: '%w' | times: 1\n  if w1 == 6\n    assign t1 = t1 | plus: 172800\n  elsif w1 == 0\n    assign t1 = t1 | plus: 86400\n  endif\n  assign w1 = t1 | date: '%w' | times: 1\n  assign t2 = base | plus: 691200\n  assign w2 = t2 | date: '%w' | times: 1\n  if w2 == 6\n    assign t2 = t2 | plus: 172800\n  elsif w2 == 0\n    assign t2 = t2 | plus: 86400\n  endif\n  assign w2 = t2 | date: '%w' | times: 1\n-%}\n{%- if product.available -%}\n  <p class=\"da-dispo\">\n    <span class=\"da-dispo__ligne\">\n      <span class=\"da-dispo__point\" aria-hidden=\"true\"></span>\n      <span class=\"da-dispo__etat\">En stock</span>\n    </span>\n    <span class=\"da-dispo__ligne\">\n      <span class=\"da-dispo__ico material-symbols-outlined\" aria-hidden=\"true\">local_shipping</span>\n      <span class=\"da-dispo__delai\">Expédiée sous trois jours ouvrés, livraison estimée entre le <strong>{{ jours[w1] }} {{ t1 | date: '%d/%m' }}</strong> et le <strong>{{ jours[w2] }} {{ t2 | date: '%d/%m' }}</strong></span>\n    </span>\n  </p>\n{%- endif -%}"
           }
         },
         "title": {
@@ -160,7 +160,7 @@
             "open": false,
             "heading": "Entretien et affûtage",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "handyman",
             "filled_icon": false,
             "collapse_icon": "carret",
             "collapse_icon_style": "standard",
@@ -207,7 +207,7 @@
             "open": false,
             "heading": "Ce que vous recevez",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "inventory_2",
             "filled_icon": false,
             "collapse_icon": "carret",
             "collapse_icon_style": "standard",
@@ -254,7 +254,7 @@
             "open": false,
             "heading": "Livraison et retours",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "local_shipping",
             "filled_icon": false,
             "collapse_icon": "carret",
             "collapse_icon_style": "standard",
@@ -301,7 +301,7 @@
             "open": false,
             "heading": "Garantie à vie",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "verified_user",
             "filled_icon": false,
             "collapse_icon": "carret",
             "collapse_icon_style": "standard",
@@ -348,7 +348,7 @@
             "open": false,
             "heading": "Affûtage gratuit à vie",
             "heading_size": "medium",
-            "icon": "check_box",
+            "icon": "all_inclusive",
             "filled_icon": false,
             "collapse_icon": "carret",
             "collapse_icon_style": "standard",

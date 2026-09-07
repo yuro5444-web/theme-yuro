@@ -254,8 +254,11 @@ hr {
 
 .da-specs__row:first-child { border-top: 1px solid var(--da-filet); }
 
+/* Le libelle passe du gris cendre au bleu de trempe. En cendre sur de
+   l'encre il tombait sous le seuil de lisibilite confortable, et comme il
+   se repete sept fois de suite la colonne entiere disparaissait. */
 .da-specs__key {
-  color: var(--da-cendre);
+  color: var(--da-trempe);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 1.1rem;
@@ -1555,11 +1558,12 @@ hr {
    s'applique, et un carre de trempe se lit mieux qu'une pastille verte
    d'e-commerce. */
 /* Placee sous les boutons d'achat, d'ou la marge haute. */
+/* L'etat du stock et la fenetre de livraison partageaient le meme carre
+   vert, sur une ligne unique qui repassait a la ligne toute seule. Ce sont
+   deux informations de nature differente : l'une est un fait, l'autre une
+   estimation. Chacune a maintenant sa ligne et son propre repere. */
 .da-dispo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 0.9rem;
+  display: block;
   font-size: 1.35rem;
   line-height: 1.55;
   color: var(--da-cendre);
@@ -1569,11 +1573,27 @@ hr {
   margin: 1.6rem 0 2.4rem;
 }
 
+.da-dispo__ligne {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.da-dispo__ligne + .da-dispo__ligne { margin-top: 0.9rem; }
+
 .da-dispo__point {
   width: 0.7rem;
   height: 0.7rem;
   background: var(--da-vert);
-  align-self: center;
+  flex: 0 0 auto;
+  /* Cale sur la hauteur d'x du texte, pas sur le haut de la ligne. */
+  margin-top: 0.55rem;
+}
+
+.da-dispo__ico {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: var(--da-trempe);
   flex: 0 0 auto;
 }
 
@@ -2120,11 +2140,40 @@ hr {
   .da-specs__value { text-align: left; }
 }
 
-/* Le pictogramme qui precede chaque accordeon est un 'check_box' Material,
-   soit une case a cocher devant 'Entretien et affutage'. Le chevron a
-   droite indique deja l'ouverture. */
-.collapsible-content .summary__title .material-icon { display: none; }
-.collapsible-content .summary__title { gap: 0; }
+/* Le theme posait cinq fois la meme case a cocher devant les cinq
+   rubriques. Cinq pictogrammes identiques n'apprennent rien, on l'avait
+   donc masquee, et le bas de fiche se retrouvait sans aucun repere : sept
+   lignes de tableau puis cinq titres en romaine, tout en gris sur du noir.
+
+   Chaque rubrique a maintenant son propre dessin, regle dans le gabarit :
+   la cle pour l'entretien, la boite pour le contenu, le camion pour la
+   livraison, le bouclier pour la garantie, le signe infini pour l'affutage
+   a vie. Le carre reprend le bleu du bouton d'achat, mais en trait et non
+   en aplat : c'est un reperage, pas un appel a l'action, il ne doit pas
+   entrer en concurrence avec le seul bouton plein de la page. */
+.collapsible-content .summary__title .material-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  /* La regle de base borne les glyphes a 1em, ce qui ecraserait le carre. */
+  max-width: none;
+  font-size: 1.8rem;
+  color: var(--da-trempe);
+  opacity: 1;
+  border: 1px solid var(--da-filet-net);
+  transform: none;
+}
+
+/* Le titre s'alignait sur la ligne de base, ce qui n'a plus de sens face a
+   un carre : les deux se centrent l'un sur l'autre. */
+.collapsible-content .summary__title {
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.collapsible-content .accordion__summary { align-items: center; }
 
 /* Le bouton de retour en haut etait un aplat de trempe, troisieme grand
    element bleu pale de la page apres le bouton d'achat et la barre collante. */
