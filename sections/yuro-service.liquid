@@ -1,0 +1,294 @@
+{%- comment -%}
+  YURO — Section "Services"
+  Deux styles de bloc : panneau encadré (affûtage) / texte simple (garantie).
+{%- endcomment -%}
+
+{%- assign s = section.settings -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --yuro-bg: {{ s.bg_color }};
+    --yuro-panel: {{ s.panel_color }};
+    --yuro-line: {{ s.line_color }};
+    --yuro-line-soft: {{ s.line_soft_color }};
+    --yuro-heading: {{ s.heading_color }};
+    --yuro-text: {{ s.text_color }};
+    --yuro-muted: {{ s.muted_color }};
+  }
+
+  .yuro-svc {
+    background: var(--yuro-bg);
+    padding-block: {{ s.padding_top }}px {{ s.padding_bottom }}px;
+  }
+
+  .yuro-svc__inner {
+    max-width: {{ s.max_width }}px;
+    margin-inline: auto;
+    padding-inline: clamp(1.15rem, 5vw, 2.5rem);
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .yuro-panel {
+    position: relative;
+    background: var(--yuro-panel);
+    border: 1px solid var(--yuro-line);
+    padding: clamp(2.25rem, 6vw, 3rem) clamp(1.35rem, 5vw, 2.5rem) clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .yuro-panel__label {
+    position: absolute;
+    top: 0;
+    left: clamp(1.35rem, 5vw, 2.5rem);
+    transform: translateY(-50%);
+    margin: 0;
+    padding-inline: 0.7rem;
+    background: var(--yuro-panel);
+    color: var(--yuro-muted);
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .yuro-plain {
+    border-top: 1px solid var(--yuro-line-soft);
+    padding-top: clamp(2rem, 5vw, 2.75rem);
+  }
+
+  .yuro-plain__label {
+    margin: 0 0 0.85rem;
+    color: var(--yuro-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .yuro-svc__title {
+    font-family: var(--font-heading-family, Georgia, "Times New Roman", serif);
+    font-weight: var(--font-heading-weight, 400);
+    font-size: clamp(1.85rem, 6vw, 2.35rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--yuro-heading);
+    margin: 0 0 0.9rem;
+  }
+
+  .yuro-svc__lead {
+    color: var(--yuro-text);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  .yuro-svc__lead p { margin: 0 0 1em; }
+  .yuro-svc__lead p:last-child { margin-bottom: 0; }
+
+  .yuro-steps {
+    list-style: none;
+    counter-reset: yuro-step;
+    margin: 2.25rem 0 0;
+    padding: 0;
+  }
+
+  .yuro-steps li {
+    counter-increment: yuro-step;
+    position: relative;
+    padding: 0 0 1.35rem 3.35rem;
+    color: var(--yuro-heading);
+    font-size: 1.02rem;
+    line-height: 1.35;
+  }
+
+  .yuro-steps li:last-child { padding-bottom: 0; }
+
+  .yuro-steps li::before {
+    content: counter(yuro-step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.1rem;
+    height: 2.1rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--yuro-line);
+    border-radius: 50%;
+    background: var(--yuro-panel);
+    color: var(--yuro-muted);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .yuro-steps li::after {
+    content: "";
+    position: absolute;
+    left: 1.05rem;
+    top: 2.15rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--yuro-line);
+  }
+
+  .yuro-steps li:last-child::after { display: none; }
+
+  .yuro-foot {
+    margin: 2rem 0 0;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--yuro-line-soft);
+    color: var(--yuro-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .yuro-foot a {
+    color: var(--yuro-heading);
+    text-decoration: none;
+    border-bottom: 1px solid var(--yuro-line);
+    padding-bottom: 2px;
+  }
+
+  .yuro-foot a:hover { border-bottom-color: var(--yuro-heading); }
+
+  .yuro-foot a:focus-visible {
+    outline: 2px solid var(--yuro-heading);
+    outline-offset: 3px;
+  }
+</style>
+
+<div class="yuro-svc">
+  <div class="yuro-svc__inner">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign is_panel = false
+        if block.settings.style == 'panel'
+          assign is_panel = true
+        endif
+
+        assign has_steps = false
+        if block.settings.step_1 != blank or block.settings.step_2 != blank or block.settings.step_3 != blank
+          assign has_steps = true
+        endif
+      -%}
+
+      <section
+        class="{% if is_panel %}yuro-panel{% else %}yuro-plain{% endif %}"
+        {% if block.settings.title != blank %}aria-labelledby="yuro-t-{{ block.id }}"{% endif %}
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.label != blank -%}
+          <p class="{% if is_panel %}yuro-panel__label{% else %}yuro-plain__label{% endif %}">
+            {{- block.settings.label | escape -}}
+          </p>
+        {%- endif -%}
+
+        {%- if block.settings.title != blank -%}
+          <h2 class="yuro-svc__title" id="yuro-t-{{ block.id }}">{{ block.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if block.settings.text != blank -%}
+          <div class="yuro-svc__lead rte">{{ block.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if has_steps -%}
+          <ol class="yuro-steps">
+            {%- for i in (1..3) -%}
+              {%- assign key = 'step_' | append: i -%}
+              {%- assign step = block.settings[key] -%}
+              {%- if step != blank -%}
+                <li>{{ step | escape }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ol>
+        {%- endif -%}
+
+        {%- if block.settings.note != blank or block.settings.link_label != blank -%}
+          <p class="yuro-foot">
+            {%- if block.settings.note != blank -%}
+              <span>{{ block.settings.note | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+      </section>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "YURO Services",
+  "tag": "section",
+  "class": "yuro-service-section",
+  "settings": [
+    { "type": "header", "content": "Mise en page" },
+    { "type": "range", "id": "max_width", "min": 720, "max": 1400, "step": 20, "unit": "px", "label": "Largeur maximale", "default": 1100 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Marge haute", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Marge basse", "default": 48 },
+    { "type": "header", "content": "Couleurs" },
+    { "type": "color", "id": "bg_color", "label": "Fond de section", "default": "#0d0d0d" },
+    { "type": "color", "id": "panel_color", "label": "Fond du panneau encadré", "default": "#121211" },
+    { "type": "color", "id": "line_color", "label": "Cadre et pastilles", "default": "#2f2e2b" },
+    { "type": "color", "id": "line_soft_color", "label": "Filets discrets", "default": "#232220" },
+    { "type": "color", "id": "heading_color", "label": "Titres", "default": "#e8e4dc" },
+    { "type": "color", "id": "text_color", "label": "Texte", "default": "#b0afaa" },
+    { "type": "color", "id": "muted_color", "label": "Texte secondaire", "default": "#868d94" }
+  ],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Bloc service",
+      "settings": [
+        { "type": "select", "id": "style", "label": "Style", "options": [ { "value": "panel", "label": "Panneau encadré" }, { "value": "plain", "label": "Texte simple" } ], "default": "panel" },
+        { "type": "text", "id": "label", "label": "Surtitre" },
+        { "type": "text", "id": "title", "label": "Titre" },
+        { "type": "richtext", "id": "text", "label": "Texte" },
+        { "type": "header", "content": "Étapes (facultatif)" },
+        { "type": "text", "id": "step_1", "label": "Étape 1" },
+        { "type": "text", "id": "step_2", "label": "Étape 2" },
+        { "type": "text", "id": "step_3", "label": "Étape 3" },
+        { "type": "header", "content": "Pied de bloc (facultatif)" },
+        { "type": "text", "id": "note", "label": "Note" },
+        { "type": "text", "id": "link_label", "label": "Libellé du lien" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "YURO Services",
+      "blocks": [
+        {
+          "type": "panel",
+          "settings": {
+            "style": "panel",
+            "label": "Compris avec le couteau",
+            "title": "Affûtage gratuit à vie",
+            "text": "<p>Quand une lame ne coupe plus à votre goût, vous nous la renvoyez. Nous la reprenons à la pierre, à l'angle d'origine, et nous vous la retournons. Sans limite de durée, sans limite de nombre de passages.</p>",
+            "step_1": "Vous nous l'envoyez",
+            "step_2": "Nous l'affûtons à la main",
+            "step_3": "Nous vous la retournons",
+            "note": "Seul l'envoi est à votre charge.",
+            "link_label": "Comment ça se passe ?"
+          }
+        },
+        {
+          "type": "panel",
+          "settings": {
+            "style": "plain",
+            "title": "Garantie à vie",
+            "text": "<p>Contre tout défaut de fabrication, aussi longtemps que le couteau vous appartient. Nous réparons, et nous remplaçons si la réparation est impossible.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
