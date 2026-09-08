@@ -2704,3 +2704,216 @@ hr {
     margin-right: 0;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   31. Page fabrication
+   689 mots servis en un seul bloc de prose, trois images noyees dedans,
+   aucun repere pour entrer dans la page ni pour la parcourir. Le texte
+   n'est pas touche, seule sa mise en page l'est.
+   -------------------------------------------------------------------------- */
+
+.da-fab__ouverture {
+  padding: 4.8rem 0 3.2rem;
+  border-bottom: 1px solid var(--da-filet);
+}
+
+.da-fab__eyebrow {
+  font-family: var(--da-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin: 0 0 1.6rem;
+}
+
+/* La phrase qui decide si on vous croit sur le reste de la page. Elle etait
+   un paragraphe ordinaire au milieu du texte. */
+.da-fab__phrase {
+  font-family: var(--da-serif);
+  font-size: clamp(2.6rem, 3.4vw, 3.8rem);
+  line-height: 1.22;
+  margin: 0 0 1.8rem;
+  text-wrap: balance;
+  color: var(--da-os);
+}
+
+.da-fab__ouverture p:not(.da-fab__eyebrow):not(.da-fab__phrase) {
+  max-width: 56ch;
+  color: var(--da-cendre);
+}
+
+.da-fab__sommaire {
+  list-style: none;
+  margin: 3.2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .da-fab__sommaire { grid-template-columns: 1fr 1fr; column-gap: 3.2rem; }
+}
+
+.da-fab__sommaire a {
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--da-filet);
+  font-size: 1.45rem;
+  color: var(--da-os);
+  text-decoration: none;
+  transition: color var(--da-transition);
+}
+
+.da-fab__sommaire a:hover { color: var(--da-trempe); }
+
+.da-fab__num {
+  font-family: var(--da-mono);
+  font-size: 1.05rem;
+  color: var(--da-trempe);
+  flex: 0 0 auto;
+}
+
+/* Chaque question devient une section reperable, avec son numero. */
+.da-fab__sec {
+  padding: 3.6rem 0;
+  border-bottom: 1px solid var(--da-filet);
+  scroll-margin-top: 10rem;
+}
+
+.da-fab__sec > h2 {
+  display: flex;
+  gap: 1.4rem;
+  align-items: baseline;
+  margin: 0 0 1.6rem;
+}
+
+.da-fab__sec > h2 .da-fab__num { padding-top: 0.2rem; }
+
+.da-fab__sec p { max-width: 62ch; }
+
+/* La phrase d'attaque d'une section : elle porte l'idee, le reste explique. */
+.da-fab__fort {
+  font-family: var(--da-serif);
+  font-size: 1.9rem;
+  line-height: 1.5;
+  color: var(--da-os) !important;
+}
+
+.da-fab__sec figure { margin: 2.8rem 0 0; }
+.da-fab__sec figure img { width: 100%; display: block; }
+
+.da-fab__legende {
+  font-family: var(--da-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+  margin-top: 1rem;
+}
+
+/* Ecrit en phrase, l'ecart de prix se lit. Pose en face a face, il se
+   retient. */
+.da-fab__prix {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin: 2.4rem 0;
+  padding: 2.4rem 2rem;
+  border: 1px solid var(--da-filet);
+  max-width: 62ch;
+}
+
+.da-fab__prix div { text-align: center; }
+
+.da-fab__prix b {
+  display: block;
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.da-fab__prix .da-fab__nous b { color: var(--da-trempe); }
+
+.da-fab__prix span {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+.da-fab__contre {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  color: var(--da-cendre);
+}
+
+/* Trente-trois strates, le coeur, trente-trois strates. Le point central de
+   la page devient visible au lieu d'etre a lire. */
+.da-fab__coupe {
+  margin: 2.4rem 0;
+  padding: 2.4rem 2rem;
+  border: 1px solid var(--da-filet);
+  max-width: 62ch;
+}
+
+.da-fab__lames {
+  display: flex;
+  align-items: stretch;
+  height: 12rem;
+  gap: 2px;
+}
+
+.da-fab__flanc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.da-fab__flanc span { flex: 1; background: rgba(169, 190, 198, 0.16); }
+
+.da-fab__coeur { width: 1.6rem; background: var(--da-trempe); }
+
+.da-fab__leg {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: 1.2rem;
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+.da-fab__leg .da-fab__mid { color: var(--da-trempe); }
+
+/* La section la plus rare du site se lisait comme le reste. */
+.da-fab__aveu {
+  margin: 3.6rem 0 0;
+  padding: 3rem 2.8rem;
+  border: 1px solid var(--da-trempe);
+  background: rgba(169, 190, 198, 0.04);
+}
+
+.da-fab__aveu > h2 { margin-top: 0; }
+.da-fab__aveu p { color: var(--da-os) !important; }
+.da-fab__aveu p:last-child { margin-bottom: 0; }
+
+@media screen and (max-width: 749px) {
+  .da-fab__ouverture { padding: 3.2rem 0 2.4rem; }
+  .da-fab__sec { padding: 2.8rem 0; }
+  .da-fab__prix { grid-template-columns: 1fr; gap: 1.6rem; text-align: center; }
+  .da-fab__prix b { font-size: 2.6rem; }
+  .da-fab__lames { height: 9rem; }
+  .da-fab__leg { flex-direction: column; gap: 0.4rem; text-align: center; }
+  .da-fab__aveu { padding: 2.2rem 1.8rem; }
+}
