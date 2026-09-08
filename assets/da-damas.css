@@ -956,13 +956,21 @@ hr {
 /* La lame consultee reste identifiable dans la comparaison */
 .da-compare__ligne--actuelle { background: rgba(169, 190, 198, 0.05); }
 
+/* Le repere se lisait comme une mention en passant. Encadre, il devient une
+   etiquette : le texte reste au bleu de trempe, le filet prend l'os, le
+   blanc casse des titres. Pas de blanc pur, qui serait une teinte de plus. */
 .da-compare__ici {
+  display: inline-block;
   font-family: var(--da-mono);
   font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1;
   color: var(--da-trempe);
-  margin-left: 0.8rem;
+  border: 1px solid var(--da-os);
+  padding: 0.4rem 0.7rem 0.35rem;
+  margin-left: 1rem;
+  vertical-align: middle;
 }
 
 .da-compare__prix { color: var(--da-os); }
