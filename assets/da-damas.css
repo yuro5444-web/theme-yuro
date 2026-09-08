@@ -2574,12 +2574,6 @@ hr {
   margin: 0;
 }
 
-.da-pied__legal {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--da-cendre);
-  margin: 1.8rem 0 0;
-}
 
 /* Le titre de colonne est un reperage, pas un titre de section : il reste
    en mono, petit, dans le bleu de trempe comme le reste des reperages. */
