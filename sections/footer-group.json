@@ -4,34 +4,8 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {
-        "text_KU3Twd": {
-          "type": "text",
-          "settings": {
-            "heading": "Atelier Yuro",
-            "block_headings_font_size": 1,
-            "subtext": "<p>Couteaux de cuisine en damas forgé, soixante-sept couches d'acier repliées autour d'un cœur en VG-10. Livraison offerte en Europe.</p>",
-            "width_desktop": 6,
-            "width_mobile": "2"
-          }
-        },
-        "1c647602-cc00-4009-a058-976435c8ee9e": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Le site",
-            "block_headings_font_size": 1,
-            "menu": "footer",
-            "font_size": 14,
-            "menu_items_font": "body",
-            "width_desktop": 4,
-            "width_mobile": "2"
-          }
-        }
-      },
-      "block_order": [
-        "text_KU3Twd",
-        "1c647602-cc00-4009-a058-976435c8ee9e"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
         "color_scheme": "background-1",
         "custom_colors_background": "#121212",
@@ -49,12 +23,22 @@
         "show_policy": false,
         "branding_text": "",
         "margin_top": 0,
-        "padding_top": 32,
+        "padding_top": 8,
         "padding_bottom": 20
+      }
+    },
+    "pied_yuro": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- comment -%}\n  Pied de page YURO.\n\n  Le pied de page livre par le theme posait ses huit liens dans une seule\n  liste, ou 'Conditions generales de vente' pesait autant que 'Notre\n  fabrication', et ne portait aucune image ni aucune mention de\n  l'entreprise. Trois corrections ici.\n\n  Les liens se separent en deux colonnes, ce qu'on lit par envie et ce\n  qu'on cherche par necessite. Ils viennent des menus 'la-maison' et\n  'aide' de l'admin, ils restent donc modifiables sans toucher au theme.\n\n  L'entreprise apparait : raison sociale, adresse, SIREN. C'est obligatoire\n  sur un site marchand francais, et ca rassure autant que ca informe.\n\n  Les trois engagements reviennent en bas, la ou quelqu'un qui hesite\n  encore descend chercher une raison de faire confiance.\n{%- endcomment -%}\n\n<div class=\"page-width da-pied\">\n\n  <div class=\"da-pied__grille\">\n\n    <div class=\"da-pied__maison\">\n      <a class=\"da-pied__marque\" href=\"{{ routes.root_url }}\">\n        <img src=\"{{ 'yuro-marque.png' | asset_url }}\" alt=\"\" width=\"1024\" height=\"285\" loading=\"lazy\">\n        <span class=\"da-pied__mot\">YURO<span class=\"da-pied__sous\">Atelier</span></span>\n      </a>\n      <p class=\"da-pied__desc\">Couteaux de cuisine en damas forgé, soixante-sept couches autour d'un cœur VG-10.</p>\n      <p class=\"da-pied__legal\">Duarte Tekin, micro-entreprise<br>97 rue des remparts, 34400 Lunel<br>SIREN 985 056 142</p>\n    </div>\n\n    <nav class=\"da-pied__col\" aria-label=\"La maison\">\n      <p class=\"da-pied__titre\">La maison</p>\n      <ul class=\"da-pied__liens\" role=\"list\">\n        {%- for lien in linklists['la-maison'].links -%}\n          <li><a href=\"{{ lien.url }}\">{{ lien.title }}</a></li>\n        {%- endfor -%}\n      </ul>\n    </nav>\n\n    <nav class=\"da-pied__col\" aria-label=\"Aide\">\n      <p class=\"da-pied__titre\">Aide</p>\n      <ul class=\"da-pied__liens\" role=\"list\">\n        {%- for lien in linklists.aide.links -%}\n          <li><a href=\"{{ lien.url }}\">{{ lien.title }}</a></li>\n        {%- endfor -%}\n      </ul>\n    </nav>\n\n  </div>\n\n  <ul class=\"da-pied__engagements\" role=\"list\">\n    <li><strong>Affûtage gratuit à vie</strong>Vous payez l'envoi, nous payons le retour.</li>\n    <li><strong>Livraison offerte en Europe</strong>Expédiée sous trois jours ouvrés.</li>\n    <li><strong>Trente jours pour changer d'avis</strong>Retour sans justification.</li>\n  </ul>\n\n</div>\n",
+        "color_scheme": "background-1",
+        "padding_top": 56,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
+    "pied_yuro",
     "footer"
   ]
 }

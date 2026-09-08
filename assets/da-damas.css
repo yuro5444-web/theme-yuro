@@ -2508,3 +2508,145 @@ hr {
 @media (prefers-reduced-motion: reduce) {
   .da-guide__visuel img, .da-guide__reponse, .da-guide__lien { transition: none; }
 }
+
+
+/* --------------------------------------------------------------------------
+   29. Pied de page, la marque et les deux colonnes
+   Le pied de page livre par le theme n'avait ni image ni signe, et posait
+   ses huit liens dans une seule liste ou les mentions legales pesaient
+   autant que la page fabrication. Le bloc du theme ne garde plus que la
+   barre de copyright, tout le reste est ici.
+   -------------------------------------------------------------------------- */
+
+.da-pied {
+  padding-bottom: 3.2rem;
+}
+
+.da-pied__grille {
+  display: grid;
+  grid-template-columns: 5fr 3fr 3fr;
+  gap: 3.2rem 4rem;
+  align-items: start;
+}
+
+/* La marque et le mot forment un seul objet : ils se deplacent ensemble et
+   se soulignent ensemble. */
+.da-pied__marque {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6rem;
+  text-decoration: none;
+  color: var(--da-os);
+  margin-bottom: 2rem;
+}
+
+.da-pied__marque img {
+  width: 11rem;
+  height: auto;
+  flex: 0 0 auto;
+  transition: opacity var(--da-transition);
+}
+
+.da-pied__marque:hover img { opacity: 0.7; }
+
+.da-pied__mot {
+  font-family: var(--da-serif);
+  font-size: 2.6rem;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.da-pied__sous {
+  display: block;
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin-top: 0.6rem;
+}
+
+.da-pied__desc {
+  font-size: 1.4rem;
+  line-height: 1.65;
+  color: var(--da-cendre);
+  max-width: 42ch;
+  margin: 0;
+}
+
+.da-pied__legal {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--da-cendre);
+  margin: 1.8rem 0 0;
+}
+
+/* Le titre de colonne est un reperage, pas un titre de section : il reste
+   en mono, petit, dans le bleu de trempe comme le reste des reperages. */
+.da-pied__titre {
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin: 0 0 1.6rem;
+}
+
+.da-pied__liens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* Le theme met les libelles de pied de page en capitales espacees. Ce sont
+   des phrases, pas des mots : a cette chasse 'Conditions generales de
+   vente' passait sur trois lignes. */
+.da-pied__liens a {
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--da-os);
+  text-decoration: none;
+  transition: color var(--da-transition);
+}
+
+.da-pied__liens a:hover { color: var(--da-trempe); }
+
+.da-pied__engagements {
+  list-style: none;
+  margin: 4rem 0 0;
+  padding: 2.4rem 0 0;
+  border-top: 1px solid var(--da-filet);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem 4rem;
+}
+
+.da-pied__engagements li {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--da-cendre);
+}
+
+.da-pied__engagements strong {
+  display: block;
+  font-family: var(--da-serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--da-os);
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 989px) {
+  .da-pied__grille { grid-template-columns: 1fr 1fr; }
+  .da-pied__maison { grid-column: 1 / -1; }
+}
+
+@media (max-width: 749px) {
+  .da-pied__grille { grid-template-columns: 1fr; gap: 3.2rem; }
+  .da-pied__marque img { width: 9rem; }
+  .da-pied__mot { font-size: 2.2rem; }
+  .da-pied__engagements { grid-template-columns: 1fr; gap: 2rem; margin-top: 3.2rem; }
+}
