@@ -2529,42 +2529,23 @@ hr {
   align-items: start;
 }
 
-/* La marque et le mot forment un seul objet : ils se deplacent ensemble et
-   se soulignent ensemble. */
+/* Le mot est celui de l'en-tete, aux memes valeurs : Palatino, graisse 400,
+   interlettrage negatif, os. Aucun signe dessine, aucun surtitre. Une
+   maison de couteaux se signe par son nom. */
 .da-pied__marque {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.6rem;
-  text-decoration: none;
-  color: var(--da-os);
-  margin-bottom: 2rem;
-}
-
-.da-pied__marque img {
-  width: 11rem;
-  height: auto;
-  flex: 0 0 auto;
-  transition: opacity var(--da-transition);
-}
-
-.da-pied__marque:hover img { opacity: 0.7; }
-
-.da-pied__mot {
+  display: inline-block;
   font-family: var(--da-serif);
-  font-size: 2.6rem;
-  letter-spacing: 0.16em;
+  font-size: 3.2rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: 1;
+  color: var(--da-os);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color var(--da-transition);
 }
 
-.da-pied__sous {
-  display: block;
-  font-family: var(--da-mono);
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--da-trempe);
-  margin-top: 0.6rem;
-}
+.da-pied__marque:hover { color: var(--da-trempe); }
 
 .da-pied__desc {
   font-size: 1.4rem;
@@ -2640,7 +2621,6 @@ hr {
 
 @media (max-width: 749px) {
   .da-pied__grille { grid-template-columns: 1fr; gap: 3.2rem; }
-  .da-pied__marque img { width: 9rem; }
-  .da-pied__mot { font-size: 2.2rem; }
+  .da-pied__marque { font-size: 2.8rem; }
   .da-pied__engagements { grid-template-columns: 1fr; gap: 2rem; margin-top: 3.2rem; }
 }
