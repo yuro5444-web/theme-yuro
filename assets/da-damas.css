@@ -2880,7 +2880,16 @@ hr {
 
 .da-fab__flanc span { flex: 1; background: rgba(169, 190, 198, 0.16); }
 
-.da-fab__coeur { width: 1.6rem; background: var(--da-trempe); }
+/* base.css masque tout div vide, 'div:empty{display:none}'. Le coeur et
+   les strates sont des blocs de couleur sans contenu : la regle doit passer
+   au-dessus, d'ou le selecteur a deux classes. */
+.da-fab__lames .da-fab__coeur {
+  display: block;
+  width: 1.6rem;
+  background: var(--da-trempe);
+}
+
+.da-fab__lames .da-fab__flanc span { display: block; }
 
 .da-fab__leg {
   display: flex;
