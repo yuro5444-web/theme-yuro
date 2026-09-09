@@ -2936,3 +2936,21 @@ hr {
 }
 
 .da-pied__depuis { margin-top: 0.8rem; color: var(--da-cendre); }
+
+.da-reperes__atelier {
+  margin: 1rem 0 0;
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+.da-fab__lignee {
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  margin: 0 0 1.6rem;
+}
