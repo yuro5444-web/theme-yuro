@@ -2934,32 +2934,3 @@ hr {
   .da-fab__leg { flex-direction: column; gap: 0.4rem; text-align: center; }
   .da-fab__aveu { padding: 2.2rem 1.8rem; }
 }
-
-
-/* --------------------------------------------------------------------------
-   32. Le geste, sous le titre du produit
-   'Gyuto 200, Damas' ne dit rien du geste a qui ne connait pas les couteaux
-   japonais. Une ligne y repond avant le prix, au moment ou l'oeil est
-   encore sur le nom. Mono, capitales espacees, cendre : un sous-titre de
-   plaque, pas une accroche. Rien de plus qu'une respiration typographique.
-   -------------------------------------------------------------------------- */
-
-.da-geste {
-  font-family: var(--da-mono);
-  font-size: 1.15rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--da-cendre);
-  /* Mesure faite sur la page : avec une marge negative, le haut de la
-     ligne passait 8 px au-dessus du bas de la derniere ligne du titre, et
-     venait toucher les jambages sur un titre a deux lignes. */
-  margin: 0.6rem 0 1.8rem;
-}
-
-@media screen and (max-width: 749px) {
-  .da-geste {
-    font-size: 1.05rem;
-    letter-spacing: 0.16em;
-    margin: 0.5rem 0 1.4rem;
-  }
-}

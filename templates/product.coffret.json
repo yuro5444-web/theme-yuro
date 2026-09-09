@@ -421,18 +421,10 @@
             "mobile_transparent_bg": false
           },
           "blocks": {}
-        },
-        "da_geste": {
-          "type": "custom-liquid",
-          "settings": {
-            "custom_liquid": "{%- comment -%}\n  Une ligne sous le titre : a quoi sert cette lame, en trois mots.\n\n  Le titre annonce 'Gyuto 200, Damas'. Pour qui ne connait pas les\n  couteaux japonais, ces deux mots ne disent rien du geste. La ligne\n  repond avant le prix, avant la description, au moment ou l'oeil est\n  encore sur le nom.\n\n  Le texte est celui de la colonne 'Pour' du comparatif, pour que les deux\n  ne divergent pas. Mono, capitales espacees, gris cendre : un sous-titre\n  de plaque, pas une accroche.\n{%- endcomment -%}\n{%- liquid\n  case product.handle\n    when 'gyuto-200-damas-67-couches'\n      assign geste = 'Tout, tous les jours'\n    when 'nakiri-165-damas-67-couches'\n      assign geste = 'Les légumes'\n    when 'deba-165-damas-67-couches'\n      assign geste = 'Le poisson entier'\n    when 'honesuki-150-damas-67-couches'\n      assign geste = 'La volaille'\n    when 'coffret-duo-gyuto-nakiri-damas'\n      assign geste = 'Le quotidien, en deux lames'\n    when 'coffret-collection-quatre-couteaux-damas'\n      assign geste = 'Les quatre gestes'\n  endcase\n-%}\n{%- if geste -%}\n  <p class=\"da-geste\">{{ geste }}</p>\n{%- endif -%}\n",
-            "color_scheme": "background-1"
-          }
         }
       },
       "block_order": [
         "title",
-        "da_geste",
         "price",
         "5fcc0428-e768-4cb7-bea3-eb0274198dd1",
         "da_reperes",
