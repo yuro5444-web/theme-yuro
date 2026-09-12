@@ -41,34 +41,14 @@
       }
     },
     "recit": {
-      "type": "rich-text",
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "title": "Soixante-sept couches",
-            "title_highlight_1_color": "#A9BEC6",
-            "title_highlight_1_underline-color": "#A9BEC6"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>L'acier est plié puis replié jusqu'à obtenir soixante-sept strates autour d'un cœur en VG-10. L'attaque à l'acide révèle le contraste entre les deux nuances : le dessin qui apparaît n'appartient qu'à cette lame et ne se reproduira pas.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t"
-      ],
+      "type": "custom-liquid",
       "settings": {
-        "desktop_content_position": "left",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "{%- comment -%}\n  Le chiffre etait annonce et jamais montre : un titre et un paragraphe.\n  La coupe le rend lisible d'un coup d'oeil, trente-trois strates, le coeur,\n  trente-trois strates. Le texte d'origine est conserve mot pour mot.\n{%- endcomment -%}\n<div class=\"page-width da-couches\">\n  <div class=\"da-couches__mot\">\n    <p class=\"da-couches__sur\">Le damas</p>\n    <h2 class=\"da-couches__titre\">Soixante-sept couches</h2>\n    <p class=\"da-couches__txt\">L'acier est plié puis replié jusqu'à obtenir soixante-sept strates autour d'un cœur en VG-10. L'attaque à l'acide révèle le contraste entre les deux nuances : le dessin qui apparaît n'appartient qu'à cette lame et ne se reproduira pas.</p>\n    <a class=\"da-couches__lien\" href=\"/pages/notre-fabrication\">Comment la lame est faite</a>\n  </div>\n  <figure class=\"da-couches__vue\">\n    <div class=\"da-couches__coupe\" role=\"img\" aria-label=\"Coupe de la lame : trente-trois strates, un cœur en VG-10, trente-trois strates\">\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n      <span class=\"da-couches__coeur\"></span>\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n    </div>\n    <figcaption class=\"da-couches__leg\">\n      <span>33 strates</span>\n      <span class=\"da-couches__mid\">cœur VG-10</span>\n      <span>33 strates</span>\n    </figcaption>\n  </figure>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 96,
-        "padding_bottom": 32
+        "padding_bottom": 48
       }
     },
     "piliers": {

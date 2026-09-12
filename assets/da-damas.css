@@ -2954,3 +2954,112 @@ hr {
   color: var(--da-trempe);
   margin: 0 0 1.6rem;
 }
+
+/* --------------------------------------------------------------------------
+   33. Soixante-sept couches : la coupe de la lame, en page d'accueil
+   Le chiffre ouvrait la page sans jamais etre montre. La coupe le rend
+   visible au lieu d'etre a lire : trente-trois strates, le coeur, trente-trois.
+   -------------------------------------------------------------------------- */
+
+.da-couches {
+  display: grid;
+  gap: 3.6rem;
+}
+
+.da-couches__sur {
+  margin: 0 0 1.2rem;
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+}
+
+.da-couches__titre {
+  margin: 0 0 1.8rem;
+  font-size: clamp(3.2rem, 4.2vw, 4.8rem);
+}
+
+.da-couches__txt {
+  margin: 0;
+  max-width: 54ch;
+  color: rgba(var(--color-foreground), 0.72);
+}
+
+.da-couches__lien {
+  display: inline-block;
+  margin-top: 2.6rem;
+  padding-bottom: 0.5rem;
+  font-family: var(--da-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--da-trempe);
+  text-decoration: none;
+  border-bottom: 1px solid var(--da-filet-net);
+  transition: color var(--da-transition), border-color var(--da-transition);
+}
+
+.da-couches__lien:hover {
+  color: var(--da-os);
+  border-bottom-color: var(--da-os);
+}
+
+.da-couches__vue { margin: 0; }
+
+.da-couches__coupe {
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  height: clamp(15rem, 21vw, 22rem);
+  padding: 1.6rem;
+  border: 1px solid var(--da-filet);
+}
+
+/* base.css masque tout bloc vide, 'div:empty{display:none}'. Les strates et
+   le coeur sont des blocs de couleur sans contenu : le selecteur a deux
+   classes doit passer au-dessus. */
+.da-couches__coupe .da-couches__pli {
+  display: block;
+  flex: 1;
+  background: rgba(169, 190, 198, 0.12);
+}
+
+.da-couches__coupe .da-couches__pli:nth-child(odd) { background: rgba(169, 190, 198, 0.21); }
+.da-couches__coupe .da-couches__pli:nth-child(5n)  { background: rgba(169, 190, 198, 0.30); }
+
+.da-couches__coupe .da-couches__coeur {
+  display: block;
+  flex: 0 0 auto;
+  width: 0.8rem;
+  margin-inline: 0.5rem;
+  background: var(--da-trempe);
+}
+
+.da-couches__leg {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: 1.2rem;
+  font-family: var(--da-mono);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--da-cendre);
+}
+
+.da-couches__leg .da-couches__mid { color: var(--da-trempe); }
+
+@media screen and (min-width: 990px) {
+  .da-couches {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: 8rem;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .da-couches { gap: 2.8rem; }
+  .da-couches__coupe { height: 12rem; padding: 1.2rem; }
+  .da-couches__leg { font-size: 0.95rem; letter-spacing: 0.08em; }
+}
