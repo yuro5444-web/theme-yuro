@@ -17,10 +17,10 @@
           "settings": {
             "image": "shopify://shop_images/yuro-hero-damas.png",
             "image_overlay_opacity": 30,
-            "heading": "Le motif ne se décore pas. Il se révèle.",
+            "heading": "Une belle lame. Un service qui dure.",
             "heading_size": "h1",
-            "subheading": "Nous ne sommes pas une vieille maison. Notre atelier, si : il forge des couteaux de cuisine depuis 1999. Livraison offerte en Europe, affûtage gratuit à vie.",
-            "button_label": "Voir les lames",
+            "subheading": "Découvrez nos couteaux de cuisine en damas et l'affûtage gratuit à vie qui les accompagne.",
+            "button_label": "Découvrir les lames",
             "link": "shopify://collections/couteaux-damas",
             "box_align": "middle-left",
             "show_text_box": false,
@@ -45,7 +45,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "{%- comment -%}\n  Le chiffre etait annonce et jamais montre : un titre et un paragraphe.\n  La coupe le rend lisible d'un coup d'oeil, trente-trois strates, le coeur,\n  trente-trois strates. Le texte d'origine est conserve mot pour mot.\n{%- endcomment -%}\n<div class=\"page-width da-couches\">\n  <div class=\"da-couches__mot\">\n    <p class=\"da-couches__sur\">Le damas</p>\n    <h2 class=\"da-couches__titre\">Soixante-sept couches</h2>\n    <p class=\"da-couches__txt\">L'acier est plié puis replié jusqu'à obtenir soixante-sept strates autour d'un cœur en VG-10. L'attaque à l'acide révèle le contraste entre les deux nuances : le dessin qui apparaît n'appartient qu'à cette lame et ne se reproduira pas.</p>\n    <a class=\"da-couches__lien\" href=\"/pages/notre-fabrication\">Comment la lame est faite</a>\n  </div>\n  <figure class=\"da-couches__vue\">\n    <div class=\"da-couches__coupe\" role=\"img\" aria-label=\"Coupe de la lame : trente-trois strates, un cœur en VG-10, trente-trois strates\">\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n      <span class=\"da-couches__coeur\"></span>\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n    </div>\n    <figcaption class=\"da-couches__leg\">\n      <span>33 strates</span>\n      <span class=\"da-couches__mid\">cœur VG-10</span>\n      <span>33 strates</span>\n    </figcaption>\n  </figure>\n</div>",
+        "custom_liquid": "{%- comment -%}\n  Le chiffre etait annonce et jamais montre : un titre et un paragraphe.\n  La coupe le rend lisible d'un coup d'oeil, trente-trois strates, le coeur,\n  trente-trois strates. Le texte d'origine est conserve mot pour mot.\n{%- endcomment -%}\n<div class=\"page-width da-couches\">\n  <div class=\"da-couches__mot\">\n    <p class=\"da-couches__sur\">Le damas</p>\n    <h2 class=\"da-couches__titre\">Soixante-sept couches</h2>\n    <p class=\"da-couches__txt\">L'acier est plié puis replié jusqu'à obtenir soixante-sept strates autour d'un cœur en VG-10. L'attaque à l'acide révèle le contraste entre les deux nuances : le dessin qui apparaît varie d'une lame à l'autre.</p>\n    <a class=\"da-couches__lien\" href=\"/pages/notre-fabrication\">Comment la lame est faite</a>\n  </div>\n  <figure class=\"da-couches__vue\">\n    <div class=\"da-couches__coupe\" role=\"img\" aria-label=\"Coupe de la lame : trente-trois strates, un cœur en VG-10, trente-trois strates\">\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n      <span class=\"da-couches__coeur\"></span>\n      {%- for i in (1..33) -%}<span class=\"da-couches__pli\"></span>{%- endfor -%}\n    </div>\n    <figcaption class=\"da-couches__leg\">\n      <span>33 strates</span>\n      <span class=\"da-couches__mid\">cœur VG-10</span>\n      <span>33 strates</span>\n    </figcaption>\n  </figure>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 96,
         "padding_bottom": 48
@@ -56,7 +56,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-strates.png' | asset_url }}\" alt=\"Lame en coupe, les strates de damas courent sur toute la longueur\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Soixante-sept couches</h3><p class=\"da-pilier__texte\">Trente-trois strates de chaque côté d'un cœur en VG-10. Le motif traverse l'épaisseur et reste visible sur la tranche.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour ne pas s'ébrécher sur un os.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à quinze degrés par face. Sans limite de temps.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-sablier.png' | asset_url }}\" alt=\"Sablier\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Garantie à vie</h3><p class=\"da-pilier__texte\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, ou nous remplaçons.</p></li></ul></div>",
+        "custom_liquid": "<div class=\"page-width da-piliers\"><h2 class=\"da-piliers__titre\">Ce qui distingue ces lames</h2><ul class=\"da-piliers__liste\"><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-strates.png' | asset_url }}\" alt=\"Lame en coupe, les strates de damas courent sur toute la longueur\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Soixante-sept couches</h3><p class=\"da-pilier__texte\">Trente-trois strates de chaque côté d'un cœur en VG-10. Le motif traverse l'épaisseur et reste visible sur la tranche.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-micro.png' | asset_url }}\" alt=\"Microscope de laboratoire\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">61 HRC</h3><p class=\"da-pilier__texte\">Assez dur pour tenir le fil longtemps, assez souple pour l'usage en cuisine. Les os relèvent d'un fendoir, pas d'une lame fine.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-pierre.png' | asset_url }}\" alt=\"Lame affûtée sur une pierre à eau\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Affûtage gratuit à vie</h3><p class=\"da-pilier__texte\">Vous nous renvoyez la lame, nous la remettons à son angle d'origine. Sans limite de temps.</p></li><li class=\"da-pilier\"><img class=\"da-pilier__icone\" src=\"{{ 'yuro-icone-sablier.png' | asset_url }}\" alt=\"Sablier\" width=\"360\" height=\"360\" loading=\"lazy\" decoding=\"async\"><h3 class=\"da-pilier__titre\">Garantie à vie</h3><p class=\"da-pilier__texte\">Contre tout défaut de fabrication, aussi longtemps que la lame vous appartient. Nous réparons, ou nous remplaçons.</p></li></ul></div>",
         "color_scheme": "background-1",
         "padding_top": 32,
         "padding_bottom": 88
@@ -110,7 +110,7 @@
           "settings": {
             "image": "shopify://shop_images/yuro-forge-trempe-v3.png",
             "title": "La trempe",
-            "text": "<p>La lame est portée au rouge puis refroidie d'un seul coup. Ce choc thermique fixe la structure de l'acier et donne les 61 HRC : assez dur pour tenir le fil longtemps, assez souple pour ne pas casser.</p>"
+            "text": "<p>La lame est portée au rouge puis refroidie d'un seul coup. Ce choc thermique fixe la structure de l'acier et donne la dureté visée : 61 HRC sur le Gyuto, le Nakiri et le Honesuki, 60 HRC sur le Deba.</p>"
           }
         },
         "e3": {
@@ -118,7 +118,7 @@
           "settings": {
             "image": "shopify://shop_images/yuro-forge-affutage.png",
             "title": "L'affûtage",
-            "text": "<p>À la pierre, à la main, quinze degrés par face. Une lame qui sort d'atelier tranche une feuille de papier tenue en l'air. C'est le seul test qui ne se truque pas.</p>"
+            "text": "<p>Quinze degrés par face, dix-sept sur le Deba. Une lame qui sort d'atelier doit trancher une feuille de papier tenue en l'air : c'est notre vérification du tranchant.</p>"
           }
         }
       },
@@ -166,7 +166,7 @@
           "settings": {
             "open": false,
             "heading": "Que veut dire 61 HRC ?",
-            "row_content": "<p>C'est la dureté sur l'échelle Rockwell. En dessous de 56, la lame perd son fil rapidement. Au-delà de 63, elle devient cassante. 61 est le point d'équilibre pour un couteau de cuisine.</p>"
+            "row_content": "<p>C'est la dureté sur l'échelle Rockwell. En dessous de 56, la lame perd son fil rapidement. Au-delà de 63, elle devient cassante. 61 est la dureté que nous visons pour le Gyuto, le Nakiri et le Honesuki ; le Deba est à 60, pour mieux encaisser les arêtes.</p>"
           }
         },
         "q4": {
@@ -320,14 +320,34 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "engagements": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- comment -%}\n  Bandeau sous le hero : origine, engagements, lien vers l'affutage.\n  Perimetre reel des engagements uniquement ; les conditions restent\n  accessibles via les liens.\n{%- endcomment -%}\n<div class=\"page-width da-bandeau\">\n  <p class=\"da-bandeau__origine\">Marque française · Fabrication à Yangjiang, Chine</p>\n  <ul class=\"da-bandeau__liste\" role=\"list\">\n    <li>Livraison offerte en Europe</li>\n    <li>30 jours pour changer d'avis</li>\n    <li><a href=\"/pages/affutage-a-vie\">L'affûtage à vie</a></li>\n  </ul>\n  <p class=\"da-bandeau__cond\"><a href=\"/policies/shipping-policy\">Livraison</a> · <a href=\"/policies/refund-policy\">Retours et garanties</a></p>\n</div>\n",
+        "color_scheme": "background-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "affutage": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"page-width da-serv\">\n  <p class=\"da-serv__sur\">Compris avec chaque lame</p>\n  <h2 class=\"da-serv__titre\">L'affûtage gratuit à vie, concrètement</h2>\n  <ol class=\"da-serv__etapes\" role=\"list\">\n    <li><span class=\"da-serv__num\">1</span>Vous nous contactez.</li>\n    <li><span class=\"da-serv__num\">2</span>Vous envoyez votre couteau.</li>\n    <li><span class=\"da-serv__num\">3</span>Nous l'affûtons et vous le retournons.</li>\n  </ol>\n  <p class=\"da-serv__note\">L'envoi est à votre charge. L'affûtage et le retour sont offerts.</p>\n  <a class=\"da-serv__lien\" href=\"/pages/affutage-a-vie\">Voir les modalités</a>\n</div>\n",
+        "color_scheme": "background-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "hero",
+    "engagements",
     "recit",
     "piliers",
     "lames",
     "guide",
+    "affutage",
     "pourquoi",
     "anatomie",
     "forge",

@@ -3063,3 +3063,26 @@ hr {
   .da-couches__coupe { height: 12rem; padding: 1.2rem; }
   .da-couches__leg { font-size: 0.95rem; letter-spacing: 0.08em; }
 }
+
+
+/* ------------------------------------------------------------------
+   24. Bandeau d'engagements sous le hero, et bloc affutage concret
+   ------------------------------------------------------------------ */
+.da-bandeau { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 3rem; border-top: 1px solid var(--da-filet); border-bottom: 1px solid var(--da-filet); padding-block: 1.6rem; }
+.da-bandeau__origine { margin: 0; font-family: var(--da-mono); font-size: 1.1rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--da-os); }
+.da-bandeau__liste { display: flex; flex-wrap: wrap; gap: 0.8rem 2.8rem; margin: 0; padding: 0; list-style: none; font-size: 1.4rem; color: var(--da-os); }
+.da-bandeau__liste a { color: var(--da-trempe); text-decoration: none; border-bottom: 1px solid var(--da-filet); }
+.da-bandeau__cond { margin: 0; font-size: 1.2rem; color: var(--da-cendre); }
+.da-bandeau__cond a { color: var(--da-cendre); }
+.da-serv { max-width: 72rem; margin-inline: auto; text-align: center; }
+.da-serv__sur { font-family: var(--da-mono); font-size: 1.1rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--da-cendre); margin: 0 0 1.2rem; }
+.da-serv__titre { font-family: var(--da-serif); font-weight: 400; font-size: clamp(2.4rem, 3.6vw, 3.2rem); margin: 0 0 2.8rem; }
+.da-serv__etapes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 0 0 2.4rem; padding: 0; list-style: none; font-size: 1.6rem; }
+.da-serv__etapes li { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.da-serv__num { font-family: var(--da-mono); font-size: 1.2rem; color: var(--da-trempe); border: 1px solid var(--da-filet-net); width: 3.2rem; height: 3.2rem; display: grid; place-items: center; }
+.da-serv__note { color: var(--da-cendre); margin: 0 0 1.6rem; }
+.da-serv__lien { font-family: var(--da-mono); font-size: 1.1rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--da-trempe); text-decoration: none; border-bottom: 1px solid var(--da-filet); }
+@media screen and (max-width: 749px) {
+  .da-bandeau { flex-direction: column; align-items: flex-start; }
+  .da-serv__etapes { grid-template-columns: 1fr; gap: 1.4rem; }
+}
